@@ -35,7 +35,7 @@ Links internos sempre com o prefixo da opção (`/a/...` ou `/b/...`); defina um
 - Zero JavaScript no cliente, exceto (só na B) a troca da foto do índice ao passar o mouse/tocar na linha — vanilla, progressivo (sem JS a foto do 02 fica fixa), ≤ 30 linhas.
 - CSS: um arquivo `X.css` global importado no layout + `<style>` escopado nos componentes quando fizer sentido. Mobile first; breakpoints em 720 e 1080 px; em telas estreitas o grid vira 1 coluna, fotos ocupam a largura, o índice da B empilha (foto acima da lista). Nada de frameworks CSS.
 - Acessibilidade: contraste ≥ 4.5:1 em todo texto; `alt` = legenda; foco visível; hierarquia de headings correta (um `h1` por página); `<nav aria-label>`; links de prev/próximo com o nome do projeto.
-- Conteúdo: **nenhuma frase inventada** — só o que está em `src/content`, `src/data` e na spec. Nada de "Ver todos / Read more / Continuar lendo / View project". Sem CEP (o campo está vazio até verificação). Sem retratos. Sem formulário. Só português.
+- Conteúdo: **nenhuma frase inventada** — só o que está em `src/content`, `src/data` e na spec. Nada de "Ver todos / Read more / Continuar lendo / View project". Sem retratos. Sem formulário. Só português.
 - Não edite: `src/content/**`, `src/data/**`, `src/lib/**`, `src/styles/base.css`, `src/assets/**`, `astro.config.mjs`, `src/pages/index.astro`, nem nada da outra opção. Se precisar de um helper novo, crie em `src/components/X/` ou `src/lib/X/`.
 
 ## Verificação (obrigatória antes de devolver)

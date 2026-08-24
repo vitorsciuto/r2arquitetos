@@ -4,9 +4,9 @@ export const nome = 'r2 arquitetos';
 export const nomeCompleto = 'r2 arquitetos — arquitetura · urbanismo';
 
 export const contato = {
-  endereco: ['av. higienópolis 101 · higienópolis', 'são paulo sp'],
-  enderecoFormal: 'Av. Higienópolis, 101 — Higienópolis, São Paulo, SP',
-  cep: '', // só entra depois de verificado
+  endereco: ['av. higienópolis 101 · higienópolis', 'são paulo sp · 01238-001'],
+  enderecoFormal: 'Av. Higienópolis, 101 — Higienópolis, São Paulo, SP, 01238-001',
+  cep: '01238-001', // verificado (lado ímpar da Av. Higienópolis)
   telefone: '+55 11 3231 5532',
   telefoneHref: 'tel:+551132315532',
   email: 'contato@r2arquitetos.com.br',

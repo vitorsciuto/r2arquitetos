@@ -14,7 +14,7 @@ tombamento: tombado pelo Condephaat em 1992
 intervencao: readequação de apartamento
 anos: 2013–2014
 cor: "#D4A33A"
-corNome: veneziana ocre
+corNome: veneziana amarela
 pasta: 02-louveira-1
 resumo: Apartamento no edifício de Vilanova Artigas, com a reconstrução do jardim de inverno e a recuperação de pastilhas, tacos de peroba e caixilharia originais.
 ---

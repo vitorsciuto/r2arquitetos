@@ -42,13 +42,13 @@ Regras de texto:
 - Autoria do Louveira: "Vilanova Artigas, 1946" como o escritório escreve. Cascaldi só se o escritório confirmar.
 - Legenda do anúncio do Louveira: "Anúncio da Imobiliária Itaoca para o Condomínio Louveira, '2 apartamentos por andar' — sem data." (o anúncio diz "já construído"; não é de lançamento; 1946 é a data do projeto).
 - Frase "a três quadras do Louveira e do Lausanne": **removida** (invenção). Av. Higienópolis, 101 pode ser o próprio Edifício Lausanne — perguntar ao usuário; se confirmado, vira "no Edifício Lausanne".
-- CEP: só entra se o verificador confirmar; senão o bloco de contato fica sem CEP.
+- CEP: **01238-001** (verificado — lado ímpar da Av. Higienópolis). Entra na segunda linha do bloco de contato.
 - Datas: travessão curto sem espaços, "2013–2014". Aspas curvas “ ”. Separador de metadados: " · " com espaço inflexível **antes** do ponto (nunca abre linha com "·").
 
 Bloco de contato (ambas as opções, minúsculas, como a Una):
 ```
 av. higienópolis 101 · higienópolis
-são paulo sp [· CEP se confirmado]
+são paulo sp · 01238-001
 +55 11 3231 5532
 
 contato@r2arquitetos.com.br   ← sublinhado, mailto
