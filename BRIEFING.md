@@ -1,6 +1,6 @@
 # r2arquitetos.com.br — Briefing do projeto
 
-_Última atualização: 2026-08-23 (sessão 1: levantamento + decisão de direção)_
+_Última atualização: 2026-08-24 (sessão 2: decisões fechadas, design aprovado, construção A/B)_
 
 ## Objetivo
 
@@ -95,6 +95,37 @@ facebook.com/r2arquitetos.com.br
 - Existem fotos melhores dos projetos fora do Wix? Fotos novas mudam muito o resultado.
 - Publicações: manter como galeria de recortes ou pedir os PDFs/links das matérias.
 - Idioma: só português (o site antigo era só PT, com sobras em inglês do template).
+
+
+## Estado em 2026-08-24 (sessão 2) — decisões fechadas e construção
+
+**Questões em aberto — resolvidas:**
+- Stack: **Astro 7** (output estático). Rotas `/a/` e `/b/` durante a comparação; `/` = página de escolha.
+- Hospedagem: **GitHub Pages** (repo público, build por Actions em `.github/workflows/deploy.yml`). DNS fica no registro.br.
+  O domínio hoje só tem **MX → Google Workspace** (`smtp.google.com`), sem A/www, sem SPF/DKIM/DMARC, DNSSEC ligado.
+  Registros a criar no registro.br (modo avançado; aceita A, AAAA, CNAME, MX, TXT, TLSA; máx. 40):
+  `A @ 185.199.108.153 / 109.153 / 110.153 / 111.153` · `AAAA @ 2606:50c0:8000::153 / 8001::153 / 8002::153 / 8003::153` ·
+  `CNAME www → <usuario>.github.io` · manter o MX · `TXT @ "v=spf1 include:_spf.google.com ~all"` · DKIM (Google Admin) · `TXT _dmarc "v=DMARC1; p=none; rua=mailto:contato@r2arquitetos.com.br"`.
+  Depois: Settings › Pages › custom domain `r2arquitetos.com.br` + Enforce HTTPS. Vercel Hobby descartado (proíbe uso comercial); Cloudflare Pages exigiria mover os nameservers; Netlify virou plano por créditos com limite duro.
+- Contato: **sem formulário**; bloco tipográfico estilo Una Arquitetos (minúsculas, e-mail sublinhado como contato principal, telefone visível). CEP verificado: **01238-001**.
+- Fotos: só as do Wix. **As galerias completas foram recuperadas (247 fotos + 22 outras)** a partir do JSON interno do Wix → `fotos-wix/` (originais, ignorado pelo git; `manifest.json` com ordem/dimensões) e `src/assets/fotos/` (cópias ≤ 2000 px). Curadoria por projeto em `fotos-wix/curadoria/*.json` (= `src/data/curadoria/`).
+- Publicações: 14 recortes (o 15º era um feed vazio), agrupados por veículo, com legenda.
+- Retratos: nenhum. Idioma: só PT.
+
+**Design aprovado:** fundamentos A/B e Home A/B (mockups em `.superpowers/brainstorm/1841-1787541904/content/`). Spec completa em
+`docs/superpowers/specs/2026-08-24-r2arquitetos-design.md`; brief dos construtores em `docs/superpowers/plans/2026-08-24-builder-brief.md`.
+Crítica adversarial das Homes (template-smell, tipografia, fotos, fidelidade) incorporada na spec §6.
+
+**Fatos verificados (para o texto do site):**
+- Louveira: coautoria Artigas **e Carlos Cascaldi** confirmada; projeto 1946, obra 1948–1950; Condephaat 1992 (Res. 44/1992). O site usa "Vilanova Artigas, 1946" como o escritório escreve — creditar Cascaldi só se o escritório quiser.
+- Lausanne: Adolf Franz Heep, 1953–1958; painel de Clóvis Graciano no hall; **endereço Av. Higienópolis, 101 e 111** — ou seja, o escritório (Av. Higienópolis 101) fica **no próprio Edifício Lausanne**. Confirmar com Rita/Rubens antes de dizer isso no site.
+- Guanabara: fundado em 1910 (família Ângelo Martinez, Rua Boa Vista) — confirmado; mudou para a Av. São João 128 em 1968. A atribuição "Casa José Moreira, Ricardo Severo, 1926" é texto do escritório e **não foi confirmada** por fonte externa (a Prefeitura chama o prédio de "Edifício José Moreira").
+- Praça Roosevelt: inaugurada 25/01/1970, reinaugurada 29/09/2012; a participação de Rubens Reis na equipe da Emurb é citada pela Câmara Municipal e pelo Vitruvius.
+- Cores do Louveira: amarelo + vermelho são originais do projeto (fontes dizem "amarelo", não "ocre").
+
+**Perguntas pendentes para o usuário:** (1) o escritório fica no Edifício Lausanne? (2) creditar Cascaldi no Louveira? (3) Louveira 2 ainda "obra em andamento" (status de 2015)? (4) existe WhatsApp/celular do escritório? (5) usuário/organização do GitHub para criar o repositório.
+
+**Como rodar:** `npm ci` · `npm run dev` · `npm run build` · `npm run preview`. Screenshots de verificação: `scratchpad/shot.js` (playwright-core + Chromium local).
 
 ## Arquivos
 
