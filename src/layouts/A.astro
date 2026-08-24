@@ -1,0 +1,60 @@
+---
+/** Layout da Opção A — evolução da identidade atual. */
+import '../styles/base.css';
+import '../styles/a.css';
+import { getImage } from 'astro:assets';
+import logoRaw from '../assets/logo-r2.svg?raw';
+import Cabecalho from '../components/a/Cabecalho.astro';
+import Rodape from '../components/a/Rodape.astro';
+import { foto } from '../lib/fotos';
+
+interface Props {
+  titulo?: string;
+  descricao: string;
+  /** caminho (já processado) da imagem og; sem valor usa a fachada do Louveira */
+  ogImagem?: string;
+}
+const { titulo, descricao, ogImagem } = Astro.props;
+
+const tituloCompleto = titulo ? `${titulo} — r2 arquitetos` : 'r2 arquitetos — arquitetura · urbanismo';
+const site = Astro.site ?? new URL(Astro.url.origin);
+const canonical = new URL(Astro.url.pathname, site).href;
+const ogPadrao = await getImage({ src: foto('home', '003_8e604096.jpg'), width: 1200, format: 'jpg' });
+const og = new URL(ogImagem ?? ogPadrao.src, site).href;
+
+// favicon: o mesmo "r2" no quadrado taupe, embutido (sem arquivo novo)
+const favicon = 'data:image/svg+xml,' + encodeURIComponent(
+  logoRaw.replace('currentColor', '#66574A').replace('var(--logo-fg, #fff)', '#F5F4F1'),
+);
+---
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{tituloCompleto}</title>
+    <meta name="description" content={descricao} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="r2 arquitetos" />
+    <meta property="og:title" content={tituloCompleto} />
+    <meta property="og:description" content={descricao} />
+    <meta property="og:image" content={og} />
+    <meta property="og:url" content={canonical} />
+    <meta name="theme-color" content="#E4E1DB" />
+    <link rel="icon" href={favicon} type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <a class="pular" href="#conteudo">Ir para o conteúdo</a>
+    <Cabecalho />
+    <main id="conteudo">
+      <slot />
+    </main>
+    <Rodape />
+  </body>
+</html>

@@ -1,0 +1,24 @@
+---
+import Figura from './Figura.astro';
+import { foto, type FotoCurada } from '../../lib/fotos';
+
+/** Tira "diário de obra": fotos de obra pequenas, em preto e branco, 5:4. */
+interface Props { pasta: string; fotos: FotoCurada[]; titulo?: string; max?: number }
+const { pasta, fotos, titulo = 'Fase de obras', max = 12 } = Astro.props;
+// linhas completas de 6: com 7 a 11 fotos, mostra 6 (evita uma miniatura órfã na segunda linha)
+const limite = fotos.length > 6 && fotos.length < 12 ? 6 : max;
+const lista = fotos.slice(0, limite);
+---
+{lista.length > 0 && (
+  <section class="secao" aria-labelledby="diario-titulo">
+    <div class="secao-cab rotulo" style="--cor: var(--tinta)">
+      <h2 id="diario-titulo" class="rotulo">{titulo}</h2>
+      <span>Diário de obra</span>
+    </div>
+    <div class="diario">
+      {lista.map((f) => (
+        <Figura img={foto(pasta, f.arquivo)} legenda={f.legenda} ratio="5:4" pb sizes="(max-width: 719px) 48vw, (max-width: 1079px) 24vw, 190px" larguras={[480, 800]} />
+      ))}
+    </div>
+  </section>
+)}

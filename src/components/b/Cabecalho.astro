@@ -1,0 +1,29 @@
+---
+import Logo from '../../assets/logo-r2.svg';
+import { menu, nome } from '../../data/escritorio';
+import { href } from '../../lib/b/config';
+
+interface Props { ativo?: string; secao?: string; secaoDir?: string }
+const { ativo, secao, secaoDir } = Astro.props;
+---
+<header class="wrap">
+  <div class="cab">
+    <a class="cab-marca" href={href()} aria-label={`${nome} — página inicial`}>
+      <Logo aria-hidden="true" role="presentation" />
+      <span class="cab-wm">r2 arquitetos<br />arquitetura&nbsp;· urbanismo</span>
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <ul>
+        {menu.map((m) => (
+          <li><a href={href(m.href + '/')} aria-current={ativo === m.href ? 'page' : undefined}>{m.rotulo}</a></li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+  {(secao || secaoDir) && (
+    <div class="subfio">
+      <span>{secao}</span>
+      <span>{secaoDir}</span>
+    </div>
+  )}
+</header>

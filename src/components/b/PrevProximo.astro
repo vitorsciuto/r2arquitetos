@@ -1,0 +1,17 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { href } from '../../lib/b/config';
+
+interface Props { anterior: CollectionEntry<'projetos'>; proximo: CollectionEntry<'projetos'> }
+const { anterior, proximo } = Astro.props;
+---
+<nav class="prox" aria-label="Projeto anterior e próximo">
+  <a href={href(`projetos/${anterior.data.slug}/`)} rel="prev" style={`--cor:${anterior.data.cor}`}>
+    <span class="rotulo">Anterior&nbsp;· {anterior.data.numero}</span>
+    <span class="nome" style="display:block">{anterior.data.titulo}</span>
+  </a>
+  <a class="dir" href={href(`projetos/${proximo.data.slug}/`)} rel="next" style={`--cor:${proximo.data.cor}`}>
+    <span class="rotulo">Próximo&nbsp;· {proximo.data.numero}</span>
+    <span class="nome" style="display:block">{proximo.data.titulo}</span>
+  </a>
+</nav>

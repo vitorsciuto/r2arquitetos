@@ -1,0 +1,135 @@
+---
+import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import Layout from '../../../layouts/B.astro';
+import Figura from '../../../components/b/Figura.astro';
+import Ficha from '../../../components/b/Ficha.astro';
+import Figuras, { type Item } from '../../../components/b/Figuras.astro';
+import DiarioObra from '../../../components/b/DiarioObra.astro';
+import PrevProximo from '../../../components/b/PrevProximo.astro';
+import { curadoria, foto, fotosDoCapitulo, type FotoCurada } from '../../../lib/fotos';
+import { heroB, posicao, tituloCapitulo } from '../../../lib/b/config';
+
+export async function getStaticPaths() {
+  const projetos = (await getCollection('projetos')).sort((a, b) => a.data.numero.localeCompare(b.data.numero));
+  const n = projetos.length;
+  return projetos.map((p, i) => ({
+    params: { slug: p.data.slug },
+    props: { entry: p, anterior: projetos[(i - 1 + n) % n], proximo: projetos[(i + 1) % n], total: n },
+  }));
+}
+interface Props { entry: CollectionEntry<'projetos'>; anterior: CollectionEntry<'projetos'>; proximo: CollectionEntry<'projetos'>; total: number }
+const { entry, anterior, proximo, total } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+const cur = curadoria(d.pasta);
+
+/** Aspas curvas nas legendas da curadoria; legendas corrigidas pela spec. */
+const legendasFixas: Record<string, string> = {
+  '02-louveira-1/001_bf69186d.png': 'Anúncio da Imobiliária Itaoca para o Condomínio Louveira, “2 apartamentos por andar” — sem data.',
+};
+const legenda = (f: FotoCurada) => legendasFixas[`${d.pasta}/${f.arquivo}`] ?? f.legenda.replace(/'([^']+)'/g, '“$1”');
+const ehDoc = new Set(cur.documentos.map((x) => x.arquivo));
+const item = (f: FotoCurada): Item => ({ img: foto(d.pasta, f.arquivo), legenda: legenda(f), orientacao: f.orientacao, doc: ehDoc.has(f.arquivo), posicao: posicao(d.pasta, f.arquivo) });
+
+// hero: o da curadoria, salvo decisão de edição da Opção B (heroB)
+const heroArq = heroB[d.pasta];
+const hero: FotoCurada = (heroArq && [...cur.destaques, cur.capa, cur.hero].find((f) => f.arquivo === heroArq)) || cur.hero;
+const heroRetrato = hero.orientacao === 'retrato';
+const multi = cur.capitulos.length > 1;
+const usados = new Set<string>([hero.arquivo]);
+
+// margem (5 colunas ao lado do texto): documentos; sem documentos, um destaque retrato
+const margem: Item[] = [];
+const docsMargem = multi ? cur.documentos.slice(0, 2) : cur.documentos;
+for (const doc of docsMargem) { margem.push(item(doc)); usados.add(doc.arquivo); }
+if (margem.length === 0 && !heroRetrato) {
+  const p = cur.destaques.find((x) => x.orientacao === 'retrato' && !usados.has(x.arquivo));
+  if (p) { margem.push(item(p)); usados.add(p.arquivo); }
+}
+
+// destaques restantes (projetos sem capítulos múltiplos)
+const destaquesCurados = multi ? [] : cur.destaques.filter((x) => !usados.has(x.arquivo));
+destaquesCurados.forEach((x) => usados.add(x.arquivo));
+const destaques: Item[] = destaquesCurados.map(item);
+
+// capítulos (Praça Roosevelt): fotos e documentos por faixa; "Fase de obras" vira diário
+const capitulos = multi
+  ? cur.capitulos
+      .filter((c) => !/obras/i.test(c.titulo))
+      .map((c) => {
+        const fotos = fotosDoCapitulo(d.pasta, cur, c).filter((f) => f.legenda && !usados.has(f.arquivo));
+        const itens = fotos.map(item);
+        return { titulo: tituloCapitulo(c.titulo), itens, docs: itens.every((i) => i.doc) };
+      })
+      .filter((c) => c.itens.length > 0)
+  : [];
+const tituloObra = tituloCapitulo(cur.capitulos.find((c) => /obras/i.test(c.titulo))?.titulo ?? 'Fase de obras');
+
+const heroLegenda = legenda(hero);
+const heroPos = posicao(d.pasta, hero.arquivo);
+const capa = foto(d.pasta, cur.capa.arquivo);
+---
+<Layout
+  titulo={d.titulo}
+  descricao={d.resumo}
+  ogImagem={capa}
+  cor={d.cor}
+  ativo="projetos"
+  secao="Projetos"
+  secaoDir={`${d.numero} de ${String(total).padStart(2, '0')}`}
+>
+  <article>
+    <header class="proj-cab" style="margin-top: 72px">
+      <p class="rotulo">{d.numero}&nbsp;· {d.local}</p>
+      <h1 class="titulo">{d.titulo}</h1>
+      {d.subtitulo && <p class="leitura-20" style="font-style: italic; margin-top: 10px">{d.subtitulo}</p>}
+      <Ficha itens={[d.original, d.tombamento, d.intervencao, d.anos]} />
+    </header>
+
+    {!heroRetrato && (
+      <div class="g" style="margin-top: 48px">
+        <Figura img={foto(d.pasta, hero.arquivo)} legenda={heroLegenda} ratio="5:4" posicao={heroPos} eager semLegenda sizes="(max-width: 719px) 100vw, (max-width: 1079px) 60vw, 660px" />
+        <p class="fim t13 cinza">{heroLegenda}</p>
+      </div>
+    )}
+
+    <div class="g" style="margin-top: 48px">
+      <div class="leitura">
+        <Content />
+      </div>
+      <aside class="margem" aria-label="Figuras">
+        {heroRetrato && (
+          <Figura img={foto(d.pasta, hero.arquivo)} legenda={heroLegenda} ratio="4:5" posicao={heroPos} eager sizes="(max-width: 719px) 100vw, (max-width: 1079px) 40vw, 470px" />
+        )}
+        {margem.map((m) => (
+          <Figura img={m.img} legenda={m.legenda} ratio={m.doc ? 'nativa' : m.orientacao === 'retrato' ? '4:5' : '5:4'} doc={m.doc} posicao={m.posicao} sizes="(max-width: 719px) 100vw, (max-width: 1079px) 40vw, 470px" larguras={[480, 800, 1200]} />
+        ))}
+      </aside>
+    </div>
+
+    {destaques.length > 0 && (
+      <section class="secao" aria-labelledby="fotos-titulo">
+        <div class="secao-cab rotulo">
+          <h2 id="fotos-titulo" class="rotulo">{d.tituloCurto}</h2>
+          <span>{destaques.length} fotografias</span>
+        </div>
+        <Figuras itens={destaques} />
+      </section>
+    )}
+
+    {capitulos.map((c) => (
+      <section class="secao" aria-label={c.titulo}>
+        <div class="secao-cab rotulo">
+          <h2 class="rotulo">{c.titulo}</h2>
+          <span>{c.docs ? `${c.itens.length} documentos` : `${c.itens.length} fotografias`}</span>
+        </div>
+        <Figuras itens={c.itens} docs={c.docs} />
+      </section>
+    ))}
+
+    <DiarioObra pasta={d.pasta} fotos={cur.obra} titulo={tituloObra} />
+
+    <PrevProximo anterior={anterior} proximo={proximo} />
+  </article>
+</Layout>

@@ -1,0 +1,37 @@
+---
+/**
+ * Destaques — grade de 2 colunas. Fotos de paisagem em 5:4, de retrato em 4:5.
+ * As figuras são ordenadas em pares da mesma orientação para que cada linha tenha altura única.
+ */
+import type { FotoCurada } from '../../lib/fotos';
+import { foto, orientacao } from '../../lib/fotos';
+import Figura from './Figura.astro';
+import { legenda } from './site';
+
+interface Props { pasta: string; fotos: FotoCurada[] }
+const { pasta, fotos } = Astro.props;
+
+type Item = { f: FotoCurada; img: ReturnType<typeof foto>; retrato: boolean };
+const itens: Item[] = fotos.map((f) => {
+  const img = foto(pasta, f.arquivo);
+  return { f, img, retrato: orientacao(img) === 'retrato' };
+});
+const paisagens = itens.filter((i) => !i.retrato);
+const retratos = itens.filter((i) => i.retrato);
+
+// pares alternados, preservando a ordem de cada grupo; sobras (uma de cada) ficam no fim, cada uma na sua linha
+const ordenados: (Item & { sozinha?: boolean })[] = [];
+let ip = 0, ir = 0;
+while (ip + 1 < paisagens.length || ir + 1 < retratos.length) {
+  if (ip + 1 < paisagens.length) { ordenados.push(paisagens[ip], paisagens[ip + 1]); ip += 2; }
+  if (ir + 1 < retratos.length) { ordenados.push(retratos[ir], retratos[ir + 1]); ir += 2; }
+}
+if (ip < paisagens.length) ordenados.push({ ...paisagens[ip], sozinha: true });
+if (ir < retratos.length) ordenados.push({ ...retratos[ir], sozinha: true });
+const sizes = '(min-width: 1080px) 580px, (min-width: 720px) 46vw, 100vw';
+---
+<div class="destaques">
+  {ordenados.map(({ f, img, retrato, sozinha }) => (
+    <Figura img={img} legenda={legenda(pasta, f.arquivo, f.legenda)} proporcao={retrato ? '4:5' : '5:4'} sizes={sizes} class={sozinha ? 'fig--sozinha' : undefined} />
+  ))}
+</div>

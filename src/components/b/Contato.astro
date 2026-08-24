@@ -1,0 +1,15 @@
+---
+import { contato } from '../../data/escritorio';
+import { SEP } from '../../lib/b/config';
+
+/** Bloco de contato estilo Una: minúsculas, linhas empilhadas, e-mail sublinhado. */
+interface Props { grande?: boolean; mapa?: boolean }
+const { grande = false, mapa = false } = Astro.props;
+const linhas = contato.endereco.map((l) => l.split(' · ').join(SEP));
+---
+<address class:list={[grande ? 'contato-grande' : 'contato']} style="font-style: normal">
+  {linhas.map((l) => <div>{l}</div>)}
+  <div><a href={contato.telefoneHref}>{contato.telefone}</a></div>
+  <div class="email"><a href={`mailto:${contato.email}`}>{contato.email}</a></div>
+  {mapa && <div class="mapa"><a class="link" href={contato.mapa} rel="noopener">Google Maps</a></div>}
+</address>

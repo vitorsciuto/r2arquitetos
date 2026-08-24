@@ -1,0 +1,134 @@
+---
+import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import { getImage } from 'astro:assets';
+import A from '../../../layouts/A.astro';
+import Figura from '../../../components/a/Figura.astro';
+import Destaques from '../../../components/a/Destaques.astro';
+import Documentos from '../../../components/a/Documentos.astro';
+import DiarioObra from '../../../components/a/DiarioObra.astro';
+import PrevProximo from '../../../components/a/PrevProximo.astro';
+import { curadoria, foto, fotosDoCapitulo, orientacao } from '../../../lib/fotos';
+import type { FotoCurada } from '../../../lib/fotos';
+import { LARGURA_MINIMA_DESTAQUE, heroOverride, legenda, meta, tituloCapitulo, tombamentoCurto } from '../../../components/a/site';
+
+export async function getStaticPaths() {
+  const todos = (await getCollection('projetos')).sort((a, b) => a.data.numero.localeCompare(b.data.numero));
+  return todos.map((p, i) => ({
+    params: { slug: p.data.slug },
+    props: {
+      projeto: p,
+      anterior: todos[(i - 1 + todos.length) % todos.length],
+      proximo: todos[(i + 1) % todos.length],
+    },
+  }));
+}
+
+interface Props {
+  projeto: CollectionEntry<'projetos'>;
+  anterior: CollectionEntry<'projetos'>;
+  proximo: CollectionEntry<'projetos'>;
+}
+const { projeto, anterior, proximo } = Astro.props;
+const { data } = projeto;
+const { Content } = await render(projeto);
+const pasta = data.pasta;
+const cur = curadoria(pasta);
+
+// hero: da curadoria, salvo quando a própria curadoria pede recorte (ver site.ts)
+const heroArquivo = heroOverride[pasta] ?? cur.hero.arquivo;
+const heroCurada: FotoCurada =
+  [cur.hero, cur.capa, ...cur.destaques].find((f) => f.arquivo === heroArquivo) ?? cur.hero;
+const heroImg = foto(pasta, heroArquivo);
+const heroRetrato = orientacao(heroImg) === 'retrato';
+const og = await getImage({ src: foto(pasta, cur.capa.arquivo), width: 1200, format: 'jpg' });
+
+// texto: duas colunas de ~60 caracteres quando longo; uma coluna de leitura quando curto
+const duasColunas = (projeto.body ?? '').length > 1200;
+
+// seções de fotos
+const docSet = new Map(cur.documentos.map((d) => [d.arquivo, d]));
+const obraSet = new Set(cur.obra.map((o) => o.arquivo));
+const cabeNaGrade = (f: FotoCurada) => f.arquivo !== heroArquivo && foto(pasta, f.arquivo).width >= LARGURA_MINIMA_DESTAQUE;
+
+interface Secao { titulo: string | null; destaques: FotoCurada[]; documentos: FotoCurada[]; obra: FotoCurada[] }
+let secoes: Secao[];
+if (cur.capitulos.length > 1) {
+  // Praça Roosevelt: os capítulos da curadoria estruturam a página
+  secoes = cur.capitulos.map((cap) => {
+    const fotos = fotosDoCapitulo(pasta, cur, cap);
+    return {
+      titulo: tituloCapitulo(cap.titulo),
+      destaques: fotos.filter((f) => !docSet.has(f.arquivo) && !obraSet.has(f.arquivo) && cabeNaGrade(f)),
+      documentos: fotos.filter((f) => docSet.has(f.arquivo)),
+      obra: fotos.filter((f) => obraSet.has(f.arquivo)),
+    };
+  });
+} else {
+  secoes = [{ titulo: null, destaques: cur.destaques.filter(cabeNaGrade), documentos: [], obra: [] }];
+  if (cur.documentos.length) secoes.push({ titulo: 'Documentos', destaques: [], documentos: cur.documentos, obra: [] });
+  if (cur.obra.length) secoes.push({ titulo: tituloCapitulo(cur.capitulos[0]?.titulo ?? 'Fase de obras'), destaques: [], documentos: [], obra: cur.obra });
+}
+secoes = secoes.filter((s) => s.destaques.length || s.documentos.length || s.obra.length);
+
+const kicker = meta([data.numero, data.local]);
+const tituloPagina = data.numero === '05' ? data.tituloCurto : data.titulo;
+---
+<A titulo={tituloPagina} descricao={data.resumo} ogImagem={og.src}>
+  <article>
+    <header class="wrap g proj__cab">
+      <p class="t-rotulo">{kicker}</p>
+      <h1 class="t-titulo t-titulo--34 proj__h1">{data.titulo}</h1>
+      {data.subtitulo && <p class="t-lede proj__sub">{data.subtitulo}</p>}
+    </header>
+
+    <div class:list={['wrap', 'g', 'proj__hero', heroRetrato ? 'proj__hero--retrato' : 'proj__hero--paisagem']}>
+      <div class="proj__foto">
+        <Figura
+          img={heroImg}
+          legenda={legenda(pasta, heroArquivo, heroCurada.legenda)}
+          proporcao={heroRetrato ? '4:5' : '5:4'}
+          sizes={heroRetrato ? '(min-width: 1440px) 620px, (min-width: 1080px) 44vw, 100vw' : '(min-width: 1440px) 840px, (min-width: 1080px) 58vw, 100vw'}
+          eager
+        />
+      </div>
+      <dl class="ficha">
+        {data.original && <div><dt>Original</dt><dd>{data.original}</dd></div>}
+        {data.tombamento && <div><dt>Tombamento</dt><dd>{tombamentoCurto(data.tombamento)}</dd></div>}
+        <div><dt>Intervenção</dt><dd>{data.intervencao}</dd></div>
+        <div><dt>Período</dt><dd>{data.anos}</dd></div>
+      </dl>
+    </div>
+
+    <section class="wrap g proj__texto" aria-label="Texto do projeto">
+      <div class:list={['texto', duasColunas ? 'texto--2' : 'texto--1']}>
+        <Content />
+      </div>
+    </section>
+
+    {secoes.map((s, i) => (
+      <section class:list={['wrap', 'proj__secao', { 'proj__secao--primeira': i === 0 }]} aria-label={s.titulo ?? 'Fotos do projeto'}>
+        {s.titulo && (
+          <div class="rotulo-secao">
+            <h2 class="t-rotulo">{s.titulo}</h2>
+          </div>
+        )}
+        {s.destaques.length > 0 && <Destaques pasta={pasta} fotos={s.destaques} />}
+        {s.documentos.length > 0 && (
+          <div style={s.destaques.length ? 'margin-top:48px' : undefined}>
+            <Documentos pasta={pasta} docs={s.documentos} />
+          </div>
+        )}
+        {s.obra.length > 0 && (
+          <div style={s.destaques.length || s.documentos.length ? 'margin-top:48px' : undefined}>
+            <DiarioObra pasta={pasta} fotos={s.obra} />
+          </div>
+        )}
+      </section>
+    ))}
+
+    <div class="wrap">
+      <PrevProximo anterior={anterior} proximo={proximo} />
+    </div>
+  </article>
+</A>

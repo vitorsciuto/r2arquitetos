@@ -1,0 +1,51 @@
+---
+import Layout from '../../layouts/B.astro';
+import { arquitetos, foco, servicos, sobre } from '../../data/escritorio';
+import { meta } from '../../lib/b/config';
+
+const paragrafos = sobre.filter((p) => p !== foco);
+---
+<Layout
+  titulo="Escritório"
+  descricao={foco}
+  ativo="escritorio"
+  secao="Escritório"
+  secaoDir={meta(arquitetos.map((a) => a.nome))}
+>
+  <h1 class="titulo" style="padding: 72px 0 48px">Escritório</h1>
+
+  <div class="g">
+    <div>
+      <p class="leitura-20">{foco}</p>
+      <div class="leitura" style="margin-top: 40px">
+        {paragrafos.map((p) => <p>{p}</p>)}
+      </div>
+    </div>
+
+    <div>
+      <div class="secao-cab rotulo" style="--cor: var(--tinta)"><span>Arquitetos</span></div>
+      <dl class="t16" style="margin-top: 20px">
+        {arquitetos.map((a, i) => (
+          <div style={i > 0 ? 'margin-top: 18px' : undefined}>
+            <dt class="rotulo">{a.nome}</dt>
+            <dd>{a.formacao}, {a.ano}.</dd>
+          </div>
+        ))}
+      </dl>
+
+      <div class="secao-cab rotulo" style="--cor: var(--tinta); margin-top: 56px"><span>Serviços</span></div>
+      <p class="t16" style="margin-top: 20px">{servicos.lista.join(' ')}</p>
+      <dl class="t16" style="margin-top: 24px">
+        <div>
+          <dt class="rotulo">Projeto</dt>
+          <dd>{servicos.projeto}</dd>
+        </div>
+        <div style="margin-top: 18px">
+          <dt class="rotulo">Obra</dt>
+          <dd>{servicos.obra}</dd>
+        </div>
+      </dl>
+      <p class="t16" style="margin-top: 24px">{servicos.diferencial}</p>
+    </div>
+  </div>
+</Layout>

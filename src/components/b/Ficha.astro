@@ -1,0 +1,15 @@
+---
+/** Ficha técnica em uma linha: itens separados por " · "; quebra só depois do ponto (cada item é inquebrável no desktop). */
+interface Props { itens: (string | undefined | null)[]; class?: string }
+const { itens, class: cls } = Astro.props;
+const lista = itens.filter((t): t is string => !!t && t.trim() !== '');
+---
+<p class:list={['ficha', cls]}>
+  {lista.map((t, i) => (
+    <>{i > 0 && <span class="sep">&nbsp;·</span>}{i > 0 && ' '}<span class="item">{t}</span></>
+  ))}
+</p>
+<style>
+  .item { white-space: nowrap; }
+  @media (max-width: 719px) { .item { white-space: normal; } }
+</style>

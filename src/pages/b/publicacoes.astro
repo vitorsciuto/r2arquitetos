@@ -1,0 +1,57 @@
+---
+import { getImage } from 'astro:assets';
+import Layout from '../../layouts/B.astro';
+import Figura from '../../components/b/Figura.astro';
+import { foto } from '../../lib/fotos';
+import { pasta, publicacoes } from '../../data/publicacoes';
+import { meta } from '../../lib/b/config';
+
+const total = publicacoes.reduce((n, v) => n + v.recortes.length, 0);
+const grupos = await Promise.all(
+  publicacoes.map(async (v) => ({
+    ...v,
+    recortes: await Promise.all(
+      v.recortes.map(async (r) => {
+        const img = foto(pasta, r.arquivo);
+        const grande = await getImage({ src: img, width: Math.min(1600, img.width), format: 'webp' });
+        return { ...r, img, grande: grande.src };
+      }),
+    ),
+  })),
+);
+---
+<Layout
+  titulo="Publicações"
+  descricao="Hemeroteca do r2 arquitetos: recortes da Revista Projeto Design, Arquitetura & Construção, Folha de S.Paulo e jornais sobre a Praça Roosevelt e o Edifício Louveira."
+  ativo="publicacoes"
+  secao="Publicações"
+  secaoDir={`${total} recortes`}
+>
+  <h1 class="titulo" style="padding: 72px 0 56px">Publicações</h1>
+
+  <div class="hemeroteca">
+    {grupos.map((v) => (
+      <section class="veiculo" aria-labelledby={`v-${v.recortes[0].arquivo.slice(0, 3)}`}>
+        <div class="veiculo-cab">
+          <h2 id={`v-${v.recortes[0].arquivo.slice(0, 3)}`} class="nome">{v.veiculo}</h2>
+          <span class="rotulo">{v.descricao}</span>
+        </div>
+        <ol>
+          {v.recortes.map((r) => (
+            <li class="recorte">
+              <div class="fig doc">
+                <a href={r.grande} aria-label={`Abrir o recorte: ${r.titulo}`}>
+                  <Figura img={r.img} legenda={meta([v.veiculo, r.titulo, r.ano])} doc semLegenda sizes="(max-width: 719px) 96px, 160px" larguras={[320, 480]} />
+                </a>
+              </div>
+              <div class="texto">
+                <p class="rotulo">{meta([v.veiculo, r.ano])}</p>
+                <p class="t16" style="font-size: var(--t20); line-height: 1.4; margin-top: 8px">{r.titulo}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+    ))}
+  </div>
+</Layout>

@@ -1,0 +1,79 @@
+---
+import type { ImageMetadata } from 'astro';
+import Figura from './Figura.astro';
+
+/**
+ * Sequência de figuras compostas em pares sobre o grid 7/5:
+ *   paisagem + paisagem → duas de 5:4 lado a lado
+ *   retrato + paisagem  → 4:5 nas 5 colunas, 5:4 nas 7 (alinhadas pela base)
+ *   retrato + retrato (+ retrato) → três colunas de 4:5
+ *   sobra paisagem → 5:4 nas 7 colunas, legenda ao lado
+ *   sobra retrato  → 4:5 nas 5 colunas, legenda ao lado
+ * Documentos: proporção nativa, p&b em multiply, três colunas.
+ */
+export interface Item { img: ImageMetadata; legenda: string; orientacao: 'paisagem' | 'retrato' | 'quadrado'; doc?: boolean; posicao?: string }
+interface Props { itens: Item[]; docs?: boolean; rotulos?: boolean }
+const { itens, docs = false, rotulos = false } = Astro.props;
+
+type Linha = { tipo: string; itens: Item[] };
+const linhas: Linha[] = [];
+if (docs) {
+  const n = itens.length;
+  linhas.push({ tipo: n === 1 ? 'docs n1' : n === 2 ? 'docs n2' : 'docs', itens });
+} else {
+  const fila = [...itens];
+  const isP = (i: Item) => i.orientacao === 'retrato';
+  while (fila.length) {
+    const a = fila.shift()!;
+    const b = fila[0];
+    if (!b) { linhas.push({ tipo: isP(a) ? 'p' : 'l', itens: [a] }); break; }
+    if (!isP(a) && !isP(b)) { fila.shift(); linhas.push({ tipo: 'll', itens: [a, b] }); continue; }
+    if (isP(a) && !isP(b)) { fila.shift(); linhas.push({ tipo: 'pl', itens: [a, b] }); continue; }
+    if (!isP(a) && isP(b)) { fila.shift(); linhas.push({ tipo: 'lp', itens: [a, b] }); continue; }
+    // dois retratos: junta um terceiro se houver
+    fila.shift();
+    const c = fila[0] && isP(fila[0]) ? fila.shift()! : null;
+    linhas.push({ tipo: c ? 'ppp' : 'pp', itens: c ? [a, b, c] : [a, b] });
+  }
+}
+let n = 0;
+const sizesPor: Record<string, string> = {
+  ll: '(max-width: 719px) 100vw, (max-width: 1079px) 45vw, 560px',
+  lp: '(max-width: 719px) 100vw, (max-width: 1079px) 55vw, 660px',
+  pl: '(max-width: 719px) 100vw, (max-width: 1079px) 45vw, 470px',
+  ppp: '(max-width: 719px) 100vw, (max-width: 1079px) 30vw, 370px',
+  pp: '(max-width: 719px) 100vw, (max-width: 1079px) 30vw, 370px',
+  l: '(max-width: 719px) 100vw, (max-width: 1079px) 55vw, 660px',
+  p: '(max-width: 719px) 100vw, (max-width: 1079px) 40vw, 470px',
+  docs: '(max-width: 719px) 100vw, (max-width: 1079px) 45vw, 370px',
+};
+// documentos e imagens pequenas (< 700 px) ficam em proporção nativa e nunca passam do tamanho original
+const ratioDe = (it: Item) => (it.doc || it.img.width < 700 ? 'nativa' : it.orientacao === 'retrato' ? '4:5' : '5:4');
+---
+{linhas.map((ln) => (
+  <div class:list={['figs', ln.tipo]}>
+    {ln.tipo === 'p' && (
+      <p class="legenda-lado t13 cinza">{rotulos && <span class="rotulo" style="color:var(--tinta);margin-right:.7em">{String(n + 1).padStart(2, '0')}</span>}{ln.itens[0].legenda}</p>
+    )}
+    {ln.itens.map((it, i) => {
+      n += 1;
+      const lado = ln.tipo === 'l' || ln.tipo === 'p';
+      const sizes = ln.tipo === 'lp' ? (i === 0 ? sizesPor.lp : sizesPor.pl) : ln.tipo === 'pl' ? (i === 0 ? sizesPor.pl : sizesPor.lp) : sizesPor[ln.tipo.split(' ')[0]];
+      return (
+        <Figura
+          img={it.img}
+          legenda={it.legenda}
+          rotulo={rotulos ? String(n).padStart(2, '0') : undefined}
+          ratio={ratioDe(it)}
+          doc={it.doc}
+          posicao={it.posicao}
+          sizes={sizes}
+          semLegenda={lado}
+        />
+      );
+    })}
+    {ln.tipo === 'l' && (
+      <p class="legenda-lado t13 cinza">{rotulos && <span class="rotulo" style="color:var(--tinta);margin-right:.7em">{String(n).padStart(2, '0')}</span>}{ln.itens[0].legenda}</p>
+    )}
+  </div>
+))}

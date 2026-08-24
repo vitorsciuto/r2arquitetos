@@ -1,0 +1,226 @@
+/* Opção B — editorial · patrimônio moderno paulistano
+   papel / tinta / concreto + a cor de cada obra (função estrutural: fios, faixa ativa, sublinhados)
+   Jost 400 (caixa-alta) + Newsreader 400 (leitura). Escala travada: 46 / 30 / 22 / 20 / 18 / 16 / 13 / 11.
+   Dois trackings: .08em (Jost em 30 e 22 px) e .18em (Jost em 11 px). */
+
+:root {
+  --papel: #F3EFE6;
+  --tinta: #1B1B1B;
+  --concreto: #B9B6AE;
+  --cinza: #5A5750;        /* texto secundário: 6,2:1 sobre o papel */
+  --fio-fraco: #CFCABF;    /* fios internos (não é texto) */
+  --cor: var(--tinta);     /* cor da obra: redefinida por página / por linha */
+
+  --serif: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --sans: 'Jost', 'Futura', 'Century Gothic', 'Trebuchet MS', sans-serif;
+
+  --t46: 46px; --t30: 30px; --t22: 22px; --t20: 20px; --t18: 18px; --t16: 16px; --t13: 13px; --t11: 11px;
+  --tr-titulo: .08em;
+  --tr-rotulo: .18em;
+
+  --mancha: 1180px;
+  --margem: 96px;
+  --gap: 56px;
+  --secao: 120px;
+}
+@media (max-width: 1079px) { :root { --margem: 40px; --gap: 40px; --secao: 96px; } }
+@media (max-width: 719px)  { :root { --margem: 20px; --gap: 32px; --secao: 72px; --t46: 30px; --t30: 22px; --t22: 18px; } }
+
+html { background: var(--papel); }
+body {
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--serif);
+  font-size: var(--t18);
+  line-height: 1.6;
+  font-weight: 400;
+}
+::selection { background: var(--tinta); color: var(--papel); }
+:focus-visible { outline: 2px solid var(--tinta); outline-offset: 3px; }
+
+.skip { position: absolute; left: -999px; top: 8px; z-index: 10; padding: 8px 12px; background: var(--tinta); color: var(--papel); font: 400 var(--t11)/1.4 var(--sans); letter-spacing: var(--tr-rotulo); text-transform: uppercase; }
+.skip:focus { left: 8px; }
+
+/* ---------- mancha e grid ---------- */
+.wrap { max-width: calc(var(--mancha) + 2 * var(--margem)); margin-inline: auto; padding-inline: var(--margem); }
+.g { display: grid; grid-template-columns: 7fr 5fr; gap: var(--gap); align-items: start; }
+.g > .fim { align-self: end; }
+@media (max-width: 719px) { .g { grid-template-columns: 1fr; } }
+
+/* ---------- tipografia ---------- */
+.rotulo, .ficha, .subfio, .nav, .cab-wm {
+  font-family: var(--sans); font-weight: 400; font-size: var(--t11); line-height: 1.5;
+  letter-spacing: var(--tr-rotulo); text-transform: uppercase;
+}
+.titulo { font-family: var(--sans); font-weight: 400; font-size: var(--t30); line-height: 1.15; letter-spacing: var(--tr-titulo); text-transform: uppercase; }
+.nome   { font-family: var(--sans); font-weight: 400; font-size: var(--t22); line-height: 1.15; letter-spacing: var(--tr-titulo); text-transform: uppercase; }
+.lede   { font-family: var(--serif); font-size: var(--t46); line-height: 1.22; letter-spacing: -.01em; text-wrap: balance; }
+.leitura { font-size: var(--t18); line-height: 1.6; max-width: 34em; }
+.leitura p + p { margin-top: 1em; }
+.leitura-20 { font-size: var(--t20); line-height: 1.5; max-width: 32em; }
+.leitura-20 p + p { margin-top: .9em; }
+.t16 { font-size: var(--t16); line-height: 1.55; }
+.t13 { font-size: var(--t13); line-height: 1.45; }
+.cinza { color: var(--cinza); }
+.mt10 { margin-top: 10px; }
+.ficha { line-height: 1.9; color: var(--tinta); }
+
+/* links de texto: sublinhado fino na cor da obra */
+.leitura a, .leitura-20 a, .link { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .18em; text-decoration-color: var(--cor); }
+.link:hover { text-decoration-thickness: 2px; }
+
+/* ---------- seções ---------- */
+.secao { margin-top: var(--secao); }
+.secao-cab {
+  display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+  border-top: 2px solid var(--cor); padding-top: 10px;
+}
+.secao-cab + * { margin-top: 36px; }
+.fio { border-top: 1px solid var(--tinta); }
+.fio-fraco { border-top: 1px solid var(--fio-fraco); }
+
+/* ---------- figuras ---------- */
+figure { margin: 0; }
+.fig img { width: 100%; height: auto; display: block; }
+.fig.r54 img { aspect-ratio: 5 / 4; object-fit: cover; }
+.fig.r45 img { aspect-ratio: 4 / 5; object-fit: cover; }
+.fig.r11 img { aspect-ratio: 1 / 1; object-fit: cover; }
+.fig.doc img { filter: grayscale(1) brightness(1.06) contrast(1.12); mix-blend-mode: multiply; }
+.fig.nativa { max-width: var(--largura-nativa, none); }
+.fig.pb  img { filter: grayscale(1) contrast(1.04); }
+.fig figcaption { margin-top: 10px; font-size: var(--t13); line-height: 1.45; color: var(--cinza); max-width: 40em; }
+.fig figcaption .rotulo { color: var(--tinta); margin-right: .7em; }
+
+/* ---------- cabeçalho ---------- */
+.cab { display: flex; align-items: center; justify-content: space-between; gap: 24px 40px; flex-wrap: wrap; padding: 36px 0 22px; border-bottom: 2px solid var(--tinta); }
+.cab-marca { display: flex; align-items: center; gap: 16px; color: var(--tinta); --logo-fg: var(--papel); }
+.cab-marca svg { width: 40px; height: 53px; flex: none; }
+.cab-wm { line-height: 1.7; white-space: nowrap; }
+.nav ul { display: flex; gap: 36px; flex-wrap: wrap; }
+.nav a { display: inline-block; padding: 4px 0; border-bottom: 1px solid transparent; }
+.nav a:hover, .nav a[aria-current] { border-bottom-color: var(--cor); }
+.subfio { display: flex; justify-content: space-between; gap: 16px 32px; flex-wrap: wrap; border-top: 1px solid var(--tinta); margin-top: 3px; padding-top: 8px; color: var(--tinta); }
+@media (max-width: 719px) {
+  .cab { padding: 24px 0 16px; }
+  .nav { width: 100%; }
+  .nav ul { gap: 8px; justify-content: space-between; }
+  .subfio { font-size: var(--t11); }
+}
+
+/* ---------- rodapé ---------- */
+.rod { margin-top: var(--secao); border-top: 2px solid var(--tinta); padding-bottom: 56px; }
+.rod::before { content: ''; display: block; border-top: 1px solid var(--tinta); margin-top: 3px; }
+.rod .g { padding-top: 28px; }
+.contato { font-size: var(--t16); line-height: 1.7; }
+.contato a[href^='mailto'] { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .22em; }
+.contato a[href^='mailto']:hover { text-decoration-thickness: 2px; }
+.contato .email { margin-top: 1em; }
+.rod-dir { display: flex; flex-direction: column; justify-content: space-between; gap: 24px; min-height: 100%; text-align: right; }
+.rod-dir ul { display: flex; flex-direction: column; gap: 6px; align-items: flex-end; }
+.rod-dir a:hover { text-decoration: underline; text-underline-offset: .3em; }
+@media (max-width: 719px) { .rod-dir { text-align: left; } .rod-dir ul { align-items: flex-start; } }
+
+/* ---------- índice de projetos ---------- */
+.idx-lista { border-top: 1px solid var(--tinta); }
+.linha {
+  position: relative; display: grid; grid-template-columns: 44px 40px 1fr auto; column-gap: 16px; align-items: start;
+  padding: 20px 0 18px; border-bottom: 1px solid var(--fio-fraco);
+  margin-left: -16px; padding-left: 16px;
+  color: var(--tinta);
+}
+.linha::before { content: ''; position: absolute; left: 0; top: -1px; bottom: -1px; width: 3px; background: var(--cor); opacity: 0; }
+.linha.ativa, .linha:hover { background: color-mix(in srgb, var(--cor) 9%, transparent); }
+.linha.ativa::before, .linha:hover::before { opacity: 1; }
+.linha.ativa { border-bottom-color: var(--cor); }
+.linha .num { padding-top: 7px; }
+.linha .mat { width: 40px; height: 40px; overflow: hidden; }
+.linha .mat img { width: 40px; height: 40px; object-fit: cover; display: block; }
+.linha .nome { padding-top: 5px; }
+.linha .anos { font-family: var(--sans); font-size: var(--t11); letter-spacing: var(--tr-rotulo); padding-top: 7px; white-space: nowrap; }
+.linha .meta { grid-column: 3 / -1; font-size: var(--t16); line-height: 1.4; margin-top: 4px; color: var(--tinta); }
+@media (max-width: 719px) {
+  .linha { grid-template-columns: 32px 32px 1fr; column-gap: 12px; margin-left: -12px; padding-left: 12px; }
+  .linha .mat, .linha .mat img { width: 32px; height: 32px; }
+  .linha .num { padding-top: 4px; }
+  .linha .nome { padding-top: 2px; }
+  .linha .anos { grid-column: 3; padding-top: 6px; }
+  .linha .meta { grid-column: 3; margin-top: 2px; }
+}
+
+.idx-foto { display: grid; }
+.idx-foto > figure { grid-area: 1 / 1; visibility: hidden; opacity: 0; transition: opacity .25s ease; }
+.idx-foto > figure.ativa { visibility: visible; opacity: 1; }
+@media (max-width: 719px) { .idx-foto { order: -1; } }
+
+/* ---------- página de projeto ---------- */
+.proj-cab { border-top: 2px solid var(--cor); padding-top: 12px; }
+.proj-cab .titulo { margin-top: 14px; }
+.proj-cab .ficha { margin-top: 10px; max-width: 60em; }
+.margem > * + * { margin-top: 40px; }
+
+/* grade de figuras */
+.figs { display: grid; gap: 40px var(--gap); align-items: end; margin-top: var(--gap); }
+.figs.ll { grid-template-columns: 1fr 1fr; }
+.figs.lp { grid-template-columns: 7fr 5fr; }
+.figs.pl { grid-template-columns: 5fr 7fr; }
+.figs.ppp, .figs.pp { grid-template-columns: repeat(3, 1fr); gap: 40px 32px; }
+.figs.docs { grid-template-columns: repeat(3, 1fr); gap: 48px 32px; align-items: start; }
+.figs.l, .figs.p { grid-template-columns: 7fr 5fr; }
+.figs.p > .fig { grid-column: 2; }
+.figs.p > .legenda-lado { grid-column: 1; grid-row: 1; }
+.figs.docs.n2 { grid-template-columns: repeat(2, 1fr); }
+.figs.docs.n1 { grid-template-columns: 7fr 5fr; }
+@media (max-width: 1079px) {
+  .figs.docs { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 719px) {
+  .figs, .figs.ll, .figs.lp, .figs.pl, .figs.ppp, .figs.pp, .figs.docs, .figs.docs.n2, .figs.docs.n1, .figs.l, .figs.p { grid-template-columns: 1fr; gap: 36px; }
+  .figs.p > .fig { grid-column: 1; }
+  .figs.p > .legenda-lado { grid-column: 1; grid-row: 2; }
+}
+.legenda-lado { align-self: end; }
+
+/* diário de obra */
+.diario { display: grid; grid-template-columns: repeat(6, 1fr); gap: 28px 16px; margin-top: 36px; }
+.diario figcaption { max-width: none; }
+@media (max-width: 1079px) { .diario { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 719px)  { .diario { grid-template-columns: repeat(2, 1fr); gap: 24px 12px; } }
+
+/* anterior / próximo */
+.prox { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); margin-top: var(--secao); }
+.prox a { display: block; border-top: 2px solid var(--cor); padding-top: 10px; }
+.prox a .nome { margin-top: 10px; }
+.prox a:hover .nome { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .18em; text-decoration-color: var(--cor); }
+.prox .dir { text-align: right; }
+@media (max-width: 719px) { .prox { grid-template-columns: 1fr; gap: 32px; } .prox .dir { text-align: left; } }
+
+/* ---------- projetos (grade 3 col) ---------- */
+.grade3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 56px 32px; }
+.grade3 .item { display: block; color: var(--tinta); }
+.grade3 .item .fig img { transition: opacity .2s; }
+.grade3 .item:hover .nome { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .18em; text-decoration-color: var(--cor); }
+.grade3 .item .cabec { display: flex; gap: 14px; align-items: flex-start; margin-top: 16px; border-top: 1px solid var(--tinta); padding-top: 12px; }
+.grade3 .item .cabec .mat { flex: none; width: 32px; height: 32px; }
+.grade3 .item .cabec .mat img { width: 32px; height: 32px; object-fit: cover; display: block; }
+.grade3 .item .meta { margin-top: 6px; font-size: var(--t16); line-height: 1.4; }
+@media (max-width: 1079px) { .grade3 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 719px)  { .grade3 { grid-template-columns: 1fr; gap: 48px; } }
+
+/* ---------- hemeroteca ---------- */
+.hemeroteca .veiculo { margin-top: 64px; }
+.hemeroteca .veiculo:first-child { margin-top: 0; }
+.hemeroteca .veiculo-cab { border-top: 2px solid var(--tinta); padding-top: 10px; display: flex; justify-content: space-between; gap: 16px 32px; flex-wrap: wrap; align-items: baseline; }
+.hemeroteca ol { display: grid; grid-template-columns: 1fr 1fr; column-gap: var(--gap); }
+.hemeroteca .recorte { display: grid; grid-template-columns: 180px 1fr; gap: 24px; padding: 24px 0; border-bottom: 1px solid var(--fio-fraco); align-items: start; }
+@media (max-width: 1079px) { .hemeroteca ol { grid-template-columns: 1fr; } }
+.hemeroteca .recorte .fig a { display: block; }
+.hemeroteca .recorte .fig a:hover img { filter: grayscale(1) contrast(1.06); }
+.hemeroteca .recorte .texto { padding-top: 4px; }
+.hemeroteca .recorte .texto .t16 { margin-top: 6px; }
+@media (max-width: 719px) { .hemeroteca .recorte { grid-template-columns: 96px 1fr; gap: 20px; } }
+
+/* ---------- contato ---------- */
+.contato-grande { font-size: var(--t20); line-height: 1.6; }
+.contato-grande .email { margin-top: 1.2em; }
+.contato-grande a[href^='mailto'], .contato-grande .mapa a { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .2em; }
+.contato-grande .mapa { margin-top: 2.4em; }

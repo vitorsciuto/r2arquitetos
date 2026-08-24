@@ -1,0 +1,50 @@
+---
+import { Picture } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import { larguras } from '../../lib/b/config';
+
+/**
+ * Foto tratada como figura: recorte 5:4 / 4:5 via CSS, documentos em proporção nativa,
+ * p&b + multiply sobre o papel (doc) ou p&b simples (pb). Legenda com rótulo Jost opcional.
+ */
+interface Props {
+  img: ImageMetadata;
+  legenda: string;
+  rotulo?: string;
+  ratio?: '5:4' | '4:5' | '1:1' | 'nativa';
+  doc?: boolean;
+  pb?: boolean;
+  sizes?: string;
+  eager?: boolean;
+  posicao?: string;       // object-position
+  semLegenda?: boolean;   // legenda só no alt
+  class?: string;
+  id?: string;
+  larguras?: number[];
+}
+const {
+  img, legenda, rotulo, ratio = 'nativa', doc = false, pb = false,
+  sizes = '(max-width: 719px) 100vw, (max-width: 1079px) 60vw, 660px',
+  eager = false, posicao, semLegenda = false, class: cls, id, larguras: base,
+} = Astro.props;
+const r = ratio === '5:4' ? 'r54' : ratio === '4:5' ? 'r45' : ratio === '1:1' ? 'r11' : '';
+const widths = larguras(img, base);
+---
+<figure class:list={['fig', r, { doc, pb, nativa: ratio === 'nativa' }, cls]} id={id} style={ratio === 'nativa' ? `--largura-nativa:${img.width}px` : undefined}>
+  <Picture
+    src={img}
+    widths={widths}
+    formats={['avif', 'webp']}
+    sizes={sizes}
+    alt={legenda}
+    loading={eager ? 'eager' : 'lazy'}
+    fetchpriority={eager ? 'high' : undefined}
+    decoding={eager ? 'sync' : 'async'}
+    style={posicao ? `object-position:${posicao}` : undefined}
+  />
+  {!semLegenda && (
+    <figcaption>
+      {rotulo && <span class="rotulo">{rotulo}</span>}{legenda}
+    </figcaption>
+  )}
+</figure>

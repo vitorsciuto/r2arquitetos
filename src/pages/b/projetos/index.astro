@@ -1,0 +1,48 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import Layout from '../../../layouts/B.astro';
+import Figura from '../../../components/b/Figura.astro';
+import { foto } from '../../../lib/fotos';
+import { href, material, meta, nomeIndice, quadros } from '../../../lib/b/config';
+
+const projetos = (await getCollection('projetos')).sort((a, b) => a.data.numero.localeCompare(b.data.numero));
+---
+<Layout
+  titulo="Projetos"
+  descricao="Seis projetos do r2 arquitetos: Casa de Praia, Edifício Louveira 1 e 2, Bar e Restaurante Guanabara, Praça Roosevelt e Edifício Lausanne."
+  ativo="projetos"
+  secao="Projetos"
+  secaoDir={`01–${projetos[projetos.length - 1].data.numero}`}
+>
+  <h1 class="titulo" style="padding: 72px 0 56px">Projetos</h1>
+
+  <ol class="grade3">
+    {projetos.map((p) => {
+      const q = quadros[p.data.numero];
+      return (
+        <li>
+          <a class="item" href={href(`projetos/${p.data.slug}/`)} style={`--cor:${p.data.cor}`}>
+            <Figura
+              img={foto(q.pasta, q.arquivo)}
+              legenda={q.legenda}
+              ratio="4:5"
+              posicao={q.posicao}
+              eager={Number(p.data.numero) <= 3}
+              sizes="(max-width: 719px) 100vw, (max-width: 1079px) 45vw, 370px"
+              larguras={[480, 800]}
+            />
+            <div class="cabec">
+              <span class="mat" aria-hidden="true"><Image src={material(p.data.numero)} width={64} height={64} alt="" /></span>
+              <div>
+                <span class="rotulo">{p.data.numero}&nbsp;· {p.data.anos}</span>
+                <span class="nome" style="display:block; margin-top: 4px">{nomeIndice(p.data)}</span>
+                <span class="meta" style="display:block">{meta([p.data.original, p.data.bairro === 'Praia da Mococa' ? p.data.local : p.data.bairro, p.data.tipo])}</span>
+              </div>
+            </div>
+          </a>
+        </li>
+      );
+    })}
+  </ol>
+</Layout>

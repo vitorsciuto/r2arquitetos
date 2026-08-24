@@ -1,0 +1,19 @@
+---
+import Contato from './Contato.astro';
+import { menu, nome } from '../../data/escritorio';
+import { href } from '../../lib/b/config';
+const ano = new Date().getFullYear();
+---
+<footer class="wrap rod">
+  <div class="g">
+    <Contato />
+    <div class="rod-dir rotulo">
+      <nav aria-label="Rodapé">
+        <ul>
+          {menu.map((m) => <li><a href={href(m.href + '/')}>{m.rotulo}</a></li>)}
+        </ul>
+      </nav>
+      <p>© {ano} {nome}</p>
+    </div>
+  </div>
+</footer>

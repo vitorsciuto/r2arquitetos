@@ -1,0 +1,58 @@
+---
+import '../styles/base.css';
+import '../styles/b.css';
+import { getImage } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import Cabecalho from '../components/b/Cabecalho.astro';
+import Rodape from '../components/b/Rodape.astro';
+import { nome } from '../data/escritorio';
+import { foto } from '../lib/fotos';
+
+interface Props {
+  titulo: string;                 // título da página (sem o nome do escritório)
+  descricao: string;
+  ogImagem?: ImageMetadata;       // capa para og:image (default: fachada do Louveira)
+  cor?: string;                   // cor da obra (páginas de projeto)
+  secao?: string;                 // texto à esquerda do fio simples (running head)
+  secaoDir?: string;              // texto à direita do fio simples
+  ativo?: string;                 // item do menu ativo: 'projetos' | 'escritorio' | 'publicacoes' | 'contato'
+}
+const { titulo, descricao, ogImagem, cor, secao, secaoDir, ativo } = Astro.props;
+const tituloCompleto = titulo === nome ? `${nome} — arquitetura · urbanismo` : `${titulo} — ${nome}`;
+const og = await getImage({ src: ogImagem ?? foto('capas-projetos', '003_0d0a1121.jpg'), width: 1200, format: 'jpg' });
+const ogUrl = Astro.site ? new URL(og.src, Astro.site).href : og.src;
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : Astro.url.pathname;
+---
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{tituloCompleto}</title>
+    <meta name="description" content={descricao} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={nome} />
+    <meta property="og:title" content={tituloCompleto} />
+    <meta property="og:description" content={descricao} />
+    <meta property="og:image" content={ogUrl} />
+    <meta property="og:locale" content="pt_BR" />
+    <meta name="theme-color" content="#F3EFE6" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&display=swap"
+      rel="stylesheet"
+    />
+    {cor && <style set:html={`:root{--cor:${cor}}`} />}
+  </head>
+  <body>
+    <a class="skip" href="#conteudo">Ir para o conteúdo</a>
+    <Cabecalho ativo={ativo} secao={secao} secaoDir={secaoDir} />
+    <main id="conteudo" class="wrap">
+      <slot />
+    </main>
+    <Rodape />
+  </body>
+</html>

@@ -1,0 +1,23 @@
+---
+import Logo from '../../assets/logo-r2.svg';
+import { menu } from '../../data/escritorio';
+import { href } from './site';
+
+const atual = Astro.url.pathname;
+const ativo = (h: string): 'page' | undefined => (atual.startsWith(href(h)) ? 'page' : undefined);
+---
+<header class="cab">
+  <div class="wrap cab__in">
+    <a class="cab__marca" href={href('')}>
+      <Logo class="cab__logo" />
+      <span class="cab__wm">Arquitetura<br />Urbanismo</span>
+    </a>
+    <nav class="cab__nav" aria-label="Principal">
+      <ul>
+        {menu.map((m) => (
+          <li><a href={href(m.href)} aria-current={ativo(m.href)}>{m.rotulo}</a></li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>
