@@ -85,6 +85,12 @@ export const heroOverride: Record<string, string> = {
   '03-louveira-2': '017_a1c17070.jpg',
 };
 
+/** Fotos fora da grade de destaques — a curadoria (src/data/curadoria) não é editada aqui, então o corte é local.
+ *  Guanabara 014: “detalhe do balcão” tremida e estourada — sai da grade, sem reordenar o resto. */
+export const destaquesExcluidos: Record<string, string[]> = {
+  '04-guanabara': ['014_53fe2146.jpg'],
+};
+
 /** Legendas corrigidas pela spec (§3). Chave: pasta/arquivo. */
 export const legendasCorrigidas: Record<string, string> = {
   '02-louveira-1/001_bf69186d.png':

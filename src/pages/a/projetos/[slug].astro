@@ -10,7 +10,7 @@ import DiarioObra from '../../../components/a/DiarioObra.astro';
 import PrevProximo from '../../../components/a/PrevProximo.astro';
 import { curadoria, foto, fotosDoCapitulo, orientacao } from '../../../lib/fotos';
 import type { FotoCurada } from '../../../lib/fotos';
-import { LARGURA_MINIMA_DESTAQUE, heroOverride, legenda, meta, tituloCapitulo, tombamentoCurto } from '../../../components/a/site';
+import { LARGURA_MINIMA_DESTAQUE, destaquesExcluidos, heroOverride, legenda, meta, tituloCapitulo, tombamentoCurto } from '../../../components/a/site';
 
 export async function getStaticPaths() {
   const todos = (await getCollection('projetos')).sort((a, b) => a.data.numero.localeCompare(b.data.numero));
@@ -49,7 +49,10 @@ const duasColunas = (projeto.body ?? '').length > 1200;
 // seções de fotos
 const docSet = new Map(cur.documentos.map((d) => [d.arquivo, d]));
 const obraSet = new Set(cur.obra.map((o) => o.arquivo));
-const cabeNaGrade = (f: FotoCurada) => f.arquivo !== heroArquivo && foto(pasta, f.arquivo).width >= LARGURA_MINIMA_DESTAQUE;
+const cabeNaGrade = (f: FotoCurada) =>
+  f.arquivo !== heroArquivo &&
+  !(destaquesExcluidos[pasta] ?? []).includes(f.arquivo) &&
+  foto(pasta, f.arquivo).width >= LARGURA_MINIMA_DESTAQUE;
 
 interface Secao { titulo: string | null; destaques: FotoCurada[]; documentos: FotoCurada[]; obra: FotoCurada[] }
 let secoes: Secao[];

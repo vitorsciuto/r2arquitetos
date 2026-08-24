@@ -7,8 +7,8 @@ import Figura from './Figura.astro';
  *   paisagem + paisagem → duas de 5:4 lado a lado
  *   retrato + paisagem  → 4:5 nas 5 colunas, 5:4 nas 7 (alinhadas pela base)
  *   retrato + retrato (+ retrato) → três colunas de 4:5
- *   sobra paisagem → 5:4 nas 7 colunas, legenda ao lado
- *   sobra retrato  → 4:5 nas 5 colunas, legenda ao lado
+ *   sobra paisagem → 5:4 nas 7 colunas, legenda abaixo
+ *   sobra retrato  → 4:5 nas 5 colunas, legenda abaixo
  * Documentos: proporção nativa, p&b em multiply, três colunas.
  */
 export interface Item { img: ImageMetadata; legenda: string; orientacao: 'paisagem' | 'retrato' | 'quadrado'; doc?: boolean; posicao?: string }
@@ -52,12 +52,8 @@ const ratioDe = (it: Item) => (it.doc || it.img.width < 700 ? 'nativa' : it.orie
 ---
 {linhas.map((ln) => (
   <div class:list={['figs', ln.tipo]}>
-    {ln.tipo === 'p' && (
-      <p class="legenda-lado t13 cinza">{rotulos && <span class="rotulo" style="color:var(--tinta);margin-right:.7em">{String(n + 1).padStart(2, '0')}</span>}{ln.itens[0].legenda}</p>
-    )}
     {ln.itens.map((it, i) => {
       n += 1;
-      const lado = ln.tipo === 'l' || ln.tipo === 'p';
       const sizes = ln.tipo === 'lp' ? (i === 0 ? sizesPor.lp : sizesPor.pl) : ln.tipo === 'pl' ? (i === 0 ? sizesPor.pl : sizesPor.lp) : sizesPor[ln.tipo.split(' ')[0]];
       return (
         <Figura
@@ -68,12 +64,8 @@ const ratioDe = (it: Item) => (it.doc || it.img.width < 700 ? 'nativa' : it.orie
           doc={it.doc}
           posicao={it.posicao}
           sizes={sizes}
-          semLegenda={lado}
         />
       );
     })}
-    {ln.tipo === 'l' && (
-      <p class="legenda-lado t13 cinza">{rotulos && <span class="rotulo" style="color:var(--tinta);margin-right:.7em">{String(n).padStart(2, '0')}</span>}{ln.itens[0].legenda}</p>
-    )}
   </div>
 ))}

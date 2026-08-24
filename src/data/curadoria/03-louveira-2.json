@@ -36,18 +36,6 @@
    "legenda": "Sala aberta para a cozinha, com bloco central e bandeira de vidro sobre a porta",
    "orientacao": "paisagem",
    "nota": "Escada e caixas em cena; ilustra a integração dos espaços."
-  },
-  {
-   "arquivo": "003_f5cd8346.jpg",
-   "legenda": "Sala com tacos de madeira e vão aberto para o jardim de inverno com venezianas",
-   "orientacao": "paisagem",
-   "nota": "Estado pré-obra com vão recém-aberto; mostra o piso original e as venezianas."
-  },
-  {
-   "arquivo": "002_e9f05d9b.jpg",
-   "legenda": "Apartamento antes da reforma, com painéis amarelo e azul e piso de tacos",
-   "orientacao": "paisagem",
-   "nota": "Registro do 'antes'; útil como comparação, não é obra concluída."
   }
  ],
  "documentos": [],
@@ -59,6 +47,18 @@
   }
  ],
  "obra": [
+  {
+   "arquivo": "002_e9f05d9b.jpg",
+   "legenda": "Apartamento antes da reforma, com painéis amarelo e azul e piso de tacos",
+   "orientacao": "paisagem",
+   "nota": "Registro do 'antes'; útil como comparação, não é obra concluída."
+  },
+  {
+   "arquivo": "003_f5cd8346.jpg",
+   "legenda": "Sala com tacos de madeira e vão aberto para o jardim de inverno com venezianas",
+   "orientacao": "paisagem",
+   "nota": "Estado pré-obra com vão recém-aberto; mostra o piso original e as venezianas."
+  },
   {
    "arquivo": "012_386a46ea.jpg",
    "legenda": "Demolição de alvenaria expõe tijolos e a viga junto ao corredor",

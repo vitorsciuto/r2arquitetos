@@ -167,7 +167,6 @@ figure { margin: 0; }
 .figs.docs { grid-template-columns: repeat(3, 1fr); gap: 48px 32px; align-items: start; }
 .figs.l, .figs.p { grid-template-columns: 7fr 5fr; }
 .figs.p > .fig { grid-column: 2; }
-.figs.p > .legenda-lado { grid-column: 1; grid-row: 1; }
 .figs.docs.n2 { grid-template-columns: repeat(2, 1fr); }
 .figs.docs.n1 { grid-template-columns: 7fr 5fr; }
 @media (max-width: 1079px) {
@@ -176,15 +175,13 @@ figure { margin: 0; }
 @media (max-width: 719px) {
   .figs, .figs.ll, .figs.lp, .figs.pl, .figs.ppp, .figs.pp, .figs.docs, .figs.docs.n2, .figs.docs.n1, .figs.l, .figs.p { grid-template-columns: 1fr; gap: 36px; }
   .figs.p > .fig { grid-column: 1; }
-  .figs.p > .legenda-lado { grid-column: 1; grid-row: 2; }
 }
-.legenda-lado { align-self: end; }
 
 /* diário de obra */
 .diario { display: grid; grid-template-columns: repeat(6, 1fr); gap: 28px 16px; margin-top: 36px; }
 .diario figcaption { max-width: none; }
 @media (max-width: 1079px) { .diario { grid-template-columns: repeat(4, 1fr); } }
-@media (max-width: 719px)  { .diario { grid-template-columns: repeat(2, 1fr); gap: 24px 12px; } }
+@media (max-width: 719px)  { .diario { grid-template-columns: repeat(2, 1fr); gap: 24px 12px; } .diario > figure:nth-child(n+7) { display: none; } }
 
 /* anterior / próximo */
 .prox { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); margin-top: var(--secao); }

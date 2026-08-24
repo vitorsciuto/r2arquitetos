@@ -31,7 +31,6 @@ const destaqueP2 = 'Os principais elementos originais do apartamento, como pasti
   <section class="secao" aria-labelledby="destaque-titulo" style={`--cor:${d.cor}`}>
     <div class="secao-cab rotulo">
       <span>Em destaque</span>
-      <span>{d.local}</span>
     </div>
     <div class="g">
       <div>
@@ -75,7 +74,7 @@ const destaqueP2 = 'Os principais elementos originais do apartamento, como pasti
         {arquitetos.map((a, i) => (
           <div style={i > 0 ? 'margin-top: 18px' : undefined}>
             <dt class="rotulo">{a.nome}</dt>
-            <dd>{a.formacao}, {a.ano}.</dd>
+            <dd>{a.formacao},&nbsp;{a.ano}.</dd>
           </div>
         ))}
       </dl>

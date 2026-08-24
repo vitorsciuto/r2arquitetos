@@ -1,5 +1,5 @@
 ---
-/** Ficha técnica em uma linha: itens separados por " · "; quebra só depois do ponto (cada item é inquebrável no desktop). */
+/** Ficha técnica em uma linha: itens separados por " · "; quebra só nos separadores (no mobile cada item desce inteiro e só quebra por dentro se não couber na linha). */
 interface Props { itens: (string | undefined | null)[]; class?: string }
 const { itens, class: cls } = Astro.props;
 const lista = itens.filter((t): t is string => !!t && t.trim() !== '');
@@ -11,5 +11,5 @@ const lista = itens.filter((t): t is string => !!t && t.trim() !== '');
 </p>
 <style>
   .item { white-space: nowrap; }
-  @media (max-width: 719px) { .item { white-space: normal; } }
+  @media (max-width: 719px) { .item { display: inline-block; white-space: normal; } }
 </style>

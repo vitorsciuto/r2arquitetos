@@ -1,7 +1,7 @@
 ---
 /**
  * Figura — <Picture> + legenda. Recortes 5:4 / 4:5 / 4:3 por CSS; documentos em proporção nativa,
- * nunca maiores que a largura em pixels do original.
+ * nunca maiores que a largura em pixels do original; doc-nativa = passe-partout que segue a proporção do arquivo.
  */
 import { Picture } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
@@ -10,7 +10,7 @@ interface Props {
   img: ImageMetadata;
   legenda: string;
   /** 5:4 / 4:5 / 4:3 = recorte por CSS · nativa = proporção do arquivo · doc-54 / doc-45 = documento inteiro sobre um passe-partout 5:4 ou 4:5, nunca ampliado */
-  proporcao?: '5:4' | '4:5' | '4:3' | 'nativa' | 'doc-54' | 'doc-45';
+  proporcao?: '5:4' | '4:5' | '4:3' | 'nativa' | 'doc-54' | 'doc-45' | 'doc-nativa';
   posicao?: string;
   sizes: string;
   widths?: number[];
@@ -22,7 +22,7 @@ const {
   img, legenda, proporcao = '5:4', posicao, sizes,
   widths = [480, 800, 1200, 1600], eager = false, semLegenda = false, class: classe,
 } = Astro.props;
-const mod = { '5:4': 'fig--54', '4:5': 'fig--45', '4:3': 'fig--43', nativa: 'fig--nativa', 'doc-54': 'fig--doc fig--doc54', 'doc-45': 'fig--doc fig--doc45' }[proporcao];
+const mod = { '5:4': 'fig--54', '4:5': 'fig--45', '4:3': 'fig--43', nativa: 'fig--nativa', 'doc-54': 'fig--doc fig--doc54', 'doc-45': 'fig--doc fig--doc45', 'doc-nativa': 'fig--doc fig--docnativa' }[proporcao];
 const semAmpliar = proporcao === 'nativa' || proporcao.startsWith('doc');
 const estiloFig = proporcao === 'nativa' ? `max-width:${img.width}px` : undefined;
 const estiloImg = [posicao ? `object-position:${posicao}` : '', semAmpliar ? `max-width:min(100%,${img.width}px)` : ''].filter(Boolean).join(';') || undefined;

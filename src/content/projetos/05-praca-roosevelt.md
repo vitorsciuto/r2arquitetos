@@ -12,7 +12,7 @@ original: praça inaugurada em 1970
 autorOriginal: ""
 anoOriginal: "1970"
 tombamento: ""
-intervencao: reestruturação urbana; estudos e projetos desde 1990
+intervencao: reestruturação urbana · estudos e projetos desde 1990
 anos: 2007–2012
 cor: "#6E2A72"
 corNome: pergolado

@@ -26,7 +26,7 @@ const idDe = (s: string) => s.toLowerCase().normalize('NFD').replace(/[^a-z0-9]+
           <Figura
             img={foto(pasta, r.arquivo)}
             legenda={meta([r.titulo, r.ano])}
-            proporcao="doc-45"
+            proporcao={v.veiculo === 'Jornais' ? 'doc-nativa' : 'doc-45'}
             sizes="(min-width: 1080px) 400px, (min-width: 720px) 46vw, 100vw"
             widths={[480, 800, 1200]}
           />
