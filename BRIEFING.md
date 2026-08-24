@@ -125,6 +125,8 @@ Crítica adversarial das Homes (template-smell, tipografia, fotos, fidelidade) i
 
 **Perguntas pendentes para o usuário:** (1) o escritório fica no Edifício Lausanne? (2) creditar Cascaldi no Louveira? (3) Louveira 2 ainda "obra em andamento" (status de 2015)? (4) existe WhatsApp/celular do escritório? (5) usuário/organização do GitHub para criar o repositório.
 
+**Estado da construção:** A e B prontas e revisadas (23 páginas, commit 0dbaaff, 2026-08-24); aguardando a escolha A×B e as respostas pendentes acima.
+
 **Como rodar:** `npm ci` · `npm run dev` · `npm run build` · `npm run preview`. Screenshots de verificação: `scratchpad/shot.js` (playwright-core + Chromium local).
 
 ## Arquivos
