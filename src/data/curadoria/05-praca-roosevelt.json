@@ -1,0 +1,400 @@
+{
+ "pasta": "05-praca-roosevelt",
+ "capa": {
+  "arquivo": "007_9df24630.jpg",
+  "legenda": "Pergolado de madeira e aço com as floriculturas envidraçadas sob o vão",
+  "orientacao": "paisagem"
+ },
+ "hero": {
+  "arquivo": "016_a11690c2.jpg",
+  "legenda": "Esplanada com o grande disco vermelho e o pergolado ao fundo",
+  "orientacao": "paisagem"
+ },
+ "destaques": [
+  {
+   "arquivo": "007_9df24630.jpg",
+   "legenda": "Pergolado de madeira e aço com as floriculturas envidraçadas sob o vão",
+   "orientacao": "paisagem"
+  },
+  {
+   "arquivo": "016_a11690c2.jpg",
+   "legenda": "Esplanada com o grande disco vermelho e o pergolado ao fundo",
+   "orientacao": "paisagem"
+  },
+  {
+   "arquivo": "013_82282acf.jpg",
+   "legenda": "Vigas de madeira do pergolado sobre a estrutura metálica roxa, contra o céu",
+   "orientacao": "paisagem"
+  },
+  {
+   "arquivo": "009_8a072393.jpg",
+   "legenda": "Sob o pergolado: caixas de vidro das floriculturas e forro de madeira",
+   "orientacao": "paisagem"
+  },
+  {
+   "arquivo": "010_e8055ad5.jpg",
+   "legenda": "Vão coberto do pergolado com bancos de madeira e canteiro gramado",
+   "orientacao": "paisagem"
+  },
+  {
+   "arquivo": "020_b4e67e3f.jpg",
+   "legenda": "Floreira-banco de madeira com árvore recém-plantada na esplanada",
+   "orientacao": "paisagem"
+  },
+  {
+   "arquivo": "022_f94edf6d.jpg",
+   "legenda": "Gramado e bancos contínuos junto à rua, com a cidade ao fundo",
+   "orientacao": "paisagem"
+  },
+  {
+   "arquivo": "015_19a4ab41.jpg",
+   "legenda": "Pergolado e caixa de vidro com as torres do entorno ao fundo",
+   "orientacao": "paisagem"
+  },
+  {
+   "arquivo": "012_bd3805f2.jpg",
+   "legenda": "Bancos ripados de madeira e vitrine da floricultura sob o pergolado",
+   "orientacao": "paisagem"
+  },
+  {
+   "arquivo": "017_69455e8d.jpg",
+   "legenda": "Esplanada com floreira-banco, torre de ventilação e pergolado ao fundo",
+   "orientacao": "paisagem"
+  },
+  {
+   "arquivo": "006_2040f86e.png",
+   "legenda": "Vista aérea da praça em uso, com o percurso vermelho e o disco central",
+   "orientacao": "paisagem",
+   "nota": "Baixa resolução (655x532); usar em tamanho pequeno"
+  },
+  {
+   "arquivo": "002_e6fe225c.jpg",
+   "legenda": "Vista aérea noturna do pergolado iluminado e do disco vermelho",
+   "orientacao": "paisagem",
+   "nota": "Imagem granulada, aparentemente reproduzida de impresso"
+  }
+ ],
+ "documentos": [
+  {
+   "arquivo": "024_1ba30ea7.jpg",
+   "legenda": "Desenho em perspectiva da antiga Praça Roosevelt",
+   "tipo": "croqui",
+   "orientacao": "paisagem"
+  },
+  {
+   "arquivo": "025_fec91602.jpg",
+   "legenda": "Vista aérea da antiga praça com suas plataformas de concreto",
+   "tipo": "foto-historica",
+   "orientacao": "paisagem"
+  },
+  {
+   "arquivo": "026_bbf616b4.jpg",
+   "legenda": "Vista aérea da antiga praça e da Igreja da Consolação",
+   "tipo": "foto-historica",
+   "orientacao": "paisagem"
+  },
+  {
+   "arquivo": "027_41f672be.jpg",
+   "legenda": "Página de jornal 'A praça morta. Soluções:'",
+   "tipo": "recorte-jornal",
+   "orientacao": "paisagem",
+   "transcricao": "A PRAÇA MORTA. SOLUÇÕES: — São Paulo, 425 anos. 'Neste 25 de janeiro, quando São Paulo estiver completando 425 anos, esta praça Roosevelt terá oito anos de existência. Aqui, uma constatação: ela já nasceu morta.' Reportagem de João Carlos Lourenço"
+  },
+  {
+   "arquivo": "028_1607aa03.jpg",
+   "legenda": "Recorte da Folha de S.Paulo, 31 mai 1980: 'Emurb e AR-Sé discutem quem conserva praça'",
+   "tipo": "recorte-jornal",
+   "orientacao": "retrato",
+   "transcricao": "FOLHA DE S. PAULO — 31 MAI 1980 — Emurb e AR-Sé discutem quem conserva praça"
+  },
+  {
+   "arquivo": "029_6c0c9321.jpg",
+   "legenda": "Recorte 'Triste paisagem de concreto', com fotos da antiga praça",
+   "tipo": "recorte-jornal",
+   "orientacao": "paisagem",
+   "transcricao": "Triste paisagem de concreto — A promessa, anos atrás, foi: um estacionamento com uma praça em cima. Mas não é isso que a cidade tem hoje."
+  },
+  {
+   "arquivo": "030_9e63c393.jpg",
+   "legenda": "Recorte da Folha de S.Paulo, 29 set 1980: 'Com tinta, Emurb põe mais verde na praça'",
+   "tipo": "recorte-jornal",
+   "orientacao": "paisagem",
+   "transcricao": "FOLHA DE S. PAULO — 29 SET 1980 — Com tinta, Emurb põe mais verde na praça Roosevelt"
+  },
+  {
+   "arquivo": "031_86df4094.jpg",
+   "legenda": "Foto aérea em preto e branco da antiga praça e viadutos",
+   "tipo": "foto-historica",
+   "orientacao": "retrato"
+  },
+  {
+   "arquivo": "032_d508853c.jpg",
+   "legenda": "Foto aérea da antiga praça e do entorno da Consolação",
+   "tipo": "foto-historica",
+   "orientacao": "retrato"
+  },
+  {
+   "arquivo": "033_72d75083.jpg",
+   "legenda": "Escadas e vãos sob a estrutura da antiga praça, antes da demolição",
+   "tipo": "foto-historica",
+   "orientacao": "paisagem"
+  },
+  {
+   "arquivo": "035_1308a9b3.jpg",
+   "legenda": "Laje perfurada da antiga praça com grafites, antes da demolição",
+   "tipo": "foto-historica",
+   "orientacao": "paisagem"
+  },
+  {
+   "arquivo": "037_cd0071cd.jpg",
+   "legenda": "Rampa curva de concreto da antiga praça com grafites",
+   "tipo": "foto-historica",
+   "orientacao": "paisagem"
+  },
+  {
+   "arquivo": "039_3697d0a0.jpg",
+   "legenda": "Croqui em perspectiva 'Reestruturação - Praça Roosevelt'",
+   "tipo": "croqui",
+   "orientacao": "paisagem",
+   "transcricao": "REESTRUTURAÇÃO - PRAÇA ROOSEVELT"
+  },
+  {
+   "arquivo": "040_3681b9b6.jpg",
+   "legenda": "Estudos de esquina Consolação / Rua Guimarães Rosa, alternativas 1 e 2",
+   "tipo": "croqui",
+   "orientacao": "paisagem",
+   "transcricao": "PRAÇA ROOSEVELT: ESQUINA CONSOLAÇÃO / RUA GUIMARÃES ROSA — Alternativa 1 / Alternativa 2 — Novo Telecentro — Instituto Clemente Ferreira"
+  },
+  {
+   "arquivo": "041_137d8ba2.jpg",
+   "legenda": "Croqui 'Nova Praça Roosevelt - vista geral' com estudos do teatro (Emurb)",
+   "tipo": "croqui",
+   "orientacao": "paisagem",
+   "transcricao": "NOVA PRAÇA ROOSEVELT - VISTA GERAL — Teatro / fachada Rua Nestor Pestana — Corte esquemático — EMURB"
+  },
+  {
+   "arquivo": "042_fac85c48.jpg",
+   "legenda": "Croqui em perspectiva 'Nova Praça Roosevelt' sobre o tecido urbano",
+   "tipo": "croqui",
+   "orientacao": "paisagem",
+   "transcricao": "NOVA PRAÇA ROOSEVELT"
+  },
+  {
+   "arquivo": "043_eaa56a75.jpg",
+   "legenda": "Planta 'Nova Praça Roosevelt' com bosque, floriculturas e pergolado",
+   "tipo": "planta",
+   "orientacao": "paisagem",
+   "transcricao": "NOVA PRAÇA ROOSEVELT — Cachorródromo, Praça do Bosque, Playground, Novas Floriculturas, Estar Pergolado, Vazio c/ torre, Esplanada Consolação, Esplanada Augusta, Posto Polícia, Pista Cooper"
+  },
+  {
+   "arquivo": "044_eb60fc0e.jpg",
+   "legenda": "Implantação do 'Projeto de Requalificação Urbana - Praça Roosevelt' (Emurb)",
+   "tipo": "planta",
+   "orientacao": "paisagem",
+   "transcricao": "Projeto de Requalificação Urbana - Praça Roosevelt — IMPLANTAÇÃO — Programa Edifício-Praça: praças públicas 20.180 m², serviços 6.010 m², estacionamentos 19.170 m², total 65.250 m², área da praça antiga 25.100 m² — EMURB"
+  },
+  {
+   "arquivo": "045_6b003358.jpg",
+   "legenda": "Render das floreiras-bancos com árvores",
+   "tipo": "render",
+   "orientacao": "paisagem",
+   "transcricao": "FLOREIRAS"
+  },
+  {
+   "arquivo": "048_c9a85743.jpg",
+   "legenda": "Implantação sobre foto aérea com floricultura, cachorródromo e batalhão da PM",
+   "tipo": "planta",
+   "orientacao": "paisagem",
+   "transcricao": "Rua João Guimarães Rosa — Rua Augusta — Cachorródromo — Batalhão da Polícia Militar — Floricultura — Rua Martinho Prado — Rua da Consolação — Guarda Metropolitana"
+  }
+ ],
+ "capitulos": [
+  {
+   "titulo": "Nova praça - 2012",
+   "de": "002_e6fe225c.jpg",
+   "ate": "022_f94edf6d.jpg"
+  },
+  {
+   "titulo": "Antiga praça - anos 70",
+   "de": "024_1ba30ea7.jpg",
+   "ate": "037_cd0071cd.jpg"
+  },
+  {
+   "titulo": "Estudos e projetos 1990 / 2007",
+   "de": "039_3697d0a0.jpg",
+   "ate": "045_6b003358.jpg"
+  },
+  {
+   "titulo": "Fase de obras",
+   "de": "047_40f1cbe4.jpg",
+   "ate": "069_341c6858.jpg"
+  }
+ ],
+ "obra": [
+  {
+   "arquivo": "047_40f1cbe4.jpg",
+   "legenda": "Banca de floricultura em instalação provisória durante a obra",
+   "orientacao": "paisagem"
+  },
+  {
+   "arquivo": "049_cd567d9b.jpg",
+   "legenda": "Demolição das lajes de concreto da antiga praça",
+   "orientacao": "paisagem"
+  },
+  {
+   "arquivo": "052_dc0732dc.jpg",
+   "legenda": "Escombros e ferragens expostas da estrutura demolida",
+   "orientacao": "retrato"
+  },
+  {
+   "arquivo": "053_2524b052.jpg",
+   "legenda": "Vigas remanescentes da antiga estrutura em meio à demolição",
+   "orientacao": "paisagem"
+  },
+  {
+   "arquivo": "055_4cc88343.jpg",
+   "legenda": "Operários na demolição sob a laje da antiga praça",
+   "orientacao": "paisagem"
+  },
+  {
+   "arquivo": "057_0f50cf8a.jpg",
+   "legenda": "Escavadeira removendo entulho da estrutura demolida",
+   "orientacao": "paisagem"
+  },
+  {
+   "arquivo": "059_790a96d1.jpg",
+   "legenda": "Caixões da estrutura remanescente sendo convertidos em floreiras",
+   "orientacao": "paisagem"
+  },
+  {
+   "arquivo": "061_3262ba66.jpg",
+   "legenda": "Floreira de concreto em execução, com a cidade ao fundo",
+   "orientacao": "paisagem"
+  },
+  {
+   "arquivo": "062_1a587711.jpg",
+   "legenda": "Anel de concreto do disco central em construção",
+   "orientacao": "paisagem"
+  },
+  {
+   "arquivo": "064_e1712f3c.jpg",
+   "legenda": "Montagem da estrutura metálica do pergolado",
+   "orientacao": "paisagem"
+  },
+  {
+   "arquivo": "066_cad6c46c.jpg",
+   "legenda": "Pergolado com vigas de madeira sendo instaladas",
+   "orientacao": "paisagem"
+  },
+  {
+   "arquivo": "069_341c6858.jpg",
+   "legenda": "Acabamento do piso de concreto junto à arquibancada",
+   "orientacao": "paisagem"
+  }
+ ],
+ "descartadas": [
+  {
+   "arquivo": "003_884d4f34.png",
+   "motivo": "Vista aérea noturna em baixa resolução; duplica 002"
+  },
+  {
+   "arquivo": "004_548f6d6a.png",
+   "motivo": "Vista aérea muito pequena (446x380); duplica 006"
+  },
+  {
+   "arquivo": "005_4eb37e11.png",
+   "motivo": "Vista aérea em baixa resolução; duplica 004/006"
+  },
+  {
+   "arquivo": "008_36f7bb07.jpg",
+   "motivo": "Pessoa em primeiro plano; enquadramento similar a 010"
+  },
+  {
+   "arquivo": "011_47b056fb.jpg",
+   "motivo": "Enquadramento estreito e cortado; duplica 010"
+  },
+  {
+   "arquivo": "014_37216907.jpg",
+   "motivo": "Duplicata de 013"
+  },
+  {
+   "arquivo": "018_3e9cfffb.jpg",
+   "motivo": "Grupo de pessoas em primeiro plano"
+  },
+  {
+   "arquivo": "019_36f528df.jpg",
+   "motivo": "Pessoa sentada em primeiro plano; duplica 020"
+  },
+  {
+   "arquivo": "021_d1d9d49e.jpg",
+   "motivo": "Retrato próximo de 020, com pessoa"
+  },
+  {
+   "arquivo": "034_88b8ac9b.jpg",
+   "motivo": "Escura e com reflexos; duplica 035"
+  },
+  {
+   "arquivo": "036_166edc7d.jpg",
+   "motivo": "Retrato escuro; duplica 035"
+  },
+  {
+   "arquivo": "050_0835d4e1.jpg",
+   "motivo": "Grafite em close, não mostra o processo da obra"
+  },
+  {
+   "arquivo": "051_9266e6d0.jpg",
+   "motivo": "Duplica 052"
+  },
+  {
+   "arquivo": "054_95dbaa48.jpg",
+   "motivo": "Operário em close; duplica 055"
+  },
+  {
+   "arquivo": "056_fe9b335b.jpg",
+   "motivo": "Duplica 055"
+  },
+  {
+   "arquivo": "058_78fdc614.jpg",
+   "motivo": "Duplica 057"
+  },
+  {
+   "arquivo": "060_cc860203.jpg",
+   "motivo": "Duplica 059/061"
+  },
+  {
+   "arquivo": "063_e7d8a4dc.jpg",
+   "motivo": "Guindaste em primeiro plano; pouco informativa"
+  },
+  {
+   "arquivo": "065_d613cef8.jpg",
+   "motivo": "Duplica 064"
+  },
+  {
+   "arquivo": "067_1c2dfca5.jpg",
+   "motivo": "Operários em close; duplica 066"
+  },
+  {
+   "arquivo": "068_86bc928a.jpg",
+   "motivo": "Duplica 066 em ângulo aberto"
+  }
+ ],
+ "slides_titulo": [
+  {
+   "arquivo": "001_bb4bd8b4.png",
+   "texto": "NOVA PRAÇA - 2012"
+  },
+  {
+   "arquivo": "023_1ab527a7.png",
+   "texto": "ANTIGA PRAÇA - ANOS 70"
+  },
+  {
+   "arquivo": "038_1b9a4a15.png",
+   "texto": "ESTUDOS E PROJETOS 1990 / 2007"
+  },
+  {
+   "arquivo": "046_31733440.png",
+   "texto": "FASE DE OBRAS"
+  }
+ ],
+ "json_path": "C:/Users/Vitor/Documents/Rita/r2 arquitetos/fotos-wix/curadoria/05-praca-roosevelt.json"
+}

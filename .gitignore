@@ -1,0 +1,17 @@
+# dependências e build
+node_modules/
+dist/
+.astro/
+# arquivos locais / referência (não publicar)
+fotos-wix/
+_referencia-wix/
+.superpowers/
+.claude/
+# sistema
+.DS_Store
+Thumbs.db
+*.log
+
+# screenshots de verificação
+.screens/
+dist-*/

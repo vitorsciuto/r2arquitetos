@@ -1,0 +1,120 @@
+{
+ "pasta": "06-lausanne",
+ "capa": {
+  "arquivo": "002_c68f4a53.jpg",
+  "legenda": "Fachada do Edifício Lausanne com as venezianas coloridas em contraplongée",
+  "orientacao": "paisagem",
+  "nota": "Imagem mais icônica do conjunto: a fachada de venezianas de Franz Heep, bem exposta e nítida"
+ },
+ "hero": {
+  "arquivo": "008_0567613d.jpg",
+  "legenda": "Sala integrada à biblioteca, tacos de peroba e caixilhos originais para o jardim",
+  "orientacao": "paisagem",
+  "nota": "Vista ampla que resume a reforma: biblioteca no antigo dormitório, piso recuperado e caixilhos mantidos"
+ },
+ "destaques": [
+  {
+   "arquivo": "002_c68f4a53.jpg",
+   "legenda": "Fachada do Edifício Lausanne com as venezianas coloridas em contraplongée",
+   "orientacao": "paisagem"
+  },
+  {
+   "arquivo": "008_0567613d.jpg",
+   "legenda": "Sala integrada à biblioteca, tacos de peroba e caixilhos originais para o jardim",
+   "orientacao": "paisagem"
+  },
+  {
+   "arquivo": "006_405400d9.jpg",
+   "legenda": "Sala de estar com poltronas Barcelona e caixilho original aberto para as árvores",
+   "orientacao": "retrato"
+  },
+  {
+   "arquivo": "012_df0e3a98.jpg",
+   "legenda": "Abertura da cozinha para a sala, com bancada, banquetas e iluminação embutida",
+   "orientacao": "paisagem",
+   "nota": "Mostra a principal intervenção do programa: a cozinha aberta e articulada com as salas"
+  },
+  {
+   "arquivo": "014_9ca97bb4.jpg",
+   "legenda": "Cozinha com bancada branca, cooktop, coifa central e caixilho para a rua",
+   "orientacao": "paisagem"
+  },
+  {
+   "arquivo": "009_089ca6d5.jpg",
+   "legenda": "Estar com sofá e mesa de centro diante do caixilho original com venezianas",
+   "orientacao": "paisagem"
+  },
+  {
+   "arquivo": "015_8528cdc4.jpg",
+   "legenda": "Sala de jantar com pendentes e armário de madeira, cozinha aberta ao fundo",
+   "orientacao": "paisagem"
+  },
+  {
+   "arquivo": "003_658e84b5.jpg",
+   "legenda": "Venezianas vermelhas, verdes e brancas da fachada vistas do jardim com primavera",
+   "orientacao": "retrato"
+  },
+  {
+   "arquivo": "019_3765f4dd.jpg",
+   "legenda": "Caixilho de correr aberto para a varanda com pastilhas e veneziana original",
+   "orientacao": "paisagem"
+  },
+  {
+   "arquivo": "018_334f72bf.jpg",
+   "legenda": "Sala com biblioteca de piso a teto e vista para a varanda e as árvores",
+   "orientacao": "paisagem"
+  },
+  {
+   "arquivo": "005_10637883.png",
+   "legenda": "Hall do edifício com mural de Clóvis Graciano e piso de mármore",
+   "orientacao": "paisagem",
+   "nota": "Arquivo pequeno (520x368 px); usar apenas em tamanho reduzido. Área comum, não é obra do escritório"
+  },
+  {
+   "arquivo": "001_e6157626.jpg",
+   "legenda": "Edifício Lausanne visto da rua, entre as copas das árvores de Higienópolis",
+   "orientacao": "paisagem",
+   "nota": "Contraluz forte e copas escuras; serve como contexto urbano, não como imagem principal"
+  },
+  {
+   "arquivo": "004_4d66aafe.jpg",
+   "legenda": "Letreiro ‘Edifício Lausanne’ na parede do hall",
+   "orientacao": "paisagem"
+  }
+ ],
+ "documentos": [],
+ "capitulos": [],
+ "obra": [],
+ "descartadas": [
+  {
+   "arquivo": "007_d59bd882.jpg",
+   "motivo": "Sala escura e subexposta; mesma vista de 008 com pior qualidade"
+  },
+  {
+   "arquivo": "010_5301a453.jpg",
+   "motivo": "Recorte em retrato do mesmo estar de 009, com sombra dura no sofá"
+  },
+  {
+   "arquivo": "011_c627c6f2.jpg",
+   "motivo": "Mesmo enquadramento da abertura da cozinha de 012, mais escuro"
+  },
+  {
+   "arquivo": "013_144c1dc2.jpg",
+   "motivo": "Versão em retrato e mais escura de 012"
+  },
+  {
+   "arquivo": "016_97da4415.jpg",
+   "motivo": "Quase duplicata de 015, com sofá em primeiro plano cortado"
+  },
+  {
+   "arquivo": "017_81974b15.jpg",
+   "motivo": "Levemente desfocada e com tom lavado; mesma sala de 018"
+  },
+  {
+   "arquivo": "020_621c547b.jpg",
+   "motivo": "Recorte em retrato do mesmo caixilho de 019, com objetos em primeiro plano"
+  }
+ ],
+ "slides_titulo": [],
+ "json_path": "C:/Users/Vitor/Documents/Rita/r2 arquitetos/fotos-wix/curadoria/06-lausanne.json"
+}

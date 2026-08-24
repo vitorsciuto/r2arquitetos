@@ -1,0 +1,37 @@
+---
+// Página temporária de escolha entre as duas versões. Some quando uma delas for promovida à raiz.
+import '../styles/base.css';
+---
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>r2 arquitetos — comparação A / B</title>
+    <style>
+      body { background: #1c1c1e; color: #e8e8ea; font-family: system-ui, sans-serif; display: grid; place-items: center; padding: 2rem; }
+      main { max-width: 900px; width: 100%; }
+      h1 { font-size: 1.2rem; font-weight: 600; margin-bottom: .4rem; }
+      p { color: #a9a9b0; margin-bottom: 2rem; }
+      .duas { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+      @media (max-width: 640px) { .duas { grid-template-columns: 1fr; } }
+      a.op { display: block; border: 1px solid #333; border-radius: 8px; padding: 1.4rem; transition: border-color .15s; }
+      a.op:hover { border-color: #888; }
+      a.op b { display: block; font-size: 1.6rem; margin-bottom: .3rem; }
+      a.op span { color: #a9a9b0; font-size: .9rem; }
+      .A { background: #E4E1DB; color: #161616; } .A span { color: #66574A; }
+      .B { background: #F3EFE6; color: #1B1B1B; font-family: Georgia, serif; } .B span { color: #555; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>r2 arquitetos — duas versões para comparar</h1>
+      <p>Página temporária. A versão escolhida passa a responder na raiz do domínio.</p>
+      <div class="duas">
+        <a class="op A" href="/a/"><b>Opção A</b><span>Evolução da identidade atual — cinza, taupe, preto; caixa-alta com tracking.</span></a>
+        <a class="op B" href="/b/"><b>Opção B</b><span>Editorial — patrimônio moderno paulistano; papel, tinta e as cores das obras.</span></a>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,122 @@
+{
+ "pasta": "03-louveira-2",
+ "capa": {
+  "arquivo": "017_a1c17070.jpg",
+  "legenda": "Divisória de vidro com caixilhos pretos junto ao pilar revestido, vista para a rua",
+  "orientacao": "retrato",
+  "nota": "Única imagem quase finalizada e icônica do loft; piso ainda protegido. Não há foto paisagem de obra concluída."
+ },
+ "hero": {
+  "arquivo": "014_1eb3fc3a.jpg",
+  "legenda": "Sala integrada com venezianas e caixilhos pintados de preto e pilar de concreto aparente",
+  "orientacao": "paisagem",
+  "nota": "Paisagem, mostra os caixilhos pretos; ainda com entulho de obra no canto direito (recorte recomendado)."
+ },
+ "destaques": [
+  {
+   "arquivo": "017_a1c17070.jpg",
+   "legenda": "Divisória de vidro com caixilhos pretos junto ao pilar revestido, vista para a rua",
+   "orientacao": "retrato",
+   "nota": "Fase final de obra; piso coberto por papelão."
+  },
+  {
+   "arquivo": "014_1eb3fc3a.jpg",
+   "legenda": "Sala integrada com venezianas e caixilhos pintados de preto e pilar de concreto aparente",
+   "orientacao": "paisagem",
+   "nota": "Entulho e escada no canto direito."
+  },
+  {
+   "arquivo": "016_92169185.jpg",
+   "legenda": "Cozinha com armários pretos e ilha ainda embalada, junto ao caixilho original",
+   "orientacao": "retrato",
+   "nota": "Mobiliário protegido; fase de acabamento."
+  },
+  {
+   "arquivo": "015_ae488d72.jpg",
+   "legenda": "Sala aberta para a cozinha, com bloco central e bandeira de vidro sobre a porta",
+   "orientacao": "paisagem",
+   "nota": "Escada e caixas em cena; ilustra a integração dos espaços."
+  },
+  {
+   "arquivo": "003_f5cd8346.jpg",
+   "legenda": "Sala com tacos de madeira e vão aberto para o jardim de inverno com venezianas",
+   "orientacao": "paisagem",
+   "nota": "Estado pré-obra com vão recém-aberto; mostra o piso original e as venezianas."
+  },
+  {
+   "arquivo": "002_e9f05d9b.jpg",
+   "legenda": "Apartamento antes da reforma, com painéis amarelo e azul e piso de tacos",
+   "orientacao": "paisagem",
+   "nota": "Registro do 'antes'; útil como comparação, não é obra concluída."
+  }
+ ],
+ "documentos": [],
+ "capitulos": [
+  {
+   "titulo": "FASE DE OBRAS",
+   "de": "002_e9f05d9b.jpg",
+   "ate": "017_a1c17070.jpg"
+  }
+ ],
+ "obra": [
+  {
+   "arquivo": "012_386a46ea.jpg",
+   "legenda": "Demolição de alvenaria expõe tijolos e a viga junto ao corredor",
+   "orientacao": "paisagem"
+  },
+  {
+   "arquivo": "013_48104c11.jpg",
+   "legenda": "Paredes demolidas e sacos de entulho na sala, com venezianas ao fundo",
+   "orientacao": "paisagem"
+  },
+  {
+   "arquivo": "005_50c6e37c.jpg",
+   "legenda": "Abertura na parede de tijolos durante a demolição",
+   "orientacao": "paisagem",
+   "nota": "Operário de costas ao fundo."
+  },
+  {
+   "arquivo": "006_5f4a7569.jpg",
+   "legenda": "Área de serviço demolida, com o caixilho de vidro e entulho no piso",
+   "orientacao": "retrato",
+   "nota": "Operário sobre escada, sem rosto visível."
+  },
+  {
+   "arquivo": "009_a2f3baae.jpg",
+   "legenda": "Paredes descascadas até o tijolo diante do caixilho de vidro canelado",
+   "orientacao": "paisagem"
+  },
+  {
+   "arquivo": "010_cf9f461d.jpg",
+   "legenda": "Tubulações antigas expostas entre paredes de tijolo demolidas",
+   "orientacao": "paisagem"
+  },
+  {
+   "arquivo": "011_2f190c72.jpg",
+   "legenda": "Assentamento de blocos cerâmicos para a nova parede da suíte",
+   "orientacao": "paisagem",
+   "nota": "Pedreiro de costas; identificação da suíte é inferida do programa."
+  }
+ ],
+ "descartadas": [
+  {
+   "arquivo": "004_cb0bf6d8.jpg",
+   "motivo": "Quase duplicata de 003, enquadramento menos limpo"
+  },
+  {
+   "arquivo": "007_20428d92.jpg",
+   "motivo": "Escura e contra a luz; duplicata de 006 com pessoa em cena"
+  },
+  {
+   "arquivo": "008_3fd65012.jpg",
+   "motivo": "Escura, contra a luz, operário em cena; redundante com 006 e 009"
+  }
+ ],
+ "slides_titulo": [
+  {
+   "arquivo": "001_ef97628b.png",
+   "texto": "FASE DE OBRAS"
+  }
+ ],
+ "json_path": "C:/Users/Vitor/Documents/Rita/r2 arquitetos/fotos-wix/curadoria/03-louveira-2.json"
+}
