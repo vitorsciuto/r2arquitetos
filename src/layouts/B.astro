@@ -3,6 +3,7 @@ import '../styles/base.css';
 import '../styles/b.css';
 import { getImage } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
+import logoRaw from '../assets/logo-r2.svg?raw';
 import Cabecalho from '../components/b/Cabecalho.astro';
 import Rodape from '../components/b/Rodape.astro';
 import { nome } from '../data/escritorio';
@@ -22,6 +23,13 @@ const tituloCompleto = titulo === nome ? `${nome} — arquitetura · urbanismo` 
 const og = await getImage({ src: ogImagem ?? foto('capas-projetos', '003_0d0a1121.jpg'), width: 1200, format: 'jpg' });
 const ogUrl = Astro.site ? new URL(og.src, Astro.site).href : og.src;
 const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : Astro.url.pathname;
+
+// favicon: o "r2" do logo embutido como data-URI, um para cada pele
+const marca = (quadrado: string, glifo: string) =>
+  'data:image/svg+xml,' +
+  encodeURIComponent(logoRaw.replace('currentColor', quadrado).replace('var(--logo-fg, #fff)', glifo));
+const faviconPapel = marca('#1B1B1B', '#F3EFE6');
+const faviconCinza = marca('#66574A', '#F5F4F1');
 ---
 <!doctype html>
 <html lang="pt-BR" style={cor ? `--cor:${cor}` : undefined}>
@@ -38,7 +46,27 @@ const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : As
     <meta property="og:image" content={ogUrl} />
     <meta property="og:locale" content="pt_BR" />
     <meta name="theme-color" content="#F3EFE6" />
+    <link rel="icon" href={faviconPapel} />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    {/* Pele alternativa (paleta da A). Roda antes da pintura para não piscar.
+        Temporário: sai quando a escolha entre as duas peles for feita. */}
+    <script is:inline define:vars={{ faviconCinza }}>
+      (function () {
+        // Sem sessionStorage de propósito: os dois painéis do /comparar rodam na
+        // mesma origem e um sobrescreveria a pele do outro. A pele viaja na URL.
+        if (new URL(window.location.href).searchParams.get('tema') !== 'cinza') return;
+        document.documentElement.dataset.tema = 'cinza';
+        document.addEventListener('DOMContentLoaded', function () {
+          var cor = document.querySelector('meta[name="theme-color"]');
+          if (cor) cor.setAttribute('content', '#E4E1DB');
+          var ico = document.querySelector('link[rel="icon"]');
+          if (ico) ico.setAttribute('href', faviconCinza);
+          document.querySelectorAll('a[href^="/b"]').forEach(function (a) {
+            if (a.href.indexOf('tema=') === -1) a.href += (a.href.indexOf('?') === -1 ? '?' : '&') + 'tema=cinza';
+          });
+        });
+      })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

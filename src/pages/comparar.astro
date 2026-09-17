@@ -1,0 +1,131 @@
+---
+// Página temporária de comparação lado a lado. Some junto com /a/ ou /b/ quando a escolha for feita.
+---
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>r2 arquitetos — A × B lado a lado</title>
+    <style>
+      * { box-sizing: border-box; }
+      html, body { height: 100%; margin: 0; }
+      body {
+        background: #141416; color: #e8e8ea;
+        font-family: system-ui, -apple-system, sans-serif;
+        display: flex; flex-direction: column;
+      }
+      header {
+        flex: none; display: flex; align-items: center; gap: 1.25rem;
+        padding: .7rem 1rem; border-bottom: 1px solid #2c2c31;
+      }
+      h1 { font-size: .9rem; font-weight: 600; margin: 0; letter-spacing: .02em; }
+      .grupo { display: flex; gap: .4rem; align-items: center; }
+      .grupo > span { font-size: .72rem; color: #8b8b93; text-transform: uppercase; letter-spacing: .08em; }
+      button {
+        background: #232328; color: #d7d7dd; border: 1px solid #35353c;
+        border-radius: 5px; padding: .35rem .7rem; font-size: .8rem; cursor: pointer;
+        font-family: inherit;
+      }
+      button:hover { border-color: #5a5a64; }
+      button[aria-pressed="true"] { background: #e8e8ea; color: #141416; border-color: #e8e8ea; }
+      nav { margin-left: auto; display: flex; gap: .4rem; }
+
+      main { flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #2c2c31; min-height: 0; }
+      body[data-so="a"] main, body[data-so="b"] main, body[data-so="c"] main { grid-template-columns: 1fr; }
+      body[data-so="a"] .painel-b, body[data-so="a"] .painel-c,
+      body[data-so="b"] .painel-a, body[data-so="b"] .painel-c,
+      body[data-so="c"] .painel-a, body[data-so="c"] .painel-b { display: none; }
+      body[data-so="bc"] main { grid-template-columns: 1fr 1fr; }
+      body[data-so="bc"] .painel-a { display: none; }
+
+      .painel { display: flex; flex-direction: column; background: #141416; min-width: 0; min-height: 0; }
+      .rotulo {
+        flex: none; padding: .45rem .8rem; font-size: .75rem; letter-spacing: .1em;
+        text-transform: uppercase; color: #9a9aa2; background: #1b1b1f;
+        display: flex; justify-content: space-between; align-items: center;
+      }
+      .rotulo a { color: #9a9aa2; text-decoration: none; border-bottom: 1px solid #44444c; font-size: .7rem; }
+      .rotulo a:hover { color: #e8e8ea; }
+      .moldura { flex: 1; min-height: 0; display: flex; justify-content: center; background: #0e0e10; overflow: auto; }
+      iframe { border: 0; background: #fff; width: 100%; height: 100%; }
+      body[data-larg="mobile"] iframe { width: 390px; flex: none; }
+      body[data-larg="tablet"] iframe { width: 834px; flex: none; }
+    </style>
+  </head>
+  <body data-so="ambas" data-larg="cheia" data-pag="/">
+    <header>
+      <h1>r2 arquitetos — A × B</h1>
+
+      <div class="grupo">
+        <span>Ver</span>
+        <button data-so="ambas" aria-pressed="true">Três</button>
+        <button data-so="bc" aria-pressed="false">Só as peles da B</button>
+        <button data-so="a" aria-pressed="false">A</button>
+        <button data-so="b" aria-pressed="false">B creme</button>
+        <button data-so="c" aria-pressed="false">B cinza</button>
+      </div>
+
+      <div class="grupo">
+        <span>Largura</span>
+        <button data-larg="cheia" aria-pressed="true">Cheia</button>
+        <button data-larg="tablet" aria-pressed="false">Tablet</button>
+        <button data-larg="mobile" aria-pressed="false">Celular</button>
+      </div>
+
+      <nav>
+        <button data-pag="/" aria-pressed="true">Home</button>
+        <button data-pag="/projetos" aria-pressed="false">Projetos</button>
+        <button data-pag="/projetos/louveira-1" aria-pressed="false">Um projeto</button>
+        <button data-pag="/escritorio" aria-pressed="false">Escritório</button>
+        <button data-pag="/publicacoes" aria-pressed="false">Publicações</button>
+        <button data-pag="/contato" aria-pressed="false">Contato</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="painel painel-a">
+        <div class="rotulo"><span>Opção A — evolução da identidade atual</span><a href="/a/" target="_blank">abrir sozinha ↗</a></div>
+        <div class="moldura"><iframe id="fa" src="/a/" title="Opção A"></iframe></div>
+      </section>
+      <section class="painel painel-b">
+        <div class="rotulo"><span>B — editorial, papel creme</span><a href="/b/" target="_blank">abrir sozinha ↗</a></div>
+        <div class="moldura"><iframe id="fb" src="/b/" title="Opção B — papel creme"></iframe></div>
+      </section>
+      <section class="painel painel-c">
+        <div class="rotulo"><span>B — editorial, paleta da A</span><a href="/b/?tema=cinza" target="_blank">abrir sozinha ↗</a></div>
+        <div class="moldura"><iframe id="fc" src="/b/?tema=cinza" title="Opção B — paleta da A"></iframe></div>
+      </section>
+    </main>
+
+    <script is:inline>
+      const corpo = document.body;
+      const fa = document.getElementById('fa');
+      const fb = document.getElementById('fb');
+      const fc = document.getElementById('fc');
+
+      function aplicar(chave, valor) {
+        corpo.dataset[chave] = valor;
+        document.querySelectorAll(`button[data-${chave}]`).forEach((b) => {
+          b.setAttribute('aria-pressed', String(b.dataset[chave] === valor));
+        });
+      }
+
+      document.querySelectorAll('header button').forEach((b) => {
+        b.addEventListener('click', () => {
+          for (const chave of ['so', 'larg', 'pag']) {
+            if (b.dataset[chave] === undefined) continue;
+            aplicar(chave, b.dataset[chave]);
+            if (chave === 'pag') {
+              const rota = b.dataset.pag === '/' ? '' : b.dataset.pag;
+              fa.src = `/a${rota}`;
+              fb.src = `/b${rota}`;
+              fc.src = `/b${rota}?tema=cinza`;
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

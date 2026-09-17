@@ -15,3 +15,9 @@ Thumbs.db
 # screenshots de verificação
 .screens/
 dist-*/
+
+# capturas de verificação (playwright)
+.playwright-mcp/
+
+# grafo de conhecimento (local)
+graphify-out/
