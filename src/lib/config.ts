@@ -1,7 +1,7 @@
 import type { ImageMetadata } from 'astro';
 
-/** Prefixo de todas as rotas da Opção B (vira '' quando a opção for promovida à raiz). */
-export const BASE = '/b';
+/** Prefixo de todas as rotas. Vazio: o site responde na raiz do domínio. */
+export const BASE = '';
 
 export const href = (caminho = '') => `${BASE}/${caminho}`.replace(/\/+$/, '/').replace(/\/\/+/g, '/');
 
@@ -13,10 +13,10 @@ export const meta = (itens: (string | undefined | null)[]) => itens.filter((t): 
 export const nomeIndice = (d: { titulo: string; tituloCurto: string }) => (d.titulo.length > 28 ? d.tituloCurto : d.titulo);
 
 /** Recortes 1:1 do material de cada obra (40 px no índice), cortados das próprias fotos. */
-const materiais = import.meta.glob<{ default: ImageMetadata }>('/src/lib/b/material/*.jpg', { eager: true });
+const materiais = import.meta.glob<{ default: ImageMetadata }>('/src/lib/material/*.jpg', { eager: true });
 export function material(numero: string): ImageMetadata {
-  const mod = materiais[`/src/lib/b/material/${numero}.jpg`];
-  if (!mod) throw new Error(`Recorte de material não encontrado: src/lib/b/material/${numero}.jpg`);
+  const mod = materiais[`/src/lib/material/${numero}.jpg`];
+  if (!mod) throw new Error(`Recorte de material não encontrado: src/lib/material/${numero}.jpg`);
   return mod.default;
 }
 

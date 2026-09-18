@@ -1,7 +1,7 @@
 ---
-import Layout from '../../layouts/B.astro';
-import { arquitetos, foco, servicos, sobre } from '../../data/escritorio';
-import { meta } from '../../lib/b/config';
+import Layout from '../layouts/Base.astro';
+import { arquitetos, foco, servicos, sobre } from '../data/escritorio';
+import { meta } from '../lib/config';
 
 const paragrafos = sobre.filter((p) => p !== foco);
 ---

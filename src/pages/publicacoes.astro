@@ -1,10 +1,10 @@
 ---
 import { getImage } from 'astro:assets';
-import Layout from '../../layouts/B.astro';
-import Figura from '../../components/b/Figura.astro';
-import { foto } from '../../lib/fotos';
-import { pasta, publicacoes } from '../../data/publicacoes';
-import { meta } from '../../lib/b/config';
+import Layout from '../layouts/Base.astro';
+import Figura from '../components/Figura.astro';
+import { foto } from '../lib/fotos';
+import { pasta, publicacoes } from '../data/publicacoes';
+import { meta } from '../lib/config';
 
 const total = publicacoes.reduce((n, v) => n + v.recortes.length, 0);
 const grupos = await Promise.all(

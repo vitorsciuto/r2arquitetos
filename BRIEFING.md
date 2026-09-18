@@ -1,6 +1,6 @@
 # r2arquitetos.com.br — Briefing do projeto
 
-_Última atualização: 2026-08-24 (sessão 2: decisões fechadas, design aprovado, construção A/B)_
+_Última atualização: 2026-09-17 (sessão 3: versão única escolhida, Instagram auditado)_
 
 ## Objetivo
 
@@ -142,3 +142,49 @@ r2 arquitetos/
     ├── r2-proj1-full.jpg        ← página de projeto (Casa de Praia)
     └── r2-escritorio-full.jpg
 ```
+
+
+## Estado em 2026-09-17 (sessão 3) — escolha feita, versão única
+
+**A escolha A × B foi resolvida: venceu a estrutura editorial da B com a paleta da A.**
+Motivo: a diagramação editorial é o que demonstra o repertório de patrimônio (autoria e datas
+no índice, anúncio de época do Louveira, texto longo por projeto); a paleta da A é a identidade
+que Rita e Rubens já reconhecem. Uma versão só, daqui para a frente.
+
+**O que mudou no código:**
+- `A` foi removida por inteiro (`pages/a/`, `components/a/`, `layouts/A.astro`, `styles/a.css`),
+  junto com a página de escolha e o comparador `/comparar`.
+- A B foi promovida à raiz: `pages/b/*` → `pages/*`, `BASE = ''`. O site responde em `/`,
+  `/projetos`, `/projetos/<slug>`, `/escritorio`, `/publicacoes`, `/contato` — 11 páginas.
+- O sufixo `b` saiu dos nomes: `components/b/` → `components/`, `lib/b/` → `lib/`,
+  `styles/b.css` → `styles/site.css`, `layouts/B.astro` → `layouts/Base.astro`.
+- A paleta virou o `:root` do `site.css`, sem tema e sem JS: fundo `#E4E1DB`, corpo `#161616`,
+  taupe `#66574A` em títulos, rótulos, legendas e fios estruturais, marca em quadrado taupe
+  com glifo `#F5F4F1`. Taupe mede **5,32:1** sobre o fundo (AA para texto normal).
+  `--taupe2 #9B8A72` (2,6:1) e `--fio-fraco #C6C1B8` (1,4:1) seguem só como fio, nunca texto.
+- **A cor de cada obra foi preservada** (`--cor`): taupe por padrão, e a cor da obra nas páginas
+  de projeto — amarelo `#D4A33A` no Louveira, etc. Ela só aparece em fio, sublinhado e fundo a
+  9%, nunca como texto, então não há risco de contraste.
+- Favicon embutido (a B não tinha; a A já tinha).
+
+**Instagram — auditoria de 2026-09-17 (leitura pública, sem login; confirmar os números):**
+- Perfil: **@r2_arquitetos** · 338 seguidores · seguindo 1.140.
+- Bio: "arquitetura, decoração, reforma e obras" + `contato@r2arquitetos.com.br` · São Paulo, SP.
+- **Link na bio: `www.r2arquitetos.com.br` — hoje MORTO** (caiu junto com o Wix). Prioridade máxima.
+- Posts: um em 19/08/2026; antes disso março/2023, fevereiro/2023, junho/2021.
+- Dois problemas de posicionamento: a bio descreve prestador de serviço genérico, sem nada de
+  patrimônio moderno paulistano; e seguir 1.140 para 338 é padrão de segue-de-volta.
+
+**Decisões pendentes:** hospedagem no **Cloudflare Pages** (escolhida na sessão 3 — exige mover
+os nameservers do registro.br, **recriando os MX do Google Workspace na Cloudflare ANTES da troca**
+e desligando o DNSSEC, senão o e-mail do escritório cai). O `.github/workflows/deploy.yml` ainda
+é o de GitHub Pages e dispara em `main`, enquanto o branch local é `master` — resolver junto com
+a decisão de hospedagem.
+
+**Pendências de conteúdo (só Rita e Rubens respondem):** (1) o escritório fica dentro do Edifício
+Lausanne? (2) creditar Cascaldi no Louveira? (3) Louveira 2 ainda é "obra em andamento"?
+(4) existe WhatsApp/celular do escritório?
+
+**Ainda não feito:** rollout de 52 posts (2×/semana, 6 meses), cadastro nas plataformas de
+captação, push para o repositório `github.com/vitorsciuto/r2arquitetos` (privado, hoje vazio),
+e backup dos originais em `fotos-wix/` (156 MB, ignorados pelo git).

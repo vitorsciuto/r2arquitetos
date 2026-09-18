@@ -1,14 +1,14 @@
 ---
 import { getCollection, render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
-import Layout from '../../../layouts/B.astro';
-import Figura from '../../../components/b/Figura.astro';
-import Ficha from '../../../components/b/Ficha.astro';
-import Figuras, { type Item } from '../../../components/b/Figuras.astro';
-import DiarioObra from '../../../components/b/DiarioObra.astro';
-import PrevProximo from '../../../components/b/PrevProximo.astro';
-import { curadoria, foto, fotosDoCapitulo, type FotoCurada } from '../../../lib/fotos';
-import { heroB, posicao, tituloCapitulo } from '../../../lib/b/config';
+import Layout from '../../layouts/Base.astro';
+import Figura from '../../components/Figura.astro';
+import Ficha from '../../components/Ficha.astro';
+import Figuras, { type Item } from '../../components/Figuras.astro';
+import DiarioObra from '../../components/DiarioObra.astro';
+import PrevProximo from '../../components/PrevProximo.astro';
+import { curadoria, foto, fotosDoCapitulo, type FotoCurada } from '../../lib/fotos';
+import { heroB, posicao, tituloCapitulo } from '../../lib/config';
 
 export async function getStaticPaths() {
   const projetos = (await getCollection('projetos')).sort((a, b) => a.data.numero.localeCompare(b.data.numero));

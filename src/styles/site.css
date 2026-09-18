@@ -1,15 +1,17 @@
-/* Opção B — editorial · patrimônio moderno paulistano
-   papel / tinta / concreto + a cor de cada obra (função estrutural: fios, faixa ativa, sublinhados)
+/* r2 arquitetos — editorial · patrimônio moderno paulistano
+   cinza / taupe / tinta + a cor de cada obra (função estrutural: fios, faixa ativa, sublinhados)
    Jost 400 (caixa-alta) + Newsreader 400 (leitura). Escala travada: 46 / 30 / 22 / 20 / 18 / 16 / 13 / 11.
    Dois trackings: .08em (Jost em 30 e 22 px) e .18em (Jost em 11 px). */
 
 :root {
-  --papel: #F3EFE6;
-  --tinta: #1B1B1B;
-  --concreto: #B9B6AE;
-  --cinza: #5A5750;        /* texto secundário: 6,2:1 sobre o papel */
-  --fio-fraco: #CFCABF;    /* fios internos (não é texto) */
-  --cor: var(--tinta);     /* cor da obra: redefinida por página / por linha */
+  --papel: #E4E1DB;        /* fundo */
+  --sur: #F5F4F1;          /* superfície clara — glifo do logo */
+  --tinta: #161616;        /* corpo de leitura: 13,9:1 sobre o fundo */
+  --taupe: #66574A;        /* títulos, rótulos, legendas, fios estruturais: 5,32:1 (AA) */
+  --taupe2: #9B8A72;       /* fio e hover — nunca texto (2,6:1) */
+  --cinza: var(--taupe);   /* texto secundário */
+  --fio-fraco: #C6C1B8;    /* fios internos (não é texto) */
+  --cor: var(--taupe);     /* cor da obra: redefinida por página / por linha */
 
   --serif: 'Newsreader', Georgia, 'Times New Roman', serif;
   --sans: 'Jost', 'Futura', 'Century Gothic', 'Trebuchet MS', sans-serif;
@@ -35,10 +37,10 @@ body {
   line-height: 1.6;
   font-weight: 400;
 }
-::selection { background: var(--tinta); color: var(--papel); }
+::selection { background: var(--taupe); color: var(--sur); }
 :focus-visible { outline: 2px solid var(--tinta); outline-offset: 3px; }
 
-.skip { position: absolute; left: -999px; top: 8px; z-index: 10; padding: 8px 12px; background: var(--tinta); color: var(--papel); font: 400 var(--t11)/1.4 var(--sans); letter-spacing: var(--tr-rotulo); text-transform: uppercase; }
+.skip { position: absolute; left: -999px; top: 8px; z-index: 10; padding: 8px 12px; background: var(--taupe); color: var(--sur); font: 400 var(--t11)/1.4 var(--sans); letter-spacing: var(--tr-rotulo); text-transform: uppercase; }
 .skip:focus { left: 8px; }
 
 /* ---------- mancha e grid ---------- */
@@ -49,11 +51,12 @@ body {
 
 /* ---------- tipografia ---------- */
 .rotulo, .ficha, .subfio, .nav, .cab-wm {
+  color: var(--taupe);
   font-family: var(--sans); font-weight: 400; font-size: var(--t11); line-height: 1.5;
   letter-spacing: var(--tr-rotulo); text-transform: uppercase;
 }
-.titulo { font-family: var(--sans); font-weight: 400; font-size: var(--t30); line-height: 1.15; letter-spacing: var(--tr-titulo); text-transform: uppercase; }
-.nome   { font-family: var(--sans); font-weight: 400; font-size: var(--t22); line-height: 1.15; letter-spacing: var(--tr-titulo); text-transform: uppercase; }
+.titulo { color: var(--taupe); font-family: var(--sans); font-weight: 400; font-size: var(--t30); line-height: 1.15; letter-spacing: var(--tr-titulo); text-transform: uppercase; }
+.nome   { color: var(--taupe); font-family: var(--sans); font-weight: 400; font-size: var(--t22); line-height: 1.15; letter-spacing: var(--tr-titulo); text-transform: uppercase; }
 .lede   { font-family: var(--serif); font-size: var(--t46); line-height: 1.22; letter-spacing: -.01em; text-wrap: balance; }
 .leitura { font-size: var(--t18); line-height: 1.6; max-width: 34em; }
 .leitura p + p { margin-top: 1em; }
@@ -63,7 +66,7 @@ body {
 .t13 { font-size: var(--t13); line-height: 1.45; }
 .cinza { color: var(--cinza); }
 .mt10 { margin-top: 10px; }
-.ficha { line-height: 1.9; color: var(--tinta); }
+.ficha { line-height: 1.9; color: var(--taupe); }
 
 /* links de texto: sublinhado fino na cor da obra */
 .leitura a, .leitura-20 a, .link { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .18em; text-decoration-color: var(--cor); }
@@ -76,7 +79,7 @@ body {
   border-top: 2px solid var(--cor); padding-top: 10px;
 }
 .secao-cab + * { margin-top: 36px; }
-.fio { border-top: 1px solid var(--tinta); }
+.fio { border-top: 1px solid var(--taupe); }
 .fio-fraco { border-top: 1px solid var(--fio-fraco); }
 
 /* ---------- figuras ---------- */
@@ -89,17 +92,17 @@ figure { margin: 0; }
 .fig.nativa { max-width: var(--largura-nativa, none); }
 .fig.pb  img { filter: grayscale(1) contrast(1.04); }
 .fig figcaption { margin-top: 10px; font-size: var(--t13); line-height: 1.45; color: var(--cinza); max-width: 40em; }
-.fig figcaption .rotulo { color: var(--tinta); margin-right: .7em; }
+.fig figcaption .rotulo { color: var(--taupe); margin-right: .7em; }
 
 /* ---------- cabeçalho ---------- */
-.cab { display: flex; align-items: center; justify-content: space-between; gap: 24px 40px; flex-wrap: wrap; padding: 36px 0 22px; border-bottom: 2px solid var(--tinta); }
-.cab-marca { display: flex; align-items: center; gap: 16px; color: var(--tinta); --logo-fg: var(--papel); }
+.cab { display: flex; align-items: center; justify-content: space-between; gap: 24px 40px; flex-wrap: wrap; padding: 36px 0 22px; border-bottom: 2px solid var(--taupe); }
+.cab-marca { display: flex; align-items: center; gap: 16px; color: var(--taupe); --logo-fg: var(--sur); }
 .cab-marca svg { width: 40px; height: 53px; flex: none; }
 .cab-wm { line-height: 1.7; white-space: nowrap; }
 .nav ul { display: flex; gap: 36px; flex-wrap: wrap; }
 .nav a { display: inline-block; padding: 4px 0; border-bottom: 1px solid transparent; }
 .nav a:hover, .nav a[aria-current] { border-bottom-color: var(--cor); }
-.subfio { display: flex; justify-content: space-between; gap: 16px 32px; flex-wrap: wrap; border-top: 1px solid var(--tinta); margin-top: 3px; padding-top: 8px; color: var(--tinta); }
+.subfio { display: flex; justify-content: space-between; gap: 16px 32px; flex-wrap: wrap; border-top: 1px solid var(--taupe); margin-top: 3px; padding-top: 8px; color: var(--taupe); }
 @media (max-width: 719px) {
   .cab { padding: 24px 0 16px; }
   .nav { width: 100%; }
@@ -108,8 +111,8 @@ figure { margin: 0; }
 }
 
 /* ---------- rodapé ---------- */
-.rod { margin-top: var(--secao); border-top: 2px solid var(--tinta); padding-bottom: 56px; }
-.rod::before { content: ''; display: block; border-top: 1px solid var(--tinta); margin-top: 3px; }
+.rod { margin-top: var(--secao); border-top: 2px solid var(--taupe); padding-bottom: 56px; }
+.rod::before { content: ''; display: block; border-top: 1px solid var(--taupe); margin-top: 3px; }
 .rod .g { padding-top: 28px; }
 .contato { font-size: var(--t16); line-height: 1.7; }
 .contato a[href^='mailto'] { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .22em; }
@@ -121,7 +124,7 @@ figure { margin: 0; }
 @media (max-width: 719px) { .rod-dir { text-align: left; } .rod-dir ul { align-items: flex-start; } }
 
 /* ---------- índice de projetos ---------- */
-.idx-lista { border-top: 1px solid var(--tinta); }
+.idx-lista { border-top: 1px solid var(--taupe); }
 .linha {
   position: relative; display: grid; grid-template-columns: 44px 40px 1fr auto; column-gap: 16px; align-items: start;
   padding: 20px 0 18px; border-bottom: 1px solid var(--fio-fraco);
@@ -196,7 +199,7 @@ figure { margin: 0; }
 .grade3 .item { display: block; color: var(--tinta); }
 .grade3 .item .fig img { transition: opacity .2s; }
 .grade3 .item:hover .nome { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .18em; text-decoration-color: var(--cor); }
-.grade3 .item .cabec { display: flex; gap: 14px; align-items: flex-start; margin-top: 16px; border-top: 1px solid var(--tinta); padding-top: 12px; }
+.grade3 .item .cabec { display: flex; gap: 14px; align-items: flex-start; margin-top: 16px; border-top: 1px solid var(--taupe); padding-top: 12px; }
 .grade3 .item .cabec .mat { flex: none; width: 32px; height: 32px; }
 .grade3 .item .cabec .mat img { width: 32px; height: 32px; object-fit: cover; display: block; }
 .grade3 .item .meta { margin-top: 6px; font-size: var(--t16); line-height: 1.4; }
@@ -206,7 +209,7 @@ figure { margin: 0; }
 /* ---------- hemeroteca ---------- */
 .hemeroteca .veiculo { margin-top: 64px; }
 .hemeroteca .veiculo:first-child { margin-top: 0; }
-.hemeroteca .veiculo-cab { border-top: 2px solid var(--tinta); padding-top: 10px; display: flex; justify-content: space-between; gap: 16px 32px; flex-wrap: wrap; align-items: baseline; }
+.hemeroteca .veiculo-cab { border-top: 2px solid var(--taupe); padding-top: 10px; display: flex; justify-content: space-between; gap: 16px 32px; flex-wrap: wrap; align-items: baseline; }
 .hemeroteca ol { display: grid; grid-template-columns: 1fr 1fr; column-gap: var(--gap); }
 .hemeroteca .recorte { display: grid; grid-template-columns: 180px 1fr; gap: 24px; padding: 24px 0; border-bottom: 1px solid var(--fio-fraco); align-items: start; }
 @media (max-width: 1079px) { .hemeroteca ol { grid-template-columns: 1fr; } }
@@ -222,50 +225,3 @@ figure { margin: 0; }
 .contato-grande a[href^='mailto'], .contato-grande .mapa a { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .2em; }
 .contato-grande .mapa { margin-top: 2.4em; }
 
-/* ==========================================================================
-   Pele alternativa — estrutura editorial da B com a paleta da A
-   Ativada por  <html data-tema="cinza">  (ver ?tema=cinza no layout B).
-   Regra herdada da A: taupe #66574A é texto (5,32:1 sobre o cinza);
-   taupe2 #9B8A72 e line #C6C1B8 são fio, nunca texto.
-   ========================================================================== */
-:root[data-tema='cinza'] {
-  --papel: #E4E1DB;   /* fundo da A */
-  --sur: #F5F4F1;     /* superfície clara — glifo do logo */
-  --tinta: #161616;   /* corpo de leitura */
-  --taupe: #66574A;   /* títulos, rótulos, legendas, fios estruturais */
-  --taupe2: #9B8A72;  /* fio e hover — nunca texto */
-  --cinza: #66574A;   /* texto secundário passa a ser o taupe */
-  --fio-fraco: #C6C1B8;
-}
-
-/* títulos e rótulos em taupe, como na A */
-:root[data-tema='cinza'] .titulo,
-:root[data-tema='cinza'] .nome,
-:root[data-tema='cinza'] .rotulo,
-:root[data-tema='cinza'] .subfio,
-:root[data-tema='cinza'] .nav,
-:root[data-tema='cinza'] .cab-wm,
-:root[data-tema='cinza'] .ficha,
-:root[data-tema='cinza'] .fig figcaption .rotulo { color: var(--taupe); }
-
-/* a frase de abertura e o corpo seguem em tinta — é o contraste que a A usa */
-:root[data-tema='cinza'] .lede,
-:root[data-tema='cinza'] .leitura,
-:root[data-tema='cinza'] .leitura-20,
-:root[data-tema='cinza'] .linha .meta { color: var(--tinta); }
-
-/* fios estruturais deixam o preto e assumem o taupe */
-:root[data-tema='cinza'] .fio,
-:root[data-tema='cinza'] .subfio,
-:root[data-tema='cinza'] .idx-lista,
-:root[data-tema='cinza'] .grade3 .item .cabec { border-top-color: var(--taupe); }
-:root[data-tema='cinza'] .cab { border-bottom-color: var(--taupe); }
-:root[data-tema='cinza'] .rod,
-:root[data-tema='cinza'] .rod::before,
-:root[data-tema='cinza'] .hemeroteca .veiculo-cab { border-top-color: var(--taupe); }
-
-/* marca: quadrado taupe com o glifo claro, igual à A */
-:root[data-tema='cinza'] .cab-marca { color: var(--taupe); --logo-fg: var(--sur); }
-
-:root[data-tema='cinza'] ::selection { background: var(--taupe); color: var(--sur); }
-:root[data-tema='cinza'] .skip { background: var(--taupe); color: var(--sur); }

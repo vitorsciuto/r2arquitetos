@@ -1,37 +1,83 @@
 ---
-// Página temporária de escolha entre as duas versões. Some quando uma delas for promovida à raiz.
-import '../styles/base.css';
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Base.astro';
+import IndiceProjetos from '../components/IndiceProjetos.astro';
+import Figura from '../components/Figura.astro';
+import Ficha from '../components/Ficha.astro';
+import { foto } from '../lib/fotos';
+import { arquitetos, foco, nome, posicao } from '../data/escritorio';
+import { href, meta } from '../lib/config';
+
+const projetos = (await getCollection('projetos')).sort((a, b) => a.data.numero.localeCompare(b.data.numero));
+const louveira = projetos.find((p) => p.data.slug === 'louveira-1')!;
+const d = louveira.data;
+
+// Em destaque — frases do escritório (texto do Louveira 1), com cortes.
+const destaqueP1 = 'Projetado em 1946 por um dos mais renomados arquitetos brasileiros — João Batista Vilanova Artigas —, o Edifício Louveira é um dos marcos da moderna arquitetura de edifícios residenciais de São Paulo.';
+const destaqueP2 = 'Os principais elementos originais do apartamento, como pastilhas, tacos de peroba e jardim de inverno, haviam sido retirados em intervenções anteriores. A proposta do r2arquitetos foi restabelecer esses elementos de acordo com o novo programa.';
 ---
-<!doctype html>
-<html lang="pt-BR">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="robots" content="noindex" />
-    <title>r2 arquitetos — comparação A / B</title>
-    <style>
-      body { background: #1c1c1e; color: #e8e8ea; font-family: system-ui, sans-serif; display: grid; place-items: center; padding: 2rem; }
-      main { max-width: 900px; width: 100%; }
-      h1 { font-size: 1.2rem; font-weight: 600; margin-bottom: .4rem; }
-      p { color: #a9a9b0; margin-bottom: 2rem; }
-      .duas { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-      @media (max-width: 640px) { .duas { grid-template-columns: 1fr; } }
-      a.op { display: block; border: 1px solid #333; border-radius: 8px; padding: 1.4rem; transition: border-color .15s; }
-      a.op:hover { border-color: #888; }
-      a.op b { display: block; font-size: 1.6rem; margin-bottom: .3rem; }
-      a.op span { color: #a9a9b0; font-size: .9rem; }
-      .A { background: #E4E1DB; color: #161616; } .A span { color: #66574A; }
-      .B { background: #F3EFE6; color: #1B1B1B; font-family: Georgia, serif; } .B span { color: #555; }
-    </style>
-  </head>
-  <body>
-    <main>
-      <h1>r2 arquitetos — duas versões para comparar</h1>
-      <p>Página temporária. A versão escolhida passa a responder na raiz do domínio.</p>
-      <div class="duas">
-        <a class="op A" href="/a/"><b>Opção A</b><span>Evolução da identidade atual — cinza, taupe, preto; caixa-alta com tracking.</span></a>
-        <a class="op B" href="/b/"><b>Opção B</b><span>Editorial — patrimônio moderno paulistano; papel, tinta e as cores das obras.</span></a>
+<Layout
+  titulo={nome}
+  descricao={posicao}
+  secao="Higienópolis, São Paulo"
+  secaoDir={meta(['edifícios de valor histórico e cultural', 'projeto e obra'])}
+>
+  <h1 class="sr-only">r2 arquitetos — arquitetura · urbanismo</h1>
+
+  <p class="lede" style="padding: 104px 0 88px; width: calc((100% - var(--gap)) * 7 / 12); min-width: min(100%, 22em)">{posicao}</p>
+
+  <IndiceProjetos projetos={projetos} ativo="02" />
+
+  <section class="secao" aria-labelledby="destaque-titulo" style={`--cor:${d.cor}`}>
+    <div class="secao-cab rotulo">
+      <span>Em destaque</span>
+    </div>
+    <div class="g">
+      <div>
+        <p class="rotulo">{d.numero}&nbsp;· {d.local}</p>
+        <h2 id="destaque-titulo" class="titulo" style="margin-top: 14px"><a class="link" href={href(`projetos/${d.slug}/`)}>{d.titulo}</a></h2>
+        <Ficha itens={[d.original, d.tombamento, `${d.intervencao}, ${d.anos}`]} class="mt10" />
+        <div class="leitura-20" style="margin-top: 28px">
+          <p>{destaqueP1}</p>
+          <p>{destaqueP2}</p>
+        </div>
+        <div style="margin-top: 40px; max-width: 420px">
+          <Figura
+            img={foto('02-louveira-1', '001_bf69186d.png')}
+            legenda="Anúncio da Imobiliária Itaoca para o Condomínio Louveira, “2 apartamentos por andar” — sem data."
+            doc
+            sizes="(max-width: 719px) 100vw, 420px"
+            larguras={[480, 699]}
+          />
+        </div>
       </div>
-    </main>
-  </body>
-</html>
+      <Figura
+        img={foto('02-louveira-1', '005_81f5fe68.jpg')}
+        legenda="Sala com a caixilharia recuperada e os tacos de peroba, aberta para as copas das árvores"
+        rotulo="Edifício Louveira 1"
+        ratio="4:5"
+        posicao="50% 35%"
+        sizes="(max-width: 719px) 100vw, (max-width: 1079px) 40vw, 470px"
+        larguras={[480, 800, 1200]}
+      />
+    </div>
+  </section>
+
+  <section class="secao" aria-labelledby="escritorio-titulo">
+    <div class="secao-cab rotulo" style="--cor: var(--tinta)">
+      <h2 id="escritorio-titulo" class="rotulo"><a href={href('escritorio/')}>Escritório</a></h2>
+      <span>{meta(arquitetos.map((a) => a.nome))}</span>
+    </div>
+    <div class="g">
+      <p class="leitura-20">{foco}</p>
+      <dl class="t16">
+        {arquitetos.map((a, i) => (
+          <div style={i > 0 ? 'margin-top: 18px' : undefined}>
+            <dt class="rotulo">{a.nome}</dt>
+            <dd>{a.formacao},&nbsp;{a.ano}.</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </section>
+</Layout>

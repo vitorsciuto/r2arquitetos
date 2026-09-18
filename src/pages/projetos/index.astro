@@ -1,10 +1,10 @@
 ---
 import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
-import Layout from '../../../layouts/B.astro';
-import Figura from '../../../components/b/Figura.astro';
-import { foto } from '../../../lib/fotos';
-import { href, material, meta, nomeIndice, quadros } from '../../../lib/b/config';
+import Layout from '../../layouts/Base.astro';
+import Figura from '../../components/Figura.astro';
+import { foto } from '../../lib/fotos';
+import { href, material, meta, nomeIndice, quadros } from '../../lib/config';
 
 const projetos = (await getCollection('projetos')).sort((a, b) => a.data.numero.localeCompare(b.data.numero));
 ---
