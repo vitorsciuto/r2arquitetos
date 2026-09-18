@@ -1,6 +1,6 @@
 # r2arquitetos.com.br — Briefing do projeto
 
-_Última atualização: 2026-09-17 (sessão 3: versão única, repo no ar, DNS decidido)_
+_Última atualização: 2026-09-18 (sessão 3: site no ar, identidade renovada, primeiro projeto novo)_
 
 ## Objetivo
 
@@ -214,3 +214,34 @@ forma. O GitHub Pages não toca em nameserver nem no MX.
 O acervo (`fotos-wix/`, 282 originais) e `_referencia-wix/` agora são versionados — eram o furo
 do "backup de tudo". Auditado antes de publicar: sem segredos, e todas as fotos vieram de
 galerias que já eram públicas no Wix.
+
+
+## O que está e o que NÃO está no GitHub (2026-09-18)
+
+**No repositório** (`github.com/vitorsciuto/r2arquitetos`, público, branch `main`):
+todo o código, conteúdo, `fotos-wix/` (282 originais do acervo antigo),
+`_referencia-wix/`, `marca/` (arquivos de avatar) e agora
+`src/assets/fotos/07-cozinha-tremembe/` — 22 fotos, 7 MB.
+
+**Fora do git, de propósito:**
+
+| pasta | peso | por quê |
+|---|---|---|
+| `node_modules` | 455 MB | reinstala com `npm ci` |
+| `dist` | 318 MB | é o build; regenera em 1 min |
+| `.astro`, `graphify-out` | 273 KB | cache |
+| `.claude` | 9 KB | configuração local |
+| `.superpowers` | 26 MB | mockups das sessões de design (histórico) |
+| **`fotos`** | **5,7 GB** | **não cabe: 22 TIFFs de 256 MB cada, e o limite rígido do GitHub é 100 MB por arquivo** |
+
+Os 5,7 GB ficam no **Google Drive** (as pastas trazem a assinatura de exportação
+dele) e o fotógrafo tem os masters — duas cópias fora daqui. O que o site usa
+são as 22 `JPG_INTERNET`, reprocessadas para ≤ 2400 px com mozjpeg q86: 55 MB
+viraram 7 MB sem perda visível (comparado a 100% lado a lado).
+
+**Cozinha Tremembé** — primeiro projeto novo, fotografia profissional
+(verticais corrigidas, luz controlada, tratamento de cor). Cliente e fotógrafo
+autorizaram a publicação. **Falta o nome do fotógrafo para creditar.**
+As fotos estão versionadas mas ainda não entram em nenhuma página: falta o
+texto do escritório (nome como o escritório chama, endereço/bairro, ano, o que
+foi feito).
