@@ -1,0 +1,83 @@
+{
+  "pasta": "C:/Users/Vitor/Documents/Rita/r2 arquitetos/fotos-wix/01-casa-de-praia/",
+  "capa": {"arquivo": "002_e334deef.jpg", "legenda": "Fachada frontal com porta pivotante de madeira, vidros e passeio de pedras sobre o gramado", "orientacao": "paisagem", "nota": "Única frontal em paisagem; céu estourado, mas leitura clara da casa"},
+  "hero": {"arquivo": "001_952ee7ff.jpg", "legenda": "Volume branco superior sobre a base de tijolos aparentes e caixilhos de madeira", "orientacao": "retrato", "nota": "Imagem mais icônica do projeto; retrato, cabos de energia e carro na borda do quadro"},
+  "destaques": [
+    {"arquivo": "001_952ee7ff.jpg", "legenda": "Volume branco superior sobre a base de tijolos aparentes e caixilhos de madeira", "orientacao": "retrato"},
+    {"arquivo": "007_350bfd4e.jpg", "legenda": "Venezianas de madeira do pavimento superior sobre a varanda, o balcão e a piscina", "orientacao": "retrato"},
+    {"arquivo": "012_1fa064f8.jpg", "legenda": "Piscina revestida de pastilhas azuis, deck de madeira e muro de blocos com forração", "orientacao": "paisagem"},
+    {"arquivo": "015_2be5ee5d.jpg", "legenda": "Escada com degraus em balanço de concreto revestidos com madeira", "orientacao": "paisagem"},
+    {"arquivo": "006_a15ddf60.jpg", "legenda": "Fachada lateral com tijolos aparentes, venezianas e guarda-corpo de vidro entre palmeiras", "orientacao": "paisagem"},
+    {"arquivo": "013_7845c0e5.jpg", "legenda": "Terraço superior com deck de madeira, veneziana aberta e marquise de concreto", "orientacao": "retrato"},
+    {"arquivo": "014_5b1ab54b.jpg", "legenda": "Detalhe dos degraus em balanço: concreto aparente e tampo de madeira", "orientacao": "paisagem"},
+    {"arquivo": "002_e334deef.jpg", "legenda": "Fachada frontal com porta pivotante de madeira, vidros e passeio de pedras sobre o gramado", "orientacao": "paisagem"},
+    {"arquivo": "011_9f8a8926.jpg", "legenda": "Deck de madeira ao longo da piscina, sob o pavimento superior com venezianas", "orientacao": "retrato", "nota": "Escada de obra encostada ao fundo e pessoa parcialmente visível"},
+    {"arquivo": "008_884531b9.jpg", "legenda": "Fachada frontal à noite, com o interior iluminado atrás dos caixilhos de madeira", "orientacao": "paisagem", "nota": "Foto noturna com flash, ruído e fundo preto"}
+  ],
+  "documentos": [
+    {"arquivo": "064_78a0d0f1.jpg", "legenda": "Planta do térreo: salas, cozinha, área gourmet, varanda, deck e piscina", "tipo": "planta", "orientacao": "paisagem", "transcricao": "CASA DE PRAIA - RESIDENCIAL MAR VERDE / PLANTA TÉRREO, escala 1:50 / Localização: Praia da Mococa - Caraguatatuba, Residencial Mar Verde / Projeto/Arquitetos: Rubens Reis, Rita Lo Sciuto / Folha 01"}
+  ],
+  "capitulos": [
+    {"titulo": "Fase de obras", "de": "017_c1404e39.jpg", "ate": "064_78a0d0f1.jpg"}
+  ],
+  "obra": [
+    {"arquivo": "019_90b33816.jpg", "legenda": "Escavadeira no terreno durante a demolição e preparo do lote", "orientacao": "paisagem"},
+    {"arquivo": "020_edec511e.jpg", "legenda": "Escavação alagada com armaduras das fundações junto ao muro de divisa", "orientacao": "paisagem"},
+    {"arquivo": "023_7cfb1dd1.jpg", "legenda": "Armação das vigas baldrames e do radier vista do alto", "orientacao": "paisagem"},
+    {"arquivo": "026_7ccefbe3.jpg", "legenda": "Alvenaria de tijolos cerâmicos e ferragens dos pilares do térreo", "orientacao": "paisagem"},
+    {"arquivo": "028_e0498f87.jpg", "legenda": "Vigas pré-moldadas e armaduras da laje do pavimento superior contra a serra", "orientacao": "paisagem"},
+    {"arquivo": "032_7c37042c.jpg", "legenda": "Paredes do pavimento superior erguidas sobre o escoramento de madeira", "orientacao": "paisagem"},
+    {"arquivo": "034_62fe0a7d.jpg", "legenda": "Volume superior rebocado sobre o tapume, com a placa de obra do r2", "orientacao": "paisagem"},
+    {"arquivo": "040_12bc6df8.jpg", "legenda": "Degraus em balanço de concreto ainda sem o revestimento de madeira", "orientacao": "paisagem"},
+    {"arquivo": "044_091fa368.jpg", "legenda": "Tijolos aparentes e caixilhos de madeira instalados na fachada frontal", "orientacao": "paisagem"},
+    {"arquivo": "052_7aaa9f50.jpg", "legenda": "Balcão de concreto de 13 metros sob a laje nervurada, ligando cozinha e área gourmet", "orientacao": "paisagem"},
+    {"arquivo": "057_e95c9e5f.jpg", "legenda": "Cozinha com balcão de concreto e painel de azulejos estampados", "orientacao": "paisagem"},
+    {"arquivo": "063_a920b981.jpg", "legenda": "Pergolado de madeira sobre a área gourmet, com churrasqueira e forno a lenha", "orientacao": "paisagem"}
+  ],
+  "descartadas": [
+    {"arquivo": "003_96e16a3c.jpg", "motivo": "Imagem rotacionada 90 graus; duplica o caixilho frontal de 001/002"},
+    {"arquivo": "004_a316e42c.jpg", "motivo": "Recorte do volume superior, duplicado de 001"},
+    {"arquivo": "005_65cdc7f7.jpg", "motivo": "Detalhe de beiral com ângulo fraco, duplicado de 007/013"},
+    {"arquivo": "009_12791340.jpg", "motivo": "Noturna muito escura"},
+    {"arquivo": "010_16eae259.jpg", "motivo": "Noturna muito escura e desfocada"},
+    {"arquivo": "017_c1404e39.jpg", "motivo": "Escoramento em contraluz, pouco legível; obra"},
+    {"arquivo": "018_669ad8af.jpg", "motivo": "Demolição da casa existente, duplicado de 019"},
+    {"arquivo": "021_3b4bc192.jpg", "motivo": "Pessoas em primeiro plano"},
+    {"arquivo": "022_b1dd2382.jpg", "motivo": "Duplicado de 020/023 (fundações)"},
+    {"arquivo": "024_a56b6981.jpg", "motivo": "Duplicado de 023 (radier)"},
+    {"arquivo": "025_f3fb5893.jpg", "motivo": "Duplicado de 026 (início da alvenaria)"},
+    {"arquivo": "027_809cf5d6.jpg", "motivo": "Escoramento confuso, duplicado de 028/032"},
+    {"arquivo": "029_ae3c7d7a.jpg", "motivo": "Operários em destaque; laje já representada por 028"},
+    {"arquivo": "030_564fc35c.jpg", "motivo": "Duplicado de 032 (escoramento)"},
+    {"arquivo": "031_ca539a1b.jpg", "motivo": "Duplicado de 032 (escoramento)"},
+    {"arquivo": "033_067f7e7a.jpg", "motivo": "Placas de fornecedores em primeiro plano; duplicado de 034"},
+    {"arquivo": "035_1c921616.jpg", "motivo": "Reboco do volume superior, redundante com 034"},
+    {"arquivo": "036_55b720a6.jpg", "motivo": "Duplicado de 034, com escada de obra"},
+    {"arquivo": "037_fe372dc3.jpg", "motivo": "Pilotis em obra, pouco legível"},
+    {"arquivo": "038_e112c37d.jpg", "motivo": "Detalhe de pilar em obra, redundante"},
+    {"arquivo": "039_4dcb17a1.jpg", "motivo": "Pessoa na escada"},
+    {"arquivo": "041_f219e7ce.jpg", "motivo": "Interior em obra escuro e com entulho"},
+    {"arquivo": "042_1e3c6c4b.jpg", "motivo": "Duplicado de 044 (fachada em obra)"},
+    {"arquivo": "043_3523a483.jpg", "motivo": "Duplicado de 044 (fachada em obra)"},
+    {"arquivo": "045_10bbf8fa.jpg", "motivo": "Duplicado de 044, com entulho"},
+    {"arquivo": "046_3f0a45cd.jpg", "motivo": "Interior em obra com baldes e escada; redundante com 052"},
+    {"arquivo": "047_325d0ac5.jpg", "motivo": "Escada em obra, redundante com 040"},
+    {"arquivo": "048_0611420c.jpg", "motivo": "Interior em obra escuro"},
+    {"arquivo": "049_890e45d1.jpg", "motivo": "Duplicado de 046 (interior em obra)"},
+    {"arquivo": "050_b72d0e00.jpg", "motivo": "Interior em obra escuro, retrato"},
+    {"arquivo": "051_5397b1b7.jpg", "motivo": "Duplicado de 046 (interior em obra)"},
+    {"arquivo": "053_391ec377.jpg", "motivo": "Pessoas na obra; duplicado de 052"},
+    {"arquivo": "054_4bb34836.jpg", "motivo": "Balcão em obra, duplicado de 052"},
+    {"arquivo": "055_727cd64b.jpg", "motivo": "Pessoa ao fundo; balcão em obra duplicado de 052"},
+    {"arquivo": "056_970d1fdb.jpg", "motivo": "Piscina em obra com pessoas e materiais; versão final em 011/012"},
+    {"arquivo": "058_e42d59b5.jpg", "motivo": "Duplicado de 057 (cozinha em obra)"},
+    {"arquivo": "059_ec48f74c.jpg", "motivo": "Caixilho em obra, redundante"},
+    {"arquivo": "060_bae53eba.jpg", "motivo": "Caixilho em obra, duplicado de 059"},
+    {"arquivo": "061_3f5ecc9e.jpg", "motivo": "Pergolado em obra escuro, duplicado de 063"},
+    {"arquivo": "062_9873e865.jpg", "motivo": "Pessoa sem camisa no quadro; duplicado de 063"}
+  ],
+  "slides_titulo": [
+    {"arquivo": "016_ef97628b.png", "texto": "FASE DE OBRAS"}
+  ],
+  "json_path": "C:/Users/Vitor/Documents/Rita/r2 arquitetos/fotos-wix/curadoria/01-casa-de-praia.json"
+}

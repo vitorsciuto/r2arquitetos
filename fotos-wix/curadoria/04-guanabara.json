@@ -1,0 +1,65 @@
+{
+  "pasta": "C:/Users/Vitor/Documents/Rita/r2 arquitetos/fotos-wix/04-guanabara/",
+  "capa": {
+    "arquivo": "010_c259a535.jpg",
+    "legenda": "Balcão de mármore com prateleiras de garrafas, luminárias pendentes e teto em caixotões",
+    "orientacao": "paisagem",
+    "nota": "Única paisagem forte do interior pronto; bandeirinhas de Copa e funcionário ao fundo"
+  },
+  "hero": {
+    "arquivo": "009_b66571d9.jpg",
+    "legenda": "Salão com pilares e vigas recuperados, mesas de madeira e piso xadrez verde e branco",
+    "orientacao": "retrato",
+    "nota": "Imagem mais completa do salão pronto, sem pessoas; formato retrato"
+  },
+  "destaques": [
+    {"arquivo": "009_b66571d9.jpg", "legenda": "Salão com pilares e vigas recuperados, mesas de madeira e piso xadrez verde e branco", "orientacao": "retrato"},
+    {"arquivo": "010_c259a535.jpg", "legenda": "Balcão de mármore com prateleiras de garrafas, luminárias pendentes e teto em caixotões", "orientacao": "paisagem"},
+    {"arquivo": "004_f21ac66f.jpg", "legenda": "Fachada do edifício com o térreo do restaurante, toldos pretos e portas de vidro", "orientacao": "quadrado", "nota": "Pessoas e escada na calçada; única vista frontal da fachada"},
+    {"arquivo": "036_6329d854.jpg", "legenda": "Fileira de luminárias pendentes sobre o balcão e teto com vigas pintadas de verde", "orientacao": "retrato", "nota": "Cliente de costas no quadro"},
+    {"arquivo": "005_d5bf1651.jpg", "legenda": "Espelho com o logotipo 'Bar Guanabara 1910' sobre azulejos verdes e brancos", "orientacao": "quadrado"},
+    {"arquivo": "012_e6b04661.jpg", "legenda": "Balcão de mármore com tampo de granito preto, lanternim de madeira e pilares revestidos", "orientacao": "retrato", "nota": "Funcionárias ao fundo"},
+    {"arquivo": "015_ed9e559f.jpg", "legenda": "Vitrine da copa sobre o balcão de mármore, azulejos em losango e banqueta de madeira", "orientacao": "retrato"},
+    {"arquivo": "007_68f5f57e.jpg", "legenda": "Logotipo do bar na porta de vidro, com o balcão de mármore e o piso xadrez ao fundo", "orientacao": "retrato", "nota": "Reflexos no vidro"},
+    {"arquivo": "016_18cf911c.jpg", "legenda": "Chopeira cromada sobre o balcão, vitrine de doces e luminárias pendentes ao fundo", "orientacao": "retrato", "nota": "Funcionário em primeiro plano"},
+    {"arquivo": "014_53fe2146.jpg", "legenda": "Detalhe do balcão: mármore branco, tampo em granito preto e piso xadrez", "orientacao": "paisagem", "nota": "Luz amarelada"},
+    {"arquivo": "003_d50d4014.jpg", "legenda": "Fachada vista da calçada, com sacadas de ferro e luminária de rua contra o céu", "orientacao": "paisagem", "nota": "Contraluz forte"}
+  ],
+  "documentos": [
+    {"arquivo": "001_acc5e5d4.jpg", "legenda": "Fotografia antiga de edifício de esquina, com bondes e automóveis de época", "tipo": "foto-historica", "orientacao": "paisagem", "transcricao": ""},
+    {"arquivo": "002_175efc69.png", "legenda": "Anúncio 'Ao Pinguim Bar e Restaurante', inauguração na Av. S. João 126-128", "tipo": "anuncio", "orientacao": "paisagem", "transcricao": "AO PINGUIM BAR E RESTAURANTE — Av. S. João, 126-128 (esq. Praça do Correio) — ABERTURA - HOJE, 5 de Novembro — Magníficas e confortáveis instalações, esmerado serviço de cosinha — Instalação frigorífica e mecânica especial para a tiragem de chopp sempre com temperatura e pressão uniformes - ÚNICA EM S. PAULO — Orchestra de 7 professores executará, todos os dias, escolhidos programmas, até 1 hora da manhan — Hoje - Inauguração - Hoje"}
+  ],
+  "capitulos": [
+    {"titulo": "FASE DE OBRAS", "de": "018_7cd845fc.jpg", "ate": "036_6329d854.jpg"}
+  ],
+  "obra": [
+    {"arquivo": "018_7cd845fc.jpg", "legenda": "Demolição do salão: revestimentos antigos removidos e janelas de venezianas ao fundo", "orientacao": "paisagem"},
+    {"arquivo": "019_5bdcbb83.jpg", "legenda": "Demolição vista de cima: fiação solta, andaimes e operários no salão", "orientacao": "paisagem", "nota": "Escura"},
+    {"arquivo": "021_23e9fb0e.jpg", "legenda": "Teto original em caixotões exposto após a retirada do forro de gesso", "orientacao": "paisagem"},
+    {"arquivo": "020_75cac6c5.jpg", "legenda": "Viga e cornija originais expostas após a demolição do forro", "orientacao": "retrato", "nota": "Julgada pela folha de contato"},
+    {"arquivo": "023_59187945.jpg", "legenda": "Vigas e pilares recuperados já pintados de branco", "orientacao": "quadrado", "nota": "Julgada pela folha de contato"},
+    {"arquivo": "024_18566fb6.jpg", "legenda": "Assentamento do piso xadrez verde e branco", "orientacao": "paisagem", "nota": "Operário de costas"},
+    {"arquivo": "025_1a103431.jpg", "legenda": "Estrutura do balcão recebendo as placas de mármore, azulejos em losango já assentados", "orientacao": "paisagem", "nota": "Operários no quadro"},
+    {"arquivo": "029_b3690734.jpg", "legenda": "Balcão revestido em mármore branco, faixa de granito preto e azulejos em losango", "orientacao": "paisagem"},
+    {"arquivo": "030_29026cc4.jpg", "legenda": "Montagem das prateleiras do bar sobre o balcão, com operário na escada", "orientacao": "quadrado"},
+    {"arquivo": "027_450ee6d5.jpg", "legenda": "Balcão de mármore concluído com o salão ainda em obras", "orientacao": "paisagem", "nota": "Homem de terno em primeiro plano"},
+    {"arquivo": "032_6375439f.jpg", "legenda": "Montagem da estrutura metálica da escada, com nível de bolha", "orientacao": "paisagem", "nota": "Operários no quadro"},
+    {"arquivo": "033_4f5512c3.jpg", "legenda": "Escada de estrutura metálica preta e degraus de madeira junto às pastilhas verdes", "orientacao": "retrato"}
+  ],
+  "descartadas": [
+    {"arquivo": "006_1039f688.jpg", "motivo": "quase duplicata de 007, com mais reflexos na porta de vidro"},
+    {"arquivo": "008_ded4d8fe.jpg", "motivo": "quase duplicata de 016, enquadramento inferior e mais escuro"},
+    {"arquivo": "011_071a807f.jpg", "motivo": "pessoas em primeiro plano; salão já coberto por 009"},
+    {"arquivo": "013_94edbcd0.jpg", "motivo": "duplicata do lanternim de 012, mais escura"},
+    {"arquivo": "022_3135b053.jpg", "motivo": "pilar com revestimento removido; redundante com 020 e 021"},
+    {"arquivo": "026_a3a12f82.jpg", "motivo": "salão com escada e estrutura pintada; redundante com 023 e 030"},
+    {"arquivo": "028_94f5acba.jpg", "motivo": "balcão em obra com cones e pessoas; redundante com 025 e 027"},
+    {"arquivo": "031_993a50b7.jpg", "motivo": "balcão e salão em obras, pessoas ao fundo; redundante com 027"},
+    {"arquivo": "034_ea6a4bd6.jpg", "motivo": "detalhe do degrau da escada; redundante com 033"},
+    {"arquivo": "035_d059e085.jpg", "motivo": "luminárias em instalação, mão de operário e prateleiras inacabadas; redundante com 036"}
+  ],
+  "slides_titulo": [
+    {"arquivo": "017_ef97628b.png", "texto": "FASE DE OBRAS"}
+  ],
+  "json_path": "C:/Users/Vitor/Documents/Rita/r2 arquitetos/fotos-wix/curadoria/04-guanabara.json"
+}

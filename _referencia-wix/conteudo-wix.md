@@ -1,0 +1,315 @@
+# Conteúdo extraído do site Wix original
+
+Fonte: https://rubens572.wixsite.com/meusite-1 (extraído em 2026-08-23)
+
+Imagens originais em alta resolução: `https://static.wixstatic.com/media/<ID>` (sem o sufixo /v1/fill/...).
+IDs `aa00f7_1dc4cb03...` = logo r2 · `d3470ec8...png` = ícone Facebook (ignorar).
+
+
+---
+
+## Home  `/`
+
+### Texto
+
+PROJETOS EM DESTAQUEcasa de
+
+praia02/23
+
+I'm a paragraph. Click here to add your own text and edit me. I’m a great place for you to tell a story.
+
+View projectEDIFICIO
+
+LOUVEIRA 103/23
+
+I'm a paragraph. Click here to add your own text and edit me. I’m a great place for you to tell a story.
+
+RECENT NEWS
+
+View projectSou um parágrafo. Clique aqui para adicionar e editar seu próprio texto. É fácil.Projetos Residenciais, Comerciais e Urbanísticos.
+
+Reformas de apartamentos.
+
+Acompanhamento, Fiscalização, Administração e Gerenciamento de obras.
+
+
+
+Nosso diferencial baseia-se na procura da valorização das características originais de edifícios históricos.
+
+11   /   06   /   2023
+
+I'm a paragraph. Click here to add your own text and edit me. I’m a great place for you to tell a story.
+
+11   /   06   /   2023
+
+I'm a paragraph. Click here to add your own text and edit me. I’m a great place for you to tell a story.
+
+11   /   06   /   2023
+
+I'm a paragraph. Click here to add your own text and edit me. I’m a great place for you to tell a story.
+
+Read moreRead moreRead more
+
+### Imagens (IDs Wix)
+
+- https://static.wixstatic.com/media/aa00f7_a587dce48f274480b8fe37ceb71a64b7~mv2.jpg
+- https://static.wixstatic.com/media/aa00f7_1dc4cb03f746406ca6923c74d4742852~mv2.jpg
+- https://static.wixstatic.com/media/aa00f7_712c8c89363749e9899967bfed962a9e~mv2_d_3264_2448_s_4_2.jpg
+- https://static.wixstatic.com/media/aa00f7_804b1d558ff0467aae0b85a0cd7129d2~mv2_d_2448_3264_s_4_2.jpg
+- https://static.wixstatic.com/media/aa00f7_8e60409618ba4b2bb20b905a183dd61b~mv2_d_3264_2448_s_4_2.jpg
+
+---
+
+## Projetos (lista)  `/projetos`
+
+### Texto
+
+PROJECTS
+
+010203040506
+
+### Imagens (IDs Wix)
+
+- https://static.wixstatic.com/media/aa00f7_1dc4cb03f746406ca6923c74d4742852~mv2.jpg
+- https://static.wixstatic.com/media/aa00f7_1eb95235917046b187f903ec30723b30~mv2.jpg
+- https://static.wixstatic.com/media/aa00f7_e088de5f65ec476184936e1b7009333b~mv2.jpg
+- https://static.wixstatic.com/media/aa00f7_0d0a1121265f481785a7662a916249ce~mv2.jpg
+- https://static.wixstatic.com/media/aa00f7_1039f688715247228681938bae34d273~mv2.jpg
+- https://static.wixstatic.com/media/aa00f7_4605555f51584ce99470309ebd905eac~mv2.jpg
+- https://static.wixstatic.com/media/aa00f7_cff1282fc8ff4bd4af816476e1fb9d5a~mv2.jpg
+- https://static.wixstatic.com/media/aa00f7_a587dce48f274480b8fe37ceb71a64b7~mv2.jpg
+
+---
+
+## Escritório  `/escritorio`
+
+### Texto
+
+OUR ARCHITECTS
+
+RUBENS REISARCHITECT
+
+RITA LO SCIUTOinfo@mysite.com
+
+PARTNER
+
+SOBRE O ESCRITÓRIOO r2arquitetos tem profissionais que já atuaram nas áreas pública e privada, e com vasta experiência em projetos de arquitetura, urbanismo, obras e administração.
+
+O escritório tem como objetivo o atendimento das necessidades dos clientes, assessorando-os na concepção do programa de necessidades, levantamento de diretrizes,  estudos de viabilidade, desenvolvimento do projeto de arquitetura, levantamento dos custos, organização dos cronogramas físico e financeiro,  coordenação e compatibilização de todos os projetos complementares com o projeto de arquitetura e  acompanhamento, fiscalização e administração da obra.
+
+Trabalhamos associados à empresas de engenharia e consultoria, o que garante um resultado mais abrangente e multidisciplinar.
+
+O foco principal do escritório é a  dedicação ao estudo de edifícios de valor histórico/cultural da cidade de São Paulo e ao desenvolvimento de readequação espacial de apartamentos pertencentes aos mesmos, procurando recuperar e requalificar os elementos arquitetônicos originais, dentro de um novo programa que atenda às demandas atuais dos clientes.ARQUITETOS
+
+Sou um parágrafo. Clique aqui para adicionar e editar seu próprio texto. É fácil.Sou um parágrafo. Clique aqui para adicionar e editar seu próprio texto. É fácil.Nascida em 1961, formada pela Faculdade de Arquitetura e Urbanismo da Universidade Mackenzie em 1984.Nascido em 1957, formado pela Faculdade de Arquitetura e Urbanismo da Universidade Mackenzie em 1988.
+
+### Imagens (IDs Wix)
+
+- https://static.wixstatic.com/media/aa00f7_1dc4cb03f746406ca6923c74d4742852~mv2.jpg
+- https://static.wixstatic.com/media/aa00f7_94bd3034e5664e7ea43213919c76c5d1~mv2.jpg
+- https://static.wixstatic.com/media/aa00f7_9a4d324edf704e7d87348dae73a03635~mv2.jpg
+- https://static.wixstatic.com/media/aa00f7_9a98bfe5ce4f4cad9134ec380d1b2f54~mv2.jpg
+- https://static.wixstatic.com/media/aa00f7_a587dce48f274480b8fe37ceb71a64b7~mv2.jpg
+
+---
+
+## Publicações  `/publicacoes`
+
+### Texto
+
+Verifique em breveAssim que novos posts forem publicados, você poderá vê-los aqui.REVISTA PROJETOREVISTA ARQUITETURA E CONSTRUÇÃOREVISTA DO JORNAL A FOLHA DE SÃO PAULOJORNAIS
+
+### Imagens (IDs Wix)
+
+- https://static.wixstatic.com/media/aa00f7_1dc4cb03f746406ca6923c74d4742852~mv2.jpg
+- https://static.wixstatic.com/media/aa00f7_5208156bc9504bee94179183047acdd6~mv2.jpg
+- https://static.wixstatic.com/media/aa00f7_f08cdb3cc334481abd2ba496e2e86be4~mv2.jpg
+- https://static.wixstatic.com/media/aa00f7_3aef66979beb4fbb880c75349611e5fe~mv2.jpg
+- https://static.wixstatic.com/media/aa00f7_8dbb3889b7874370aba70c7e21ece741~mv2.jpg
+- https://static.wixstatic.com/media/aa00f7_613c006703f047f0a9db4bc6f81047d7~mv2.jpg
+- https://static.wixstatic.com/media/aa00f7_911df34992e547c5913acc934b092bc5~mv2.jpg
+- https://static.wixstatic.com/media/aa00f7_244ca33dfe9f40f2ae093dd7e136ac0f~mv2.jpg
+- https://static.wixstatic.com/media/aa00f7_5d4c094115694b5e8f32e947ebd44c59~mv2.jpg
+- https://static.wixstatic.com/media/aa00f7_41ab73b6f5df4a7c8e6ff2156f5719c4~mv2.jpg
+- https://static.wixstatic.com/media/aa00f7_388d8b48f49d4c9bb968a5cde24b4c5a~mv2.jpg
+- https://static.wixstatic.com/media/aa00f7_b8cded95d228442eb1d11260a01a1bb7~mv2.jpg
+- https://static.wixstatic.com/media/aa00f7_d0617da990b64327b8674bdd70c125c0~mv2.jpg
+- https://static.wixstatic.com/media/aa00f7_ce1c177d392141599e2245f400115f91~mv2.jpg
+- https://static.wixstatic.com/media/aa00f7_62608643eb1c480cb61e0da87803c7b0~mv2.jpg
+- https://static.wixstatic.com/media/aa00f7_a587dce48f274480b8fe37ceb71a64b7~mv2.jpg
+
+---
+
+## Projeto 01 — Casa de Praia  `/1st-project`
+
+### Texto
+
+1/64CARAGUATATUBA - MOCOCACASA DE PRAIA2013 / 2014< Back to Portfolio Situada na Praia da Mococa, divisa dos municípios de Caraguatatuba e Ubatuba no Litoral Norte de São Paulo, a Casa de Praia foi projetada para o atendimento de um programa que previa a implantação de uma grande área íntima (destinada a receber familiares e amigos), sem deixar de levar em consideração as limitações do lote, as regras da Prefeitura local e as próprias regras do condomínio no qual o lote estava inserido.
+
+O projeto foi desenvolvido em dois pavimentos:
+
+Pavimento térreo com o máximo de abertura e interligações entre os espaços de lazer, estar e cozinhar. O pavimento se distribui de forma longitudinal (acompanhando os limites do terreno), integrando as salas, a cozinha, as áreas de churrasqueira/fornos a lenha e a piscina. Como forma de ligação entre as referidas áreas, o projeto propôs a construção de um grande balcão de 13 metros de comprimento, atravessado por fechamentos de portas de correr entre a cozinha e a área gourmet. 
+
+Pavimento superior com quatro suítes independentes, articuladas por um corredor lateral - acessado pelas escadarias com degraus em balanço, oriundas das salas de estar, jantar e TV.
+
+
+
+### Imagens (IDs Wix)
+
+- https://static.wixstatic.com/media/aa00f7_1dc4cb03f746406ca6923c74d4742852~mv2.jpg
+- https://static.wixstatic.com/media/aa00f7_952ee7ff548845838df5cf13e129217b~mv2.jpg
+- https://static.wixstatic.com/media/aa00f7_e334deefd7ef44dfb831195e28f43eb0~mv2.jpg
+- https://static.wixstatic.com/media/aa00f7_78a0d0f17f424a0f9f7d9ec232cfd201~mv2.jpg
+- https://static.wixstatic.com/media/aa00f7_a587dce48f274480b8fe37ceb71a64b7~mv2.jpg
+
+---
+
+## Projeto 02 — Edifício Louveira 1  `/2nd-project`
+
+### Texto
+
+1/41HIGIENÓPOLIS - SÃO PAULOEDIFÍCIO LOUVEIRA 12013 / 2014< Back to PortfolioProjetado em 1946 por um dos mais renomados arquitetos brasileiros - João Batista Vilanova Artigas - o Edifício Louveira é um dos marcos da Moderna Arquitetura de edifícios residenciais de São Paulo. Pela sua importância, o edifício foi tombado em 1992 pelo Conselho de Defesa do Patrimônio Histórico, Arqueológico, Artístico e Turístico (CONDEPHAAT) com o seguinte argumento: "exemplo da primeira fase da moderna arquitetura paulistana".
+
+Dos principais elementos que o qualificaram como exemplo podemos citar: A sua original implantação - rompendo com os tradicionais limites entre o espaço privado e o espaço público - e ao tratamento dado aos dois blocos do conjunto - criando uma interessante alternância entre os "cheios e os vazios" através de uma moderna fachada dinâmica e colorida. 
+
+Os principais elementos originais do apartamento como pastilhas, tacos de peroba, jardim de inverno haviam sido retirados em intervenções anteriores, descaracterizando totalmente o apartamento. A proposta do r2arquitetos foi de restabelecer esses elementos de acordo com o novo programa, a saber:
+
+Implantação de um novo espaço de trabalho (escritório) anexo às novas salas de jantar/estar; Ampliação das visuais e da iluminação natural; Reconfiguração e ampliação da área destinada à nova suíte; Ampliação da área de serviço; Ampliação das áreas destinadas aos armários/arquivos e, principalmente, a reconstrução da antiga área destinada ao Jardim de Inverno/Estúdio, com a recolocação das pastilhas do piso, a recuperação das pastilhas do pilar e a reconstrução da caixilharia do projeto original. Outro destaque foi a recuperação de toda a caixilharia de vedação das fachadas da frente e dos fundos.
+
+### Imagens (IDs Wix)
+
+- https://static.wixstatic.com/media/aa00f7_1dc4cb03f746406ca6923c74d4742852~mv2.jpg
+- https://static.wixstatic.com/media/aa00f7_bf69186db7d540fa8f0e8ba7c1b2bb91~mv2.png
+- https://static.wixstatic.com/media/aa00f7_be6b14eeb644432b83f0746f1384e084~mv2.jpg
+- https://static.wixstatic.com/media/aa00f7_261c390aa7ae47038399a005a62a2a9c~mv2.jpg
+- https://static.wixstatic.com/media/aa00f7_a587dce48f274480b8fe37ceb71a64b7~mv2.jpg
+
+---
+
+## Projeto 03 — Edifício Louveira 2  `/3rd-project`
+
+### Texto
+
+1/17HIGIENÓPOLIS - SÃO PAULOEDiFÍCIO LOUVEIRA 22015OBRA EM ANDAMENTO< Back to PortfolioSou um parágrafo. Clique aqui para adicionar e editar seu próprio texto. É fácil.Outro projeto do escritório no mesmo Edifício Louveira atendeu às demandas de um jovem músico que desejava dar ao apartamento uma atmosfera mais urbana e mais masculina sem deixar de valorizar os elementos originais.
+
+Espaços abertos integram as áreas das salas de jantar e estar e utiliza-se a cor preta em todos os caixilhos existentes e nos móveis de cozinha, criando a atmosfera de um loft.
+
+
+
+O programa proposto, previu a Implantação de uma suíte (inexistente na planta original) sendo que a realização da nova e ampla sala de banho tornou necessária a modificação da área de serviço onde foi proposto utilizar um caixilho retirado da área de serviço anterior. Outra demanda do novo proprietário foi a instalação de um equipamento de ar condicionado, acomodando-o de forma a não interferir na estética do apartamento.
+
+
+
+
+
+
+
+### Imagens (IDs Wix)
+
+- https://static.wixstatic.com/media/aa00f7_1dc4cb03f746406ca6923c74d4742852~mv2.jpg
+- https://static.wixstatic.com/media/aa00f7_ef97628b489e48ff8d72745f4daa357c~mv2.png
+- https://static.wixstatic.com/media/aa00f7_e9f05d9bce9f435783070cf85d0c6f45~mv2.jpg
+- https://static.wixstatic.com/media/aa00f7_a1c170708d624e8583eea14bd45aef62~mv2.jpg
+- https://static.wixstatic.com/media/aa00f7_a587dce48f274480b8fe37ceb71a64b7~mv2.jpg
+
+---
+
+## Projeto 04 — Bar e Restaurante Guanabara  `/4th-project`
+
+### Texto
+
+1/36AVENIDA SÃO JOÃO - SÃO PAULOAVENIDA SÃO JOÃO - SÃO PAULOBAR E RESTAURANTE GUANABARA2013 - 2014< Back to PortfolioTRADIÇÃO DE MAIS DE 100 ANOS
+
+
+
+Fundado em 1910 pela família Ângelo Martinez, o tradicional Bar e Restaurante Guanabara teve a sua primeira sede na Rua Boa Vista até o ano de 1971. Com a chegada do Metrô, a antiga sede foi desapropriada e demolida, provocando o quase encerramento do restaurante. Após intensa manifestação dos seus antigos clientes, o Guanabara transferiu as suas atividades para as dependências do também tradicional Restaurante À Brasileira (O qual já tinha substituído em 1931 a também antiga e tradicional Choperia Pinguim) dos mesmos proprietários na Avenida São João 128. A junção da experiência e cardápios das duas casas com a também tradicional Leiteria Pereira (também dos mesmos donos) formaram a base do variadíssimo e famoso cardápio do Guanabara.
+
+O Bar e Restaurante Guanabara é um dos últimos remanescentes da tradicional história da gastronomia do centro da cidade de São Paulo que junto com o Bar Brahma, o Amigo Léo, o Itamarati e o Ponto Chic ainda resistem às mudanças da área central.
+
+Instalado em um histórico edifício do centro de São Paulo - Casa José Moreira de 1926 - projetado pelo arquiteto Ricardo Severo (projetista do edifício da Faculdade de Direito do Largo São Francisco e da Igreja Nossa Senhora do Brasil), o edifício Casa José Moreira é um exemplar da arquitetura Neocolonial, tão em voga entre os anos 20 e 40 na cidade de São Paulo.
+
+Propriedade da Santa Casa de São Paulo, o edifício encontra-se em mau estado de conservação, aguardando recursos para a sua modernização e restauro. O projeto de reforma das instalações do Guanabara restringiu-se ao interior do salão ocupado pelo restaurante e foi proposto em duas etapas: a primeira relativa à reforma e atualização do salão frontal (salão da copa) e a segunda etapa referente ao grande salão do restaurante.
+
+A área relativa à primeira etapa foi totalmente remodelada com a demolição de todas as instalações, paredes divisórias e do forro de gesso que diminuía o pé-direito do espaço. Com as demolições pudemos recuperar a amplitude do salão com a valorização das suas antigas estruturas - vigas e pilares recuperados que contribuem para a valorização do novo espaço.
+
+
+
+### Imagens (IDs Wix)
+
+- https://static.wixstatic.com/media/aa00f7_1dc4cb03f746406ca6923c74d4742852~mv2.jpg
+- https://static.wixstatic.com/media/aa00f7_acc5e5d4d77e42ce9a9d654b76378f46~mv2.jpg
+- https://static.wixstatic.com/media/aa00f7_175efc69aa124b72a38884b32a22afb6~mv2.png
+- https://static.wixstatic.com/media/aa00f7_6329d85493c04a45927bee755553e21b~mv2.jpg
+- https://static.wixstatic.com/media/aa00f7_a587dce48f274480b8fe37ceb71a64b7~mv2.jpg
+
+---
+
+## Projeto 05 — Praça Roosevelt  `/5th-project`
+
+### Texto
+
+1/69CONSOLAÇÃO - SÃO PAULOCONSOLAÇÃO - SÃO PAULOREESTRUTURAÇÃO URBANA - PRAÇA ROOSEVELT2007 - 20121990 / 2012< Back to PortfolioRECONSTRUINDO UM LUGAR
+
+
+
+A nova Praça Roosevelt, reinaugurada em 2012 é resultado das intervenções e das obras de readequação das estruturas remanescentes das demolições efetuadas no referido espaço, tendo como base os estudos e projetos desenvolvidos pela antiga Empresa Municipal de Urbanização - EMURB (Atual São Paulo Urbanismo) desde o final dos anos 70. A proposta de demolição da lajes acima dos estacionamentos desenvolvida no ano de 1995, como também,  os posteriores estudos de ocupação do espaço remanescente das demolições propostas foram desenvolvidos desde o seu início pelo arquiteto Rubens Reis, quando da sua atuação de mais de 20 anos na respectiva empresa de urbanização.
+
+Inaugura em 1970, a antiga Praça Roosevelt foi construída dentro de um contexto marcado pelo chamado "Milagre Brasileiro" e pelos reflexos do processo de metropolização neste espaço da cidade marcado por intervenções para ampliação do sistema viário da cidade.
+
+Ufanisticamente, nos anos 70 a nova Praça Roosevelt nasceu como exemplo de modernidade e eficiência, como expressamente afirmava um de seus autores à época: "A Roosevelt não tem comparações no mundo, é diferente das novas praças de Montreal, como é superior ao Lincoln Center em Nova York". Ou em como em outra afirmação: "A Roosevelt é mais que uma praça, é um sistema viário, edifício e viaduto"
+
+Grandiosa nas suas dimensões, nas suas exuberantes formas e na sua complexidade funcional, a icônica praça foi acumulando ao longo do tempo uma série de problemas relativos à sua gestão, administração, uso e manutenção, acabando assim, por provocar a sua contínua degradação que perdurou do final dos anos 70 até a primeira década de 2000.
+
+A praça tornou-se um grande problema da Administração Municipal. Muitas propostas e alternativas foram lançadas no intuito de solucionar o problema, mas infelizmente (ou até mesmo felizmente) não foram adiante.
+
+Em 1995 a estratégia centrada na remoção do excesso da massa construída, dos obstáculos visuais e de acessibilidade foram adotados como premissas projetuais e diretrizes de intervenção pela Empresa Urbanização - EMURB, a proposta de demolição das estruturas e da extensa massa construída finalmente é adotada pela administração em 2001.
+
+Dentre os principais pontos do novo programa destacam-se a ampliação da acessibilidade, a abertura das esplanadas da Consolação e Augusta (com o fechamento dos vazios existentes) e a articulação com o entorno, antes totalmente obstruído. O projeto também tirou partido dos "caixões perdidos" da estrutura remanescente para a criação de grandes floreiras/bancos para o plantio de árvores e a ampliação das áreas permeáveis e de vegetação.
+
+De acordo com as demandas locais do momento, o programa também contemplou a manutenção das floriculturas através da criação de um novo espaço adequado, sob um grande pergolado, como também, a manutenção das bases da polícia militar e da guarda metropolitana. O projeto original (alterado durante a execução da obra) contemplava ainda um Telecentro que acabou não sendo construído e sanitários públicos, que mesmo sendo construídos não foram abertos ao público.
+
+Após a sua reinauguração a praça se transformou em um dos mais importantes espaços públicos da cidade, importante mas não sem conflitos.
+
+
+
+### Imagens (IDs Wix)
+
+- https://static.wixstatic.com/media/aa00f7_1dc4cb03f746406ca6923c74d4742852~mv2.jpg
+- https://static.wixstatic.com/media/aa00f7_bb4bd8b4517644d780489349f63dd94f~mv2.png
+- https://static.wixstatic.com/media/aa00f7_e6fe225ce6c8455889383b936ab62e5a~mv2.jpg
+- https://static.wixstatic.com/media/aa00f7_341c6858b3de49eaaf2f418ec854f907~mv2.jpg
+- https://static.wixstatic.com/media/aa00f7_a587dce48f274480b8fe37ceb71a64b7~mv2.jpg
+
+---
+
+## Projeto 06 — Edifício Lausanne  `/6th-project`
+
+### Texto
+
+1/20HIGIENÓPOLIS - SÃO PAULOEDFÍCIO Lausanne200611   /   06   /   2023
+
+< Back to PortfolioÍCONE PAULISTANO
+
+
+
+Um dos mais representativos edifícios de arquitetura residencial do modernismo paulista. O Edifício Lausanne, projeto do arquiteto Franz Heep (autor de um grande número de edifícios na cidade de São Paulo - destacando-se o Edifício Itália) teve o seu projeto iniciado no ano de 1953, e o término de sua construção em 1958, período em que os apartamentos passaram a ser valorizados como moradia.
+
+Edifício em uma única lâmina com dois blocos. Elevado sobre pilotis, apresenta um mural do artista plástico Clóvis Graciano, tendo como destaque principal a sua fachada composta por venezianas coloridas, criando um efeito dinâmico e alternância dos cheios e vazios.
+
+Tombado em 1991 pelo CONPRESP - Conselho Municipal de Preservação do Patrimônio Histórico, Cultural e Ambiental da Cidade de São Paulo, o edifício é dos mais tradicionais exemplares da arquitetura residencial do bairro de Higienópolis.
+
+A reforma deste apartamento incluindo projeto e obra levou apenas 4 meses para serem executados pelo r2arquitetos. Como é da sensibilidade do escritório materiais como tacos de peroba e pastilhas foram recuperados; caixilhos originais e maçanetas foram mantidos e utilizou-se granilite na mesma cor das áreas comuns do edifício nos pisos das áreas molhadas que estavam muito danificados.
+
+A reforma, estabelecida pelo novo programa, apresentou as seguintes demandas: transformação do terceiro dormitório em biblioteca; abertura da cozinha, articulando-a com as salas; reconfiguração da área de serviço e das instalações destinadas anteriormente à empregada (Quarto de empregada - transformado em escritório).
+
+
+
+
+
+### Imagens (IDs Wix)
+
+- https://static.wixstatic.com/media/aa00f7_1dc4cb03f746406ca6923c74d4742852~mv2.jpg
+- https://static.wixstatic.com/media/aa00f7_e6157626d72e4f40bcd887abd08116f6~mv2.jpg
+- https://static.wixstatic.com/media/aa00f7_c68f4a535e0d400e96f9d5ddbeca936a~mv2.jpg
+- https://static.wixstatic.com/media/aa00f7_621c547b2d4a4be1b9b583941aae711c~mv2.jpg
+- https://static.wixstatic.com/media/aa00f7_a587dce48f274480b8fe37ceb71a64b7~mv2.jpg

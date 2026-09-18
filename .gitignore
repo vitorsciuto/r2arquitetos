@@ -2,9 +2,8 @@
 node_modules/
 dist/
 .astro/
-# arquivos locais / referência (não publicar)
-fotos-wix/
-_referencia-wix/
+# o acervo original e a referência do Wix FICAM versionados — são o backup do escritório.
+# Não são publicados: o Astro só empacota o que é importado de src/.
 .superpowers/
 .claude/
 # sistema

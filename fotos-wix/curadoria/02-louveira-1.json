@@ -1,0 +1,60 @@
+{
+  "pasta": "C:/Users/Vitor/Documents/Rita/r2 arquitetos/fotos-wix/02-louveira-1/",
+  "capa": {"arquivo": "003_860d06ac.jpg", "legenda": "Fachada do Edifício Louveira com venezianas amarelas e painéis vermelhos", "orientacao": "paisagem", "nota": "Imagem icônica e nítida da fachada; 3264x2448, a maior resolução da pasta"},
+  "hero": {"arquivo": "004_a3bcdedc.jpg", "legenda": "Jardim interno do edifício, com a fachada colorida ao fundo", "orientacao": "paisagem", "nota": "Mostra a implantação e o jardim; há pessoas pequenas ao fundo, pouco perceptíveis"},
+  "destaques": [
+    {"arquivo": "003_860d06ac.jpg", "legenda": "Fachada do Edifício Louveira com venezianas amarelas e painéis vermelhos", "orientacao": "paisagem"},
+    {"arquivo": "005_81f5fe68.jpg", "legenda": "Sala com caixilharia recuperada, tacos de peroba e vista para as copas das árvores", "orientacao": "retrato", "nota": "Digitalização de página de revista; há caixa de texto da publicação no canto inferior esquerdo"},
+    {"arquivo": "007_aa48a8f6.jpg", "legenda": "Sala de estar vista através da caixilharia do jardim de inverno", "orientacao": "retrato", "nota": "Digitalização de revista; resolução 718x773"},
+    {"arquivo": "004_a3bcdedc.jpg", "legenda": "Jardim interno do edifício, com a fachada colorida ao fundo", "orientacao": "paisagem"},
+    {"arquivo": "006_66a840ec.jpg", "legenda": "Estar integrado à cozinha, com pilar revestido de pastilhas e estante branca", "orientacao": "paisagem", "nota": "Digitalização de revista; 924x537"},
+    {"arquivo": "010_52de2295.jpg", "legenda": "Sala de banho da suíte com banheira e venezianas amarelas", "orientacao": "paisagem", "nota": "Digitalização de revista; número de página visível no canto"},
+    {"arquivo": "009_a884a917.jpg", "legenda": "Cozinha e espaço de trabalho junto à caixilharia da fachada", "orientacao": "paisagem", "nota": "Digitalização de revista; 844x722"},
+    {"arquivo": "008_e864d74a.jpg", "legenda": "Cozinha e sala de jantar com armários brancos e piso de tacos", "orientacao": "paisagem", "nota": "Digitalização de revista; 935x540"},
+    {"arquivo": "002_be6b14ee.jpg", "legenda": "Letreiro 'Louveira' na marquise revestida de pastilhas", "orientacao": "paisagem", "nota": "Detalhe externo; 1125x925"}
+  ],
+  "documentos": [
+    {"arquivo": "001_bf69186d.png", "legenda": "Anúncio 'Condomínio Louveira' com perspectiva e planta do pavimento", "tipo": "anuncio", "orientacao": "paisagem", "transcricao": "Em Higienópolis e já construído com todo o luxo, conforto e bom-gôsto que a arquitetura moderna proporciona. Condomínio LOUVEIRA — Praça Vilaboim, esq. Rua Piauí, próximo à Praça Buenos Aires. Confortáveis acomodações. 2 apartamentos por andar. Preço único cr$ 1.000.000,00 — 10% de sinal, 20% em 60 dias. Imobiliária Itaoca Limitada. (sem data legível)"}
+  ],
+  "capitulos": [
+    {"titulo": "FASE DE OBRAS", "de": "012_5a401499.jpg", "ate": "041_261c390a.jpg"}
+  ],
+  "obra": [
+    {"arquivo": "012_5a401499.jpg", "legenda": "Demolição das paredes de alvenaria e revestimentos da cozinha", "orientacao": "paisagem", "nota": "Operários de costas"},
+    {"arquivo": "016_fb4a0827.jpg", "legenda": "Tijolos maciços com marca “M9B” retirados da demolição", "orientacao": "paisagem"},
+    {"arquivo": "017_f61ea07c.jpg", "legenda": "Conferência do projeto no local após a demolição", "orientacao": "paisagem", "nota": "Pessoas de costas; incluída por narrar o processo"},
+    {"arquivo": "021_944595e1.jpg", "legenda": "Novas paredes em blocos de concreto celular junto à caixilharia", "orientacao": "paisagem"},
+    {"arquivo": "022_174b883e.jpg", "legenda": "Veneziana metálica original com tinta descascada antes da recuperação", "orientacao": "paisagem"},
+    {"arquivo": "023_5785d565.jpg", "legenda": "Folhas de veneziana desmontadas sobre cavalete para recuperação", "orientacao": "paisagem"},
+    {"arquivo": "024_38b352aa.jpg", "legenda": "Estrutura amarela da nova caixilharia do jardim de inverno em montagem", "orientacao": "paisagem"},
+    {"arquivo": "027_6a72ecde.jpg", "legenda": "Tacos de peroba lixados e envernizados na sala, com a caixilharia ao fundo", "orientacao": "paisagem"},
+    {"arquivo": "029_95739de5.jpg", "legenda": "Piso de tacos restaurado no dormitório", "orientacao": "paisagem"},
+    {"arquivo": "036_e6e59afc.jpg", "legenda": "Armários da cozinha ainda embalados, instalados junto ao caixilho", "orientacao": "paisagem"},
+    {"arquivo": "039_5c578262.jpg", "legenda": "Banheira protegida na nova suíte, diante das venezianas amarelas", "orientacao": "retrato", "nota": "Avaliada pela folha de contato"},
+    {"arquivo": "041_261c390a.jpg", "legenda": "Caixilharia da área de serviço recuperada, com vidros e básculas abertas", "orientacao": "paisagem"}
+  ],
+  "descartadas": [
+    {"arquivo": "013_d0eb71e9.jpg", "motivo": "Duplicata de 012 (demolição), operário em primeiro plano"},
+    {"arquivo": "014_aae50169.jpg", "motivo": "Retrato, duplicata de 012/013 com operário em primeiro plano"},
+    {"arquivo": "015_da4802f6.jpg", "motivo": "Duplicata de 012 (demolição), escura"},
+    {"arquivo": "018_ce27ee31.jpg", "motivo": "Contraluz forte, cena redundante com 020"},
+    {"arquivo": "019_2ca20e57.jpg", "motivo": "Retrato escuro, redundante com 020"},
+    {"arquivo": "020_07f7171b.jpg", "motivo": "Entulho e escadas, redundante com 012"},
+    {"arquivo": "025_0ab32499.jpg", "motivo": "Duplicata escura de 024 (caixilharia amarela)"},
+    {"arquivo": "026_39be8cb1.jpg", "motivo": "Enquadramento sem interesse, escura"},
+    {"arquivo": "028_a06bc503.jpg", "motivo": "Duplicata de 027 (tacos da sala)"},
+    {"arquivo": "030_537bab12.jpg", "motivo": "Redundante com 024 e 027"},
+    {"arquivo": "031_be70bf10.jpg", "motivo": "Estante em montagem, pouco legível; redundante com 034"},
+    {"arquivo": "032_e1ef18f9.jpg", "motivo": "Pessoas em quadro (montadores)"},
+    {"arquivo": "033_6c5e25ac.jpg", "motivo": "Pessoa em quadro, duplicata de 031"},
+    {"arquivo": "034_79d94b64.jpg", "motivo": "Estante sem acabamento, cena sem interesse"},
+    {"arquivo": "035_feede357.jpg", "motivo": "Pessoas em quadro; redundante com 036"},
+    {"arquivo": "037_d2b470f0.jpg", "motivo": "Duplicata de 036 (armários embalados)"},
+    {"arquivo": "038_7c3eae29.jpg", "motivo": "Operário em quadro; duplicata de 039"},
+    {"arquivo": "040_9f092436.jpg", "motivo": "Retrato de caixilho, redundante com 024 e 041"}
+  ],
+  "slides_titulo": [
+    {"arquivo": "011_ef97628b.png", "texto": "FASE DE OBRAS"}
+  ],
+  "json_path": "C:/Users/Vitor/Documents/Rita/r2 arquitetos/fotos-wix/curadoria/02-louveira-1.json"
+}
