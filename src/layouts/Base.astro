@@ -25,11 +25,10 @@ const og = await getImage({ src: ogImagem ?? foto('capas-projetos', '003_0d0a112
 const ogUrl = Astro.site ? new URL(og.src, Astro.site).href : og.src;
 const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : Astro.url.pathname;
 
-// favicon: o monograma SEM as venezianas — a 32 px os cortes fragmentam a
-// letra e viram ruído. Marca de verdade tem variante por tamanho.
+// favicon: a marca do escritório embutida como data-URI
 const favicon =
   'data:image/svg+xml,' +
-  encodeURIComponent(logoRaw.replace(' mask="url(#brise)"', '').replace('currentColor', '#66574A'));
+  encodeURIComponent(logoRaw.replace('currentColor', '#66574A').replace('var(--logo-fg, #fff)', '#F5F4F1'));
 
 // dados estruturados: o escritório em toda página; a trilha só nas internas
 const jsonLd: Record<string, unknown>[] = [escritorioJsonLd(ogUrl)];

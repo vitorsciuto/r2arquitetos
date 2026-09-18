@@ -104,7 +104,7 @@ figure { margin: 0; }
 
 /* ---------- cabeçalho ---------- */
 .cab { display: flex; align-items: center; justify-content: space-between; gap: 24px 40px; flex-wrap: wrap; padding: 32px 0 18px; border-bottom: 1px solid var(--taupe); }
-.cab-marca { display: flex; align-items: center; gap: 14px; color: var(--taupe); }
+.cab-marca { display: flex; align-items: center; gap: 14px; color: var(--taupe); --logo-fg: var(--sur); }
 .cab-marca svg { width: 40px; height: 53px; flex: none; }
 .cab-wm { line-height: 1.7; white-space: nowrap; }
 .nav ul { display: flex; gap: 36px; flex-wrap: wrap; }
