@@ -1,0 +1,49 @@
+name: Regerar o lockfile no Linux
+
+# Manual, sob demanda. O package-lock.json gerado no Windows não inclui as
+# dependências transitivas das variantes de outra plataforma do sharp
+# (@emnapi/core e @emnapi/runtime, exigidas pelo @img/sharp-wasm32), e por
+# isso o `npm ci` aborta no runner. Como não há Linux na máquina de
+# desenvolvimento, o lockfile é regerado aqui e commitado de volta.
+#
+# Rode este workflow sempre que mexer em dependências no Windows.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  regerar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Regerar o package-lock.json
+        run: |
+          rm -f package-lock.json
+          npm install --package-lock-only --include=optional --no-audit --no-fund
+
+      - name: Conferir que o npm ci passa a funcionar
+        run: npm ci --dry-run
+
+      - name: Commitar se mudou
+        run: |
+          if git diff --quiet -- package-lock.json; then
+            echo "lockfile já estava completo — nada a fazer"
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add package-lock.json
+          git commit -m "Regerar o package-lock.json no Linux
+
+          Inclui as dependências transitivas das variantes de plataforma do
+          sharp, que o npm no Windows não resolve. Devolve o \`npm ci\` ao
+          deploy, e com ele a instalação determinística."
+          git push

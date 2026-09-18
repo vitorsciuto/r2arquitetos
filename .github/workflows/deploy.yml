@@ -34,6 +34,16 @@ jobs:
       # container ou Codespace) e trocar esta linha de volta.
       - run: npm install --no-audit --no-fund
 
+      # Precisa vir DEPOIS da instalação: o npm ci apaga o node_modules
+      # inteiro, e levaria junto o cache restaurado.
+      - name: Cache das imagens processadas
+        uses: actions/cache@v6
+        with:
+          path: node_modules/.astro/assets
+          key: astro-assets-${{ hashFiles('src/assets/**', 'src/lib/material/**', 'astro.config.mjs') }}
+          restore-keys: |
+            astro-assets-
+
       - run: npm run build
 
       - uses: actions/upload-pages-artifact@v5
