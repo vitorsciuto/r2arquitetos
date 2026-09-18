@@ -7,7 +7,12 @@ import { href, material, meta, nomeIndice, quadros } from '../lib/config';
 
 /**
  * Índice dos seis projetos (7 colunas) + quadro 4:5 (5 colunas) que troca com a linha ativa.
- * Sem JS a foto fixa é a do 02. Hover no desktop; no celular o primeiro toque seleciona, o segundo abre.
+ *
+ * Duas dinâmicas, uma por tipo de entrada:
+ * — Ponteiro: a foto da direita troca no hover e no foco. Sem JS, fica a do 02.
+ * — Toque: não existe hover. Cada linha vira um cartão com a própria foto e um
+ *   toque navega direto. O padrão antigo (primeiro toque seleciona, segundo
+ *   abre) exigia dois toques e não dava retorno de que o primeiro valeu.
  */
 interface Props { projetos: CollectionEntry<'projetos'>[]; ativo?: string }
 const { projetos, ativo = '02' } = Astro.props;
@@ -23,6 +28,16 @@ const { projetos, ativo = '02' } = Astro.props;
           data-n={p.data.numero}
           style={`--cor:${p.data.cor}`}
         >
+          <span class="foto-toque" aria-hidden="true">
+            <Image
+              src={foto(quadros[p.data.numero].pasta, quadros[p.data.numero].arquivo)}
+              widths={[480, 760]}
+              sizes="100vw"
+              alt=""
+              loading="lazy"
+              style={`object-position:${quadros[p.data.numero].posicao}`}
+            />
+          </span>
           <span class="num rotulo">{p.data.numero}</span>
           <span class="mat" aria-hidden="true"><Image src={material(p.data.numero)} width={80} height={80} alt="" loading="eager" /></span>
           <span class="nome">{nomeIndice(p.data)}</span>
@@ -57,9 +72,12 @@ const { projetos, ativo = '02' } = Astro.props;
   (function () {
     var idx = document.querySelector('[data-indice]');
     if (!idx) return;
+    // Sem ponteiro não há o que trocar: no toque cada linha já mostra a sua
+    // foto e o clique navega. Nada de interceptar o primeiro toque.
+    if (!window.matchMedia('(hover: hover)').matches) return;
+
     var linhas = idx.querySelectorAll('[data-n]');
     var figs = idx.querySelectorAll('.idx-foto > figure');
-    var toque = window.matchMedia('(hover: none)').matches;
     function ativar(n) {
       linhas.forEach(function (l) { l.classList.toggle('ativa', l.dataset.n === n); });
       figs.forEach(function (f) { f.classList.toggle('ativa', f.id === 'quadro-' + n); });
@@ -67,13 +85,6 @@ const { projetos, ativo = '02' } = Astro.props;
     linhas.forEach(function (l) {
       l.addEventListener('mouseenter', function () { ativar(l.dataset.n); });
       l.addEventListener('focus', function () { ativar(l.dataset.n); });
-      l.addEventListener('click', function (e) {
-        if (toque && !l.classList.contains('ativa')) {
-          e.preventDefault();
-          ativar(l.dataset.n);
-          idx.querySelector('.idx-foto').scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      });
     });
   })();
 </script>

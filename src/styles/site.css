@@ -138,9 +138,12 @@ figure { margin: 0; }
   color: var(--tinta);
 }
 .linha::before { content: ''; position: absolute; left: 0; top: -1px; bottom: -1px; width: 3px; background: var(--cor); opacity: 0; }
-.linha.ativa, .linha:hover { background: color-mix(in srgb, var(--cor) 9%, transparent); }
-.linha.ativa::before, .linha:hover::before { opacity: 1; }
+.linha.ativa { background: color-mix(in srgb, var(--cor) 9%, transparent); }
+@media (hover: hover) { .linha:hover { background: color-mix(in srgb, var(--cor) 9%, transparent); } }
+.linha.ativa::before { opacity: 1; }
+@media (hover: hover) { .linha:hover::before { opacity: 1; } }
 .linha.ativa { border-bottom-color: var(--cor); }
+.linha .foto-toque { display: none; }
 .linha .num { padding-top: 7px; }
 .linha .mat { width: 40px; height: 40px; overflow: hidden; }
 .linha .mat img { width: 40px; height: 40px; object-fit: cover; display: block; }
@@ -148,18 +151,36 @@ figure { margin: 0; }
 .linha .anos { font-family: var(--sans); font-size: var(--t11); letter-spacing: var(--tr-rotulo); padding-top: 7px; white-space: nowrap; }
 .linha .meta { grid-column: 3 / -1; font-size: var(--t16); line-height: 1.4; margin-top: 4px; color: var(--tinta); }
 @media (max-width: 719px) {
-  .linha { grid-template-columns: 32px 32px 1fr; column-gap: 12px; margin-left: -12px; padding-left: 12px; }
-  .linha .mat, .linha .mat img { width: 32px; height: 32px; }
-  .linha .num { padding-top: 4px; }
-  .linha .nome { padding-top: 2px; }
-  .linha .anos { grid-column: 3; padding-top: 6px; }
-  .linha .meta { grid-column: 3; margin-top: 2px; }
+  .linha { grid-template-columns: 32px 1fr auto; column-gap: 12px; margin-left: 0; padding-left: 0; padding-block: 0 32px; border-bottom: 0; }
+  .linha .mat { display: none; }
+  .linha .num { padding-top: 2px; }
+  .linha .nome { padding-top: 0; grid-column: 2; }
+  .linha .anos { grid-column: 3; padding-top: 4px; }
+  .linha .meta { grid-column: 2 / -1; margin-top: 2px; }
+  /* o realce de linha ativa não faz sentido sem hover */
+  .linha.ativa { background: none; }
+  .linha.ativa::before { opacity: 0; }
+  .linha.ativa { border-bottom-color: transparent; }
+
+  .linha .foto-toque { display: block; grid-column: 1 / -1; margin-bottom: 14px; overflow: hidden; background: var(--sur); }
+  .linha .foto-toque img {
+    display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover;
+    transition: transform .45s cubic-bezier(.2, .7, .3, 1), opacity .4s ease;
+  }
+  /* o fio da obra passa a marcar o topo de cada cartão */
+  .linha { border-top: 2px solid var(--cor); padding-top: 12px; }
+  .idx-lista { border-top: 0; }
+  .idx-lista li + li { margin-top: 8px; }
+
+  /* resposta ao toque: a imagem recua de leve enquanto o dedo está na tela */
+  .linha:active .foto-toque img { transform: scale(.985); opacity: .92; }
+
+  .idx-foto { display: none; }   /* o painel que troca é coisa de ponteiro */
 }
 
 .idx-foto { display: grid; }
-.idx-foto > figure { grid-area: 1 / 1; visibility: hidden; opacity: 0; transition: opacity .25s ease; }
+.idx-foto > figure { grid-area: 1 / 1; visibility: hidden; opacity: 0; transition: opacity .3s cubic-bezier(.2, .7, .3, 1); }
 .idx-foto > figure.ativa { visibility: visible; opacity: 1; }
-@media (max-width: 719px) { .idx-foto { order: -1; } }
 
 /* ---------- página de projeto ---------- */
 .proj-cab { border-top: 2px solid var(--cor); padding-top: 12px; }
@@ -270,3 +291,13 @@ figure { margin: 0; }
 /* linha de apoio do título do projeto: cor e tamanho, sem itálico — a Archivo
    não tem itálico carregado e o navegador inclinaria o romano na marra */
 .subtitulo { margin-top: 8px; font-size: var(--t22); font-weight: 400; color: var(--cinza-texto); letter-spacing: -.01em; }
+
+/* toque: retorno imediato e suave, sem o atraso de 300 ms nem o flash azul */
+@media (hover: none) {
+  .linha, .prox a, .grade3 .item { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+  .linha { transition: opacity .2s ease; }
+  .linha:active { opacity: .96; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .linha .foto-toque img, .idx-foto > figure { transition: none; }
+}
