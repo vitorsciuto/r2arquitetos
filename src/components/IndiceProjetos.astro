@@ -1,45 +1,42 @@
 ---
 import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
-import Figura from './Figura.astro';
 import { foto } from '../lib/fotos';
-import { href, material, meta, nomeIndice, quadros } from '../lib/config';
+import { href, meta, nomeIndice, quadros } from '../lib/config';
 
 /**
- * Índice dos seis projetos (7 colunas) + quadro 4:5 (5 colunas) que troca com a linha ativa.
+ * Índice dos seis projetos: um cartão por obra, com foto, número, nome, anos e
+ * a ficha curta. Um clique ou toque abre o projeto.
  *
- * Duas dinâmicas, uma por tipo de entrada:
- * — Ponteiro: a foto da direita troca no hover e no foco. Sem JS, fica a do 02.
- * — Toque: não existe hover. Cada linha vira um cartão com a própria foto e um
- *   toque navega direto. O padrão antigo (primeiro toque seleciona, segundo
- *   abre) exigia dois toques e não dava retorno de que o primeiro valeu.
+ * Mesma experiência em qualquer tela, de propósito. Antes o desktop trocava a
+ * foto no hover e o celular tinha outro comportamento — duas dinâmicas para o
+ * mesmo conteúdo, e a do celular precisava de dois toques. Agora muda só o
+ * número de colunas: duas no computador, uma no celular. Sem JavaScript.
  */
-interface Props { projetos: CollectionEntry<'projetos'>[]; ativo?: string }
-const { projetos, ativo = '02' } = Astro.props;
+interface Props { projetos: CollectionEntry<'projetos'>[] }
+const { projetos } = Astro.props;
 ---
-<section class="g" data-indice aria-labelledby="indice-titulo">
+<section aria-labelledby="indice-titulo">
   <h2 id="indice-titulo" class="sr-only">Projetos</h2>
   <ol class="idx-lista">
-    {projetos.map((p) => (
+    {projetos.map((p, i) => (
       <li>
         <a
-          class:list={['linha', { ativa: p.data.numero === ativo }]}
+          class="linha"
           href={href(`projetos/${p.data.slug}/`)}
-          data-n={p.data.numero}
           style={`--cor:${p.data.cor}`}
         >
-          <span class="foto-toque" aria-hidden="true">
+          <span class="foto" aria-hidden="true">
             <Image
               src={foto(quadros[p.data.numero].pasta, quadros[p.data.numero].arquivo)}
-              widths={[480, 760]}
-              sizes="100vw"
+              widths={[420, 640, 900]}
+              sizes="(max-width: 719px) 100vw, (max-width: 1079px) 46vw, 560px"
               alt=""
-              loading="lazy"
+              loading={i < 2 ? 'eager' : 'lazy'}
               style={`object-position:${quadros[p.data.numero].posicao}`}
             />
           </span>
           <span class="num rotulo">{p.data.numero}</span>
-          <span class="mat" aria-hidden="true"><Image src={material(p.data.numero)} width={80} height={80} alt="" loading="eager" /></span>
           <span class="nome">{nomeIndice(p.data)}</span>
           <span class="anos">{p.data.anos}</span>
           <span class="meta">{meta([p.data.original, p.data.bairro, p.data.tipo])}</span>
@@ -47,44 +44,5 @@ const { projetos, ativo = '02' } = Astro.props;
       </li>
     ))}
   </ol>
-  <div class="idx-foto">
-    {projetos.map((p) => {
-      const q = quadros[p.data.numero];
-      return (
-        <Figura
-          class={p.data.numero === ativo ? 'ativa' : undefined}
-          id={`quadro-${p.data.numero}`}
-          img={foto(q.pasta, q.arquivo)}
-          legenda={q.legenda}
-          rotulo={`${p.data.numero} · ${nomeIndice(p.data)}`}
-          ratio="4:5"
-          posicao={q.posicao}
-          eager={p.data.numero === ativo}
-          sizes="(max-width: 719px) 100vw, (max-width: 1079px) 40vw, 470px"
-          larguras={[480, 800, 1000]}
-        />
-      );
-    })}
-  </div>
 </section>
 
-<script is:inline>
-  (function () {
-    var idx = document.querySelector('[data-indice]');
-    if (!idx) return;
-    // Sem ponteiro não há o que trocar: no toque cada linha já mostra a sua
-    // foto e o clique navega. Nada de interceptar o primeiro toque.
-    if (!window.matchMedia('(hover: hover)').matches) return;
-
-    var linhas = idx.querySelectorAll('[data-n]');
-    var figs = idx.querySelectorAll('.idx-foto > figure');
-    function ativar(n) {
-      linhas.forEach(function (l) { l.classList.toggle('ativa', l.dataset.n === n); });
-      figs.forEach(function (f) { f.classList.toggle('ativa', f.id === 'quadro-' + n); });
-    }
-    linhas.forEach(function (l) {
-      l.addEventListener('mouseenter', function () { ativar(l.dataset.n); });
-      l.addEventListener('focus', function () { ativar(l.dataset.n); });
-    });
-  })();
-</script>

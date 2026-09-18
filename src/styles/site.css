@@ -129,58 +129,34 @@ figure { margin: 0; }
 .rod-dir a:hover { text-decoration: underline; text-underline-offset: .3em; }
 @media (max-width: 719px) { .rod-dir { text-align: left; } .rod-dir ul { align-items: flex-start; } }
 
-/* ---------- índice de projetos ---------- */
-.idx-lista { border-top: 1px solid var(--taupe); }
+/* ---------- índice de projetos ----------
+   Um cartão por obra, igual no computador e no celular: muda só o número de
+   colunas. Sem hover, sem painel que troca, sem JavaScript — o cartão inteiro
+   é o link, e um clique ou toque abre o projeto. */
+.idx-lista { display: grid; grid-template-columns: repeat(2, 1fr); gap: 56px var(--gap); }
+@media (max-width: 719px) { .idx-lista { grid-template-columns: 1fr; gap: 40px; } }
+
 .linha {
-  position: relative; display: grid; grid-template-columns: 44px 40px 1fr auto; column-gap: 16px; align-items: start;
-  padding: 20px 0 18px; border-bottom: 1px solid var(--fio-fraco);
-  margin-left: -16px; padding-left: 16px;
-  color: var(--tinta);
+  display: grid; grid-template-columns: 32px 1fr auto; column-gap: 12px;
+  border-top: 2px solid var(--cor); padding-top: 12px; color: var(--tinta);
 }
-.linha::before { content: ''; position: absolute; left: 0; top: -1px; bottom: -1px; width: 3px; background: var(--cor); opacity: 0; }
-.linha.ativa { background: color-mix(in srgb, var(--cor) 9%, transparent); }
-@media (hover: hover) { .linha:hover { background: color-mix(in srgb, var(--cor) 9%, transparent); } }
-.linha.ativa::before { opacity: 1; }
-@media (hover: hover) { .linha:hover::before { opacity: 1; } }
-.linha.ativa { border-bottom-color: var(--cor); }
-.linha .foto-toque { display: none; }
-.linha .num { padding-top: 7px; }
-.linha .mat { width: 40px; height: 40px; overflow: hidden; }
-.linha .mat img { width: 40px; height: 40px; object-fit: cover; display: block; }
-.linha .nome { padding-top: 5px; }
-.linha .anos { font-family: var(--sans); font-size: var(--t11); letter-spacing: var(--tr-rotulo); padding-top: 7px; white-space: nowrap; }
-.linha .meta { grid-column: 3 / -1; font-size: var(--t16); line-height: 1.4; margin-top: 4px; color: var(--tinta); }
-@media (max-width: 719px) {
-  .linha { grid-template-columns: 32px 1fr auto; column-gap: 12px; margin-left: 0; padding-left: 0; padding-block: 0 32px; border-bottom: 0; }
-  .linha .mat { display: none; }
-  .linha .num { padding-top: 2px; }
-  .linha .nome { padding-top: 0; grid-column: 2; }
-  .linha .anos { grid-column: 3; padding-top: 4px; }
-  .linha .meta { grid-column: 2 / -1; margin-top: 2px; }
-  /* o realce de linha ativa não faz sentido sem hover */
-  .linha.ativa { background: none; }
-  .linha.ativa::before { opacity: 0; }
-  .linha.ativa { border-bottom-color: transparent; }
-
-  .linha .foto-toque { display: block; grid-column: 1 / -1; margin-bottom: 14px; overflow: hidden; background: var(--sur); }
-  .linha .foto-toque img {
-    display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover;
-    transition: transform .45s cubic-bezier(.2, .7, .3, 1), opacity .4s ease;
-  }
-  /* o fio da obra passa a marcar o topo de cada cartão */
-  .linha { border-top: 2px solid var(--cor); padding-top: 12px; }
-  .idx-lista { border-top: 0; }
-  .idx-lista li + li { margin-top: 8px; }
-
-  /* resposta ao toque: a imagem recua de leve enquanto o dedo está na tela */
-  .linha:active .foto-toque img { transform: scale(.985); opacity: .92; }
-
-  .idx-foto { display: none; }   /* o painel que troca é coisa de ponteiro */
+.linha .foto { grid-column: 1 / -1; margin-bottom: 14px; overflow: hidden; background: var(--sur); }
+.linha .foto img {
+  display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover;
+  transition: transform .5s cubic-bezier(.2, .7, .3, 1);
 }
+.linha .num { padding-top: 2px; }
+.linha .nome { grid-column: 2; }
+.linha .anos { grid-column: 3; font-size: var(--t11); letter-spacing: var(--tr-rotulo); padding-top: 4px; white-space: nowrap; color: var(--taupe); }
+.linha .meta { grid-column: 2 / -1; font-size: var(--t16); line-height: 1.4; margin-top: 4px; }
 
-.idx-foto { display: grid; }
-.idx-foto > figure { grid-area: 1 / 1; visibility: hidden; opacity: 0; transition: opacity .3s cubic-bezier(.2, .7, .3, 1); }
-.idx-foto > figure.ativa { visibility: visible; opacity: 1; }
+/* movimento discreto e igual nos dois: a foto avança de leve na intenção */
+@media (hover: hover) {
+  .linha:hover .foto img { transform: scale(1.03); }
+  .linha:hover .nome { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .18em; text-decoration-color: var(--cor); }
+}
+.linha:active .foto img { transform: scale(.985); }
+.linha:focus-visible { outline: 2px solid var(--tinta); outline-offset: 4px; }
 
 /* ---------- página de projeto ---------- */
 .proj-cab { border-top: 2px solid var(--cor); padding-top: 12px; }
@@ -292,12 +268,9 @@ figure { margin: 0; }
    não tem itálico carregado e o navegador inclinaria o romano na marra */
 .subtitulo { margin-top: 8px; font-size: var(--t22); font-weight: 400; color: var(--cinza-texto); letter-spacing: -.01em; }
 
-/* toque: retorno imediato e suave, sem o atraso de 300 ms nem o flash azul */
+
+/* toque: sem o atraso de 300 ms nem o flash azul */
 @media (hover: none) {
   .linha, .prox a, .grade3 .item { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
-  .linha { transition: opacity .2s ease; }
-  .linha:active { opacity: .96; }
 }
-@media (prefers-reduced-motion: reduce) {
-  .linha .foto-toque img, .idx-foto > figure { transition: none; }
-}
+@media (prefers-reduced-motion: reduce) { .linha .foto img { transition: none; } }
