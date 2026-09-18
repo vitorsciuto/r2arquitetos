@@ -1,6 +1,6 @@
 # r2arquitetos.com.br — Briefing do projeto
 
-_Última atualização: 2026-09-17 (sessão 3: versão única escolhida, Instagram auditado)_
+_Última atualização: 2026-09-17 (sessão 3: versão única, repo no ar, DNS decidido)_
 
 ## Objetivo
 
@@ -188,3 +188,29 @@ Lausanne? (2) creditar Cascaldi no Louveira? (3) Louveira 2 ainda é "obra em an
 **Ainda não feito:** rollout de 52 posts (2×/semana, 6 meses), cadastro nas plataformas de
 captação, push para o repositório `github.com/vitorsciuto/r2arquitetos` (privado, hoje vazio),
 e backup dos originais em `fotos-wix/` (156 MB, ignorados pelo git).
+
+
+## DNS e hospedagem — decidido em 2026-09-17
+
+**Correção importante sobre o e-mail.** O briefing dizia "MX → Google Workspace". O certo:
+a caixa é **Google Workspace revendido pela Wix** — assinatura paga à parte, que sobreviveu à
+queda do site porque são contratos separados. E o **MX mora no registro.br**, não na Wix:
+o DNS do domínio sempre esteve sob controle do Vitor.
+
+**Estado real do DNS em 2026-09-17** (medido, não presumido):
+```
+NS   a.sec.dns.br · c.sec.dns.br   (registro.br, zona assinada — DNSSEC ligado)
+MX   1 smtp.google.com             (um único registro, não cinco)
+A    nenhum · www nenhum           (por isso o domínio não responde)
+TXT  nenhum                        (sem SPF, sem DKIM, sem DMARC)
+```
+
+**Hospedagem: GitHub Pages, repositório público.** O Cloudflare Pages foi descartado depois de
+medir o custo real: exigiria desligar o DNSSEC e mover os nameservers do registro.br, arriscando
+o e-mail do escritório — para manter privadas fotos que vão estar publicadas no site de qualquer
+forma. O GitHub Pages não toca em nameserver nem no MX.
+
+**Repositório:** `github.com/vitorsciuto/r2arquitetos` · branch **main** · 614 arquivos · 263 MB.
+O acervo (`fotos-wix/`, 282 originais) e `_referencia-wix/` agora são versionados — eram o furo
+do "backup de tudo". Auditado antes de publicar: sem segredos, e todas as fotos vieram de
+galerias que já eram públicas no Wix.
