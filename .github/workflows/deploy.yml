@@ -24,15 +24,11 @@ jobs:
           node-version: 24
           cache: npm
 
-      # Por que não `npm ci`: o lockfile é gerado no Windows, e lá o npm não
-      # resolve as dependências transitivas das variantes de outra plataforma
-      # do sharp — @emnapi/core e @emnapi/runtime, exigidas pelo
-      # @img/sharp-wasm32. No Linux elas entram na conta e o `npm ci`, que é
-      # rigoroso por definição, aborta com EUSAGE. Não dá para consertar o
-      # lockfile a partir do Windows, nem forçando --os=linux.
-      # Para voltar ao `npm ci`: regerar o package-lock.json no Linux (WSL,
-      # container ou Codespace) e trocar esta linha de volta.
-      - run: npm install --no-audit --no-fund
+      # Instalação determinística: só o que está no package-lock.json, sem
+      # resolver versão nova nenhuma. Se um dia voltar a falhar com
+      # "Missing: ... from lock file", é porque alguém mexeu em dependência
+      # no Windows — rode o workflow "Regerar o lockfile no Linux".
+      - run: npm ci
 
       # Precisa vir DEPOIS da instalação: o npm ci apaga o node_modules
       # inteiro, e levaria junto o cache restaurado.
