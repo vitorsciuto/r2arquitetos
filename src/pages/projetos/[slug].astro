@@ -78,6 +78,10 @@ const capa = foto(d.pasta, cur.capa.arquivo);
   ativo="projetos"
   secao="Projetos"
   secaoDir={`${d.numero} de ${String(total).padStart(2, '0')}`}
+  trilha={[
+    { nome: 'Projetos', caminho: '/projetos' },
+    { nome: d.titulo, caminho: `/projetos/${Astro.params.slug}` },
+  ]}
 >
   <article>
     <header class="proj-cab" style="margin-top: 72px">

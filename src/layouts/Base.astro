@@ -7,6 +7,7 @@ import logoRaw from '../assets/logo-r2.svg?raw';
 import Cabecalho from '../components/Cabecalho.astro';
 import Rodape from '../components/Rodape.astro';
 import { nome } from '../data/escritorio';
+import { escritorioJsonLd, trilhaJsonLd } from '../lib/estruturado';
 import { foto } from '../lib/fotos';
 
 interface Props {
@@ -17,8 +18,10 @@ interface Props {
   secao?: string;                 // texto à esquerda do fio simples (running head)
   secaoDir?: string;              // texto à direita do fio simples
   ativo?: string;                 // item do menu ativo: 'projetos' | 'escritorio' | 'publicacoes' | 'contato'
+  /** Trilha para o JSON-LD, sem a home (ela é acrescentada aqui). Omitir na home. */
+  trilha?: { nome: string; caminho: string }[];
 }
-const { titulo, descricao, ogImagem, cor, secao, secaoDir, ativo } = Astro.props;
+const { titulo, descricao, ogImagem, cor, secao, secaoDir, ativo, trilha } = Astro.props;
 const tituloCompleto = titulo === nome ? `${nome} — arquitetura · urbanismo` : `${titulo} — ${nome}`;
 const og = await getImage({ src: ogImagem ?? foto('capas-projetos', '003_0d0a1121.jpg'), width: 1200, format: 'jpg' });
 const ogUrl = Astro.site ? new URL(og.src, Astro.site).href : og.src;
@@ -28,6 +31,10 @@ const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : As
 const favicon =
   'data:image/svg+xml,' +
   encodeURIComponent(logoRaw.replace('currentColor', '#66574A').replace('var(--logo-fg, #fff)', '#F5F4F1'));
+
+// dados estruturados: o escritório em toda página; a trilha só nas internas
+const jsonLd: Record<string, unknown>[] = [escritorioJsonLd(ogUrl)];
+if (trilha?.length) jsonLd.push(trilhaJsonLd([{ nome, caminho: '/' }, ...trilha]));
 ---
 <!doctype html>
 <html lang="pt-BR" style={cor ? `--cor:${cor}` : undefined}>
@@ -46,6 +53,9 @@ const favicon =
     <meta name="theme-color" content="#E4E1DB" />
     <link rel="icon" href={favicon} />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    {jsonLd.map((bloco) => (
+      <script is:inline type="application/ld+json" set:html={JSON.stringify(bloco)} />
+    ))}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

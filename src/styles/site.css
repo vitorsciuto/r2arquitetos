@@ -225,3 +225,8 @@ figure { margin: 0; }
 .contato-grande a[href^='mailto'], .contato-grande .mapa a { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .2em; }
 .contato-grande .mapa { margin-top: 2.4em; }
 
+
+/* Instagram no rodapé: mesmo peso dos itens de menu, sublinhado na cor da obra */
+.rod-social { margin-top: 1.4em; }
+.rod-social a { border-bottom: 1px solid var(--fio-fraco); padding-bottom: 2px; }
+.rod-social a:hover { border-bottom-color: var(--cor); }
