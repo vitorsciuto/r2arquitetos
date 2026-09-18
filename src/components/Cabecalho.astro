@@ -3,8 +3,8 @@ import Logo from '../assets/logo-r2.svg';
 import { menu, nome } from '../data/escritorio';
 import { href } from '../lib/config';
 
-interface Props { ativo?: string; secao?: string; secaoDir?: string }
-const { ativo, secao, secaoDir } = Astro.props;
+interface Props { ativo?: string }
+const { ativo } = Astro.props;
 ---
 <header class="wrap">
   <div class="cab">
@@ -20,10 +20,4 @@ const { ativo, secao, secaoDir } = Astro.props;
       </ul>
     </nav>
   </div>
-  {(secao || secaoDir) && (
-    <div class="subfio">
-      <span>{secao}</span>
-      <span>{secaoDir}</span>
-    </div>
-  )}
 </header>

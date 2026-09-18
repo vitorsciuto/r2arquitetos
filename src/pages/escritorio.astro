@@ -1,7 +1,6 @@
 ---
 import Layout from '../layouts/Base.astro';
 import { arquitetos, foco, servicos, sobre } from '../data/escritorio';
-import { meta } from '../lib/config';
 
 const paragrafos = sobre.filter((p) => p !== foco);
 ---
@@ -9,8 +8,6 @@ const paragrafos = sobre.filter((p) => p !== foco);
   titulo="Escritório"
   descricao={foco}
   ativo="escritorio"
-  secao="Escritório"
-  secaoDir={meta(arquitetos.map((a) => a.nome))}
   trilha={[{ nome: 'Escritório', caminho: '/escritorio' }]}
 >
   <h1 class="titulo" style="padding: 72px 0 48px">Escritório</h1>

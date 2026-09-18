@@ -1,7 +1,12 @@
-/* r2 arquitetos — editorial · patrimônio moderno paulistano
-   cinza / taupe / tinta + a cor de cada obra (função estrutural: fios, faixa ativa, sublinhados)
-   Jost 400 (caixa-alta) + Newsreader 400 (leitura). Escala travada: 46 / 30 / 22 / 20 / 18 / 16 / 13 / 11.
-   Dois trackings: .08em (Jost em 30 e 22 px) e .18em (Jost em 11 px). */
+/* r2 arquitetos — patrimônio moderno paulistano
+   cinza / taupe / tinta + a cor de cada obra (fios, faixa ativa, sublinhados).
+
+   UMA família só: Archivo (Omnibus-Type, Buenos Aires), grotesca variável.
+   Hierarquia por TAMANHO e PESO, nunca por espacejamento. Caixa-alta só no
+   rótulo de 12 px, que é o único lugar onde ela informa em vez de decorar.
+   O par serifa+sans e a caixa-alta espaçada em tudo eram o que dava ao site
+   aquela cara de template gerado.
+   Escala: 34 / 26 / 21 / 19 / 17 / 15 / 13 / 12. */
 
 :root {
   --papel: #E4E1DB;        /* fundo */
@@ -9,16 +14,17 @@
   --tinta: #161616;        /* corpo de leitura: 13,9:1 sobre o fundo */
   --taupe: #66574A;        /* títulos, rótulos, legendas, fios estruturais: 5,32:1 (AA) */
   --taupe2: #9B8A72;       /* fio e hover — nunca texto (2,6:1) */
-  --cinza: var(--taupe);   /* texto secundário */
+  --cinza: var(--taupe);        /* legendas e metadados */
+  --cinza-texto: #5A5750;       /* cinza neutro de leitura: 5,5:1 sobre o fundo */
   --fio-fraco: #C6C1B8;    /* fios internos (não é texto) */
   --cor: var(--taupe);     /* cor da obra: redefinida por página / por linha */
 
-  --serif: 'Newsreader', Georgia, 'Times New Roman', serif;
-  --sans: 'Jost', 'Futura', 'Century Gothic', 'Trebuchet MS', sans-serif;
+  --sans: 'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --serif: var(--sans);  /* compatibilidade: não há mais segunda família */
 
-  --t46: 46px; --t30: 30px; --t22: 22px; --t20: 20px; --t18: 18px; --t16: 16px; --t13: 13px; --t11: 11px;
-  --tr-titulo: .08em;
-  --tr-rotulo: .18em;
+  --t46: 34px; --t30: 26px; --t22: 21px; --t20: 19px; --t18: 17px; --t16: 15px; --t13: 13px; --t11: 12px;
+  --tr-titulo: 0;        /* título não leva tracking */
+  --tr-rotulo: .1em;     /* só o rótulo em caixa-alta */
 
   --mancha: 1180px;
   --margem: 96px;
@@ -26,21 +32,21 @@
   --secao: 120px;
 }
 @media (max-width: 1079px) { :root { --margem: 40px; --gap: 40px; --secao: 96px; } }
-@media (max-width: 719px)  { :root { --margem: 20px; --gap: 32px; --secao: 72px; --t46: 30px; --t30: 22px; --t22: 18px; } }
+@media (max-width: 719px)  { :root { --margem: 20px; --gap: 32px; --secao: 72px; --t46: 25px; --t30: 21px; --t22: 19px; } }
 
 html { background: var(--papel); }
 body {
   background: var(--papel);
   color: var(--tinta);
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: var(--t18);
-  line-height: 1.6;
+  line-height: 1.62;
   font-weight: 400;
 }
 ::selection { background: var(--taupe); color: var(--sur); }
 :focus-visible { outline: 2px solid var(--tinta); outline-offset: 3px; }
 
-.skip { position: absolute; left: -999px; top: 8px; z-index: 10; padding: 8px 12px; background: var(--taupe); color: var(--sur); font: 400 var(--t11)/1.4 var(--sans); letter-spacing: var(--tr-rotulo); text-transform: uppercase; }
+.skip { position: absolute; left: -999px; top: 8px; z-index: 10; padding: 8px 12px; background: var(--taupe); color: var(--sur); font: 500 var(--t13)/1.4 var(--sans); }
 .skip:focus { left: 8px; }
 
 /* ---------- mancha e grid ---------- */
@@ -50,14 +56,16 @@ body {
 @media (max-width: 719px) { .g { grid-template-columns: 1fr; } }
 
 /* ---------- tipografia ---------- */
-.rotulo, .ficha, .subfio, .nav, .cab-wm {
-  color: var(--taupe);
-  font-family: var(--sans); font-weight: 400; font-size: var(--t11); line-height: 1.5;
+.rotulo {
+  color: var(--taupe); font-weight: 500; font-size: var(--t11); line-height: 1.5;
   letter-spacing: var(--tr-rotulo); text-transform: uppercase;
 }
-.titulo { color: var(--taupe); font-family: var(--sans); font-weight: 400; font-size: var(--t30); line-height: 1.15; letter-spacing: var(--tr-titulo); text-transform: uppercase; }
-.nome   { color: var(--taupe); font-family: var(--sans); font-weight: 400; font-size: var(--t22); line-height: 1.15; letter-spacing: var(--tr-titulo); text-transform: uppercase; }
-.lede   { font-family: var(--serif); font-size: var(--t46); line-height: 1.22; letter-spacing: -.01em; text-wrap: balance; }
+.ficha, .nav, .cab-wm {
+  color: var(--taupe); font-weight: 400; font-size: var(--t13); line-height: 1.5;
+}
+.titulo { color: var(--taupe); font-weight: 500; font-size: var(--t30); line-height: 1.2; letter-spacing: -.01em; }
+.nome   { color: var(--taupe); font-weight: 500; font-size: var(--t22); line-height: 1.25; letter-spacing: -.01em; }
+.lede   { color: var(--cinza-texto); font-size: var(--t46); font-weight: 400; line-height: 1.3; letter-spacing: -.015em; text-wrap: balance; max-width: 34ch; }
 .leitura { font-size: var(--t18); line-height: 1.6; max-width: 34em; }
 .leitura p + p { margin-top: 1em; }
 .leitura-20 { font-size: var(--t20); line-height: 1.5; max-width: 32em; }
@@ -95,19 +103,17 @@ figure { margin: 0; }
 .fig figcaption .rotulo { color: var(--taupe); margin-right: .7em; }
 
 /* ---------- cabeçalho ---------- */
-.cab { display: flex; align-items: center; justify-content: space-between; gap: 24px 40px; flex-wrap: wrap; padding: 36px 0 22px; border-bottom: 2px solid var(--taupe); }
-.cab-marca { display: flex; align-items: center; gap: 16px; color: var(--taupe); --logo-fg: var(--sur); }
+.cab { display: flex; align-items: center; justify-content: space-between; gap: 24px 40px; flex-wrap: wrap; padding: 32px 0 18px; border-bottom: 1px solid var(--taupe); }
+.cab-marca { display: flex; align-items: center; gap: 14px; color: var(--taupe); }
 .cab-marca svg { width: 40px; height: 53px; flex: none; }
 .cab-wm { line-height: 1.7; white-space: nowrap; }
 .nav ul { display: flex; gap: 36px; flex-wrap: wrap; }
 .nav a { display: inline-block; padding: 4px 0; border-bottom: 1px solid transparent; }
 .nav a:hover, .nav a[aria-current] { border-bottom-color: var(--cor); }
-.subfio { display: flex; justify-content: space-between; gap: 16px 32px; flex-wrap: wrap; border-top: 1px solid var(--taupe); margin-top: 3px; padding-top: 8px; color: var(--taupe); }
 @media (max-width: 719px) {
   .cab { padding: 24px 0 16px; }
   .nav { width: 100%; }
   .nav ul { gap: 8px; justify-content: space-between; }
-  .subfio { font-size: var(--t11); }
 }
 
 /* ---------- rodapé ---------- */
@@ -230,3 +236,37 @@ figure { margin: 0; }
 .rod-social { margin-top: 1.4em; }
 .rod-social a { border-bottom: 1px solid var(--fio-fraco); padding-bottom: 2px; }
 .rod-social a:hover { border-bottom-color: var(--cor); }
+
+/* ---------- abertura da home: faixa com a frase + foto sangrando ---------- */
+.abertura-frase { padding-block: 72px 56px; }
+
+.hero { margin: 0; }
+.hero img {
+  width: 100%;
+  height: clamp(340px, 56vh, 620px);
+  object-fit: cover;
+  object-position: 50% 42%;
+}
+.hero figcaption {
+  padding-block: 12px 72px;   /* respiro até o índice de projetos */
+  font-size: var(--t13);
+  line-height: 1.45;
+  color: var(--cinza);
+}
+.hero figcaption .rotulo { margin-right: .7em; }
+
+/* a foto vem depois do <main>? não: ela está no slot de abertura, fora da
+   mancha, então já nasce na largura do viewport. A legenda usa .wrap para
+   voltar ao alinhamento do resto da página. */
+@media (max-width: 719px) {
+  .abertura-frase { padding-block: 48px 36px; }
+  .hero img { height: clamp(260px, 44vh, 380px); }
+}
+
+/* rodapé: navegação e assinatura em caixa baixa, como o resto do site */
+.rod-dir { font-size: var(--t13); line-height: 1.9; color: var(--taupe); text-align: right; }
+.rod-dir a:hover { border-bottom: 1px solid var(--cor); }
+
+/* linha de apoio do título do projeto: cor e tamanho, sem itálico — a Archivo
+   não tem itálico carregado e o navegador inclinaria o romano na marra */
+.subtitulo { margin-top: 8px; font-size: var(--t22); font-weight: 400; color: var(--cinza-texto); letter-spacing: -.01em; }

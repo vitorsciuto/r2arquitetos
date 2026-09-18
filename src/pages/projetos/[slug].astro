@@ -15,11 +15,11 @@ export async function getStaticPaths() {
   const n = projetos.length;
   return projetos.map((p, i) => ({
     params: { slug: p.data.slug },
-    props: { entry: p, anterior: projetos[(i - 1 + n) % n], proximo: projetos[(i + 1) % n], total: n },
+    props: { entry: p, anterior: projetos[(i - 1 + n) % n], proximo: projetos[(i + 1) % n] },
   }));
 }
-interface Props { entry: CollectionEntry<'projetos'>; anterior: CollectionEntry<'projetos'>; proximo: CollectionEntry<'projetos'>; total: number }
-const { entry, anterior, proximo, total } = Astro.props;
+interface Props { entry: CollectionEntry<'projetos'>; anterior: CollectionEntry<'projetos'>; proximo: CollectionEntry<'projetos'> }
+const { entry, anterior, proximo } = Astro.props;
 const { Content } = await render(entry);
 const d = entry.data;
 const cur = curadoria(d.pasta);
@@ -76,8 +76,6 @@ const capa = foto(d.pasta, cur.capa.arquivo);
   ogImagem={capa}
   cor={d.cor}
   ativo="projetos"
-  secao="Projetos"
-  secaoDir={`${d.numero} de ${String(total).padStart(2, '0')}`}
   trilha={[
     { nome: 'Projetos', caminho: '/projetos' },
     { nome: d.titulo, caminho: `/projetos/${Astro.params.slug}` },
@@ -87,7 +85,7 @@ const capa = foto(d.pasta, cur.capa.arquivo);
     <header class="proj-cab" style="margin-top: 72px">
       <p class="rotulo">{d.numero}&nbsp;· {d.local}</p>
       <h1 class="titulo">{d.titulo}</h1>
-      {d.subtitulo && <p class="leitura-20" style="font-style: italic; margin-top: 10px">{d.subtitulo}</p>}
+      {d.subtitulo && <p class="subtitulo">{d.subtitulo}</p>}
       <Ficha itens={[d.original, d.tombamento, d.intervencao, d.anos]} />
     </header>
 

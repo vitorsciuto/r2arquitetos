@@ -20,3 +20,6 @@ dist-*/
 
 # grafo de conhecimento (local)
 graphify-out/
+
+# material bruto dos projetos novos (GB de fotografia em alta) — nunca versionar
+/fotos/

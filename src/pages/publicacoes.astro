@@ -6,7 +6,6 @@ import { foto } from '../lib/fotos';
 import { pasta, publicacoes } from '../data/publicacoes';
 import { meta } from '../lib/config';
 
-const total = publicacoes.reduce((n, v) => n + v.recortes.length, 0);
 const grupos = await Promise.all(
   publicacoes.map(async (v) => ({
     ...v,
@@ -24,8 +23,6 @@ const grupos = await Promise.all(
   titulo="Publicações"
   descricao="Hemeroteca do r2 arquitetos: recortes da Revista Projeto Design, Arquitetura & Construção, Folha de S.Paulo e jornais sobre a Praça Roosevelt e o Edifício Louveira."
   ativo="publicacoes"
-  secao="Publicações"
-  secaoDir={`${total} recortes`}
   trilha={[{ nome: 'Publicações', caminho: '/publicacoes' }]}
 >
   <h1 class="titulo" style="padding: 72px 0 56px">Publicações</h1>

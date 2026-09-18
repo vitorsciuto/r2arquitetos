@@ -1,4 +1,5 @@
 ---
+import { Picture } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Base.astro';
 import IndiceProjetos from '../components/IndiceProjetos.astro';
@@ -19,12 +20,26 @@ const destaqueP2 = 'Os principais elementos originais do apartamento, como pasti
 <Layout
   titulo={nome}
   descricao={posicao}
-  secao="Higienópolis, São Paulo"
-  secaoDir={meta(['edifícios de valor histórico e cultural', 'projeto e obra'])}
 >
-  <h1 class="sr-only">r2 arquitetos — arquitetura · urbanismo</h1>
-
-  <p class="lede" style="padding: 104px 0 88px; width: calc((100% - var(--gap)) * 7 / 12); min-width: min(100%, 22em)">{posicao}</p>
+  <div slot="abertura">
+    <div class="wrap">
+      <h1 class="sr-only">r2 arquitetos — arquitetura · urbanismo</h1>
+      <p class="lede abertura-frase">{posicao}</p>
+    </div>
+    <figure class="hero">
+      <Picture
+        src={foto('capas-projetos', '006_cff1282f.jpg')}
+        widths={[900, 1400, 1920, 2400]}
+        sizes="100vw"
+        formats={['avif', 'webp']}
+        alt="Fachada do Edifício Lausanne, de Franz Heep: venezianas vinho, verdes e cinza"
+        loading="eager"
+        fetchpriority="high"
+        decoding="sync"
+      />
+      <figcaption class="wrap"><span class="rotulo">Edifício Lausanne</span>Franz Heep, 1953–1958 · Higienópolis</figcaption>
+    </figure>
+  </div>
 
   <IndiceProjetos projetos={projetos} ativo="02" />
 

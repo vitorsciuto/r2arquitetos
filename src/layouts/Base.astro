@@ -15,22 +15,21 @@ interface Props {
   descricao: string;
   ogImagem?: ImageMetadata;       // capa para og:image (default: fachada do Louveira)
   cor?: string;                   // cor da obra (páginas de projeto)
-  secao?: string;                 // texto à esquerda do fio simples (running head)
-  secaoDir?: string;              // texto à direita do fio simples
   ativo?: string;                 // item do menu ativo: 'projetos' | 'escritorio' | 'publicacoes' | 'contato'
   /** Trilha para o JSON-LD, sem a home (ela é acrescentada aqui). Omitir na home. */
   trilha?: { nome: string; caminho: string }[];
 }
-const { titulo, descricao, ogImagem, cor, secao, secaoDir, ativo, trilha } = Astro.props;
+const { titulo, descricao, ogImagem, cor, ativo, trilha } = Astro.props;
 const tituloCompleto = titulo === nome ? `${nome} — arquitetura · urbanismo` : `${titulo} — ${nome}`;
 const og = await getImage({ src: ogImagem ?? foto('capas-projetos', '003_0d0a1121.jpg'), width: 1200, format: 'jpg' });
 const ogUrl = Astro.site ? new URL(og.src, Astro.site).href : og.src;
 const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : Astro.url.pathname;
 
-// favicon: o "r2" do logo embutido como data-URI — quadrado taupe, glifo claro
+// favicon: o monograma SEM as venezianas — a 32 px os cortes fragmentam a
+// letra e viram ruído. Marca de verdade tem variante por tamanho.
 const favicon =
   'data:image/svg+xml,' +
-  encodeURIComponent(logoRaw.replace('currentColor', '#66574A').replace('var(--logo-fg, #fff)', '#F5F4F1'));
+  encodeURIComponent(logoRaw.replace(' mask="url(#brise)"', '').replace('currentColor', '#66574A'));
 
 // dados estruturados: o escritório em toda página; a trilha só nas internas
 const jsonLd: Record<string, unknown>[] = [escritorioJsonLd(ogUrl)];
@@ -59,13 +58,15 @@ if (trilha?.length) jsonLd.push(trilhaJsonLd([{ nome, caminho: '/' }, ...trilha]
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Jost:wght@400&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
   <body>
     <a class="skip" href="#conteudo">Ir para o conteúdo</a>
-    <Cabecalho ativo={ativo} secao={secao} secaoDir={secaoDir} />
+    <Cabecalho ativo={ativo} />
+    {/* abertura: conteúdo que precisa sangrar além da mancha (a foto da home) */}
+    <slot name="abertura" />
     <main id="conteudo" class="wrap">
       <slot />
     </main>

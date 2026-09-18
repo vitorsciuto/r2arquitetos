@@ -12,8 +12,6 @@ const projetos = (await getCollection('projetos')).sort((a, b) => a.data.numero.
   titulo="Projetos"
   descricao="Seis projetos do r2 arquitetos: Casa de Praia, Edifício Louveira 1 e 2, Bar e Restaurante Guanabara, Praça Roosevelt e Edifício Lausanne."
   ativo="projetos"
-  secao="Projetos"
-  secaoDir={`01–${projetos[projetos.length - 1].data.numero}`}
   trilha={[{ nome: 'Projetos', caminho: '/projetos' }]}
 >
   <h1 class="titulo" style="padding: 72px 0 56px">Projetos</h1>
