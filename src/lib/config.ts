@@ -9,16 +9,8 @@ export const href = (caminho = '') => `${BASE}/${caminho}`.replace(/\/+$/, '/').
 export const SEP = ' · ';
 export const meta = (itens: (string | undefined | null)[]) => itens.filter((t): t is string => !!t && t.trim() !== '').join(SEP);
 
-/** Nome no índice: o título completo, salvo quando não cabe em uma linha de Jost 22 px (05 → "Praça Roosevelt"). */
+/** Nome no índice: abrevia títulos longos para manter a leitura da grade. */
 export const nomeIndice = (d: { titulo: string; tituloCurto: string }) => (d.titulo.length > 28 ? d.tituloCurto : d.titulo);
-
-/** Recortes 1:1 do material de cada obra (40 px no índice), cortados das próprias fotos. */
-const materiais = import.meta.glob<{ default: ImageMetadata }>('/src/lib/material/*.jpg', { eager: true });
-export function material(numero: string): ImageMetadata {
-  const mod = materiais[`/src/lib/material/${numero}.jpg`];
-  if (!mod) throw new Error(`Recorte de material não encontrado: src/lib/material/${numero}.jpg`);
-  return mod.default;
-}
 
 /** Quadro 4:5 de cada obra no índice da Home (pré-definido; troca com a linha ativa). */
 export interface Quadro { pasta: string; arquivo: string; posicao: string; legenda: string }

@@ -114,7 +114,6 @@ const capa = foto(d.pasta, cur.capa.arquivo);
       <section class="secao" aria-labelledby="fotos-titulo">
         <div class="secao-cab rotulo">
           <h2 id="fotos-titulo" class="rotulo">{d.tituloCurto}</h2>
-          <span>{destaques.length} fotografias</span>
         </div>
         <Figuras itens={destaques} />
       </section>
@@ -124,7 +123,6 @@ const capa = foto(d.pasta, cur.capa.arquivo);
       <section class="secao" aria-label={c.titulo}>
         <div class="secao-cab rotulo">
           <h2 class="rotulo">{c.titulo}</h2>
-          <span>{c.docs ? `${c.itens.length} documentos` : `${c.itens.length} fotografias`}</span>
         </div>
         <Figuras itens={c.itens} docs={c.docs} />
       </section>

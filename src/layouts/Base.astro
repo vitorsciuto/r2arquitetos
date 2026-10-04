@@ -25,10 +25,14 @@ const og = await getImage({ src: ogImagem ?? foto('capas-projetos', '003_0d0a112
 const ogUrl = Astro.site ? new URL(og.src, Astro.site).href : og.src;
 const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : Astro.url.pathname;
 
-// favicon: a marca do escritório embutida como data-URI
+// O favicon reutiliza o mesmo vetor do cabeçalho, com as cores da marca.
 const favicon =
   'data:image/svg+xml,' +
-  encodeURIComponent(logoRaw.replace('currentColor', '#66574A').replace('var(--logo-fg, #fff)', '#F5F4F1'));
+  encodeURIComponent(
+    logoRaw
+      .replace(/<svg([^>]*)>/, '<svg$1><rect width="256" height="256" fill="#858585"/>')
+      .replaceAll('currentColor', '#FFFFFF'),
+  );
 
 // dados estruturados: o escritório em toda página; a trilha só nas internas
 const jsonLd: Record<string, unknown>[] = [escritorioJsonLd(ogUrl)];
@@ -48,18 +52,13 @@ if (trilha?.length) jsonLd.push(trilhaJsonLd([{ nome, caminho: '/' }, ...trilha]
     <meta property="og:description" content={descricao} />
     <meta property="og:image" content={ogUrl} />
     <meta property="og:locale" content="pt_BR" />
-    <meta name="theme-color" content="#E4E1DB" />
+    <meta name="theme-color" content="#F2F2F2" />
     <link rel="icon" href={favicon} />
     <link rel="sitemap" href="/sitemap-index.xml" />
     {jsonLd.map((bloco) => (
       <script is:inline type="application/ld+json" set:html={JSON.stringify(bloco)} />
     ))}
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preload" href="/fonts/WorkSans-Variable.ttf" as="font" type="font/ttf" crossorigin />
   </head>
   <body>
     <a class="skip" href="#conteudo">Ir para o conteúdo</a>

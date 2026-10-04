@@ -4,25 +4,19 @@ export const nome = 'r2 arquitetos';
 export const nomeCompleto = 'r2 arquitetos — arquitetura · urbanismo';
 
 export const contato = {
-  endereco: ['av. higienópolis 101 · higienópolis', 'são paulo sp · 01238-001'],
-  enderecoFormal: 'Av. Higienópolis, 101 — Higienópolis, São Paulo, SP, 01238-001',
-  cep: '01238-001', // verificado (lado ímpar da Av. Higienópolis)
-  telefone: '+55 11 3231 5532',
-  telefoneHref: 'tel:+551132315532',
+  enderecoFormal: 'Avenida Higienópolis, 101, Higienópolis, São Paulo, SP',
   email: 'contato@r2arquitetos.com.br',
-  mapa: 'https://www.google.com/maps/search/?api=1&query=Av.+Higien%C3%B3polis%2C+101+-+Higien%C3%B3polis%2C+S%C3%A3o+Paulo+-+SP',
   facebook: 'https://www.facebook.com/r2arquitetos.com.br',
   instagram: 'https://www.instagram.com/r2_arquitetos/',
-  instagramArroba: '@r2_arquitetos',
+  instagramRotulo: '@r2arquitetos',
 };
 
 /** Endereço em partes — para os dados estruturados (JSON-LD). */
 export const endereco = {
-  logradouro: 'Av. Higienópolis, 101',
+  logradouro: 'Avenida Higienópolis, 101',
   bairro: 'Higienópolis',
   cidade: 'São Paulo',
   uf: 'SP',
-  cep: '01238-001',
   pais: 'BR',
 };
 

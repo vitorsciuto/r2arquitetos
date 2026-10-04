@@ -1,10 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
-import { Image } from 'astro:assets';
 import Layout from '../../layouts/Base.astro';
 import Figura from '../../components/Figura.astro';
 import { foto } from '../../lib/fotos';
-import { href, material, meta, nomeIndice, quadros } from '../../lib/config';
+import { href, meta, nomeIndice, quadros } from '../../lib/config';
 
 const projetos = (await getCollection('projetos')).sort((a, b) => a.data.numero.localeCompare(b.data.numero));
 ---
@@ -25,6 +24,7 @@ const projetos = (await getCollection('projetos')).sort((a, b) => a.data.numero.
             <Figura
               img={foto(q.pasta, q.arquivo)}
               legenda={q.legenda}
+              semLegenda
               ratio="4:5"
               posicao={q.posicao}
               eager={Number(p.data.numero) <= 3}
@@ -32,7 +32,6 @@ const projetos = (await getCollection('projetos')).sort((a, b) => a.data.numero.
               larguras={[480, 800]}
             />
             <div class="cabec">
-              <span class="mat" aria-hidden="true"><Image src={material(p.data.numero)} width={64} height={64} alt="" /></span>
               <div>
                 <span class="rotulo">{p.data.numero}&nbsp;· {p.data.anos}</span>
                 <span class="nome" style="display:block; margin-top: 4px">{nomeIndice(p.data)}</span>

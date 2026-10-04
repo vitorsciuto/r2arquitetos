@@ -30,13 +30,11 @@ export function escritorioJsonLd(logo?: string) {
     url: SITE,
     ...(logo ? { logo: absArquivo(logo), image: absArquivo(logo) } : {}),
     email: contato.email,
-    telephone: contato.telefone,
     address: {
       '@type': 'PostalAddress',
       streetAddress: endereco.logradouro,
       addressLocality: endereco.cidade,
       addressRegion: endereco.uf,
-      postalCode: endereco.cep,
       addressCountry: endereco.pais,
     },
     areaServed: { '@type': 'City', name: endereco.cidade },

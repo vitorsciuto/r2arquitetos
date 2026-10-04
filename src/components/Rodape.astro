@@ -1,8 +1,7 @@
 ---
 import Contato from './Contato.astro';
-import { contato, menu, nome } from '../data/escritorio';
+import { menu } from '../data/escritorio';
 import { href } from '../lib/config';
-const ano = new Date().getFullYear();
 ---
 <footer class="wrap rod">
   <div class="g">
@@ -13,10 +12,6 @@ const ano = new Date().getFullYear();
           {menu.map((m) => <li><a href={href(m.href + '/')}>{m.rotulo}</a></li>)}
         </ul>
       </nav>
-      <p class="rod-social">
-        <a href={contato.instagram} rel="me noopener" target="_blank">Instagram {contato.instagramArroba}</a>
-      </p>
-      <p>© {ano} {nome}</p>
     </div>
   </div>
 </footer>

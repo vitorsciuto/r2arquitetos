@@ -1,0 +1,14 @@
+/* Identidade r2: cinza medido na referência, neutros para todas as aplicações.
+   O cinza da marca é gráfico; texto usa tinta ou cinza de leitura. */
+:root {
+  --marca: #858585;
+  --papel: #F2F2F2;
+  --sur: #FAFAFA;
+  --branco: #FFFFFF;
+  --tinta: #616161;
+  --titulo: #5F5F5F;
+  --cinza: #6A6A6A;
+  --cinza-texto: var(--cinza);
+  --fio-fraco: #CCCCCC;
+  --sans: 'Work Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}

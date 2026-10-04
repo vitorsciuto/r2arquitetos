@@ -7,7 +7,7 @@ import Figura from '../components/Figura.astro';
 import Ficha from '../components/Ficha.astro';
 import { foto } from '../lib/fotos';
 import { arquitetos, foco, nome, posicao } from '../data/escritorio';
-import { href, meta } from '../lib/config';
+import { href } from '../lib/config';
 
 const projetos = (await getCollection('projetos')).sort((a, b) => a.data.numero.localeCompare(b.data.numero));
 const louveira = projetos.find((p) => p.data.slug === 'louveira-1')!;
@@ -81,7 +81,6 @@ const destaqueP2 = 'Os principais elementos originais do apartamento, como pasti
   <section class="secao" aria-labelledby="escritorio-titulo">
     <div class="secao-cab rotulo" style="--cor: var(--tinta)">
       <h2 id="escritorio-titulo" class="rotulo"><a href={href('escritorio/')}>Escritório</a></h2>
-      <span>{meta(arquitetos.map((a) => a.nome))}</span>
     </div>
     <div class="g">
       <p class="leitura-20">{foco}</p>

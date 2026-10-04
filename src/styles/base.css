@@ -1,4 +1,4 @@
-/* base compartilhada por A e B — reset mínimo e utilitários; tokens ficam em a.css / b.css */
+/* Reset mínimo e utilitários; identidade em brand-tokens.css. */
 *, *::before, *::after { box-sizing: border-box; }
 * { margin: 0; padding: 0; }
 html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-behavior: smooth; }
