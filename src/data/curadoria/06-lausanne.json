@@ -2,7 +2,7 @@
  "pasta": "06-lausanne",
  "capa": {
   "arquivo": "002_c68f4a53.jpg",
-  "legenda": "Fachada do Edifício Lausanne com as venezianas coloridas em contraplongée",
+  "legenda": "Fachada do Edifício Lausanne vista de baixo, com as venezianas coloridas",
   "orientacao": "paisagem",
   "nota": "Imagem mais icônica do conjunto: a fachada de venezianas de Franz Heep, bem exposta e nítida"
  },
@@ -15,7 +15,7 @@
  "destaques": [
   {
    "arquivo": "002_c68f4a53.jpg",
-   "legenda": "Fachada do Edifício Lausanne com as venezianas coloridas em contraplongée",
+   "legenda": "Fachada do Edifício Lausanne vista de baixo, com as venezianas coloridas",
    "orientacao": "paisagem"
   },
   {
@@ -25,7 +25,7 @@
   },
   {
    "arquivo": "006_405400d9.jpg",
-   "legenda": "Sala de estar com poltronas Barcelona e caixilho original aberto para as árvores",
+   "legenda": "Sala de estar com o caixilho original aberto para as árvores",
    "orientacao": "retrato"
   },
   {
@@ -51,7 +51,7 @@
   },
   {
    "arquivo": "003_658e84b5.jpg",
-   "legenda": "Venezianas vermelhas, verdes e brancas da fachada vistas do jardim com primavera",
+   "legenda": "Venezianas da fachada vistas do jardim",
    "orientacao": "retrato"
   },
   {
@@ -78,7 +78,7 @@
   },
   {
    "arquivo": "004_4d66aafe.jpg",
-   "legenda": "Letreiro ‘Edifício Lausanne’ na parede do hall",
+   "legenda": "Letreiro “Edifício Lausanne” na parede do hall",
    "orientacao": "paisagem"
   }
  ],

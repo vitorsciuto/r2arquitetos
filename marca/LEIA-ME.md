@@ -1,32 +1,18 @@
 # Marca r2 arquitetos
 
-A marca do escritório: o "r2" em serifa de alto contraste, dentro do quadrado.
-É a mesma do site antigo no Wix e a mesma do avatar do Instagram — as letras
-foram vetorizadas a partir do original, então aqui elas são **resolução
-infinita**, não bitmap.
+O kit vigente está em `identidade-r2/`. O guia `identidade-r2/index.html` reúne as
+regras para qualquer peça.
 
-## Arquivos
+- Fonte única dos valores: `identidade-r2/tokens.json`. O CSS do site sai dele por
+  `node scripts/gerar-tokens-css.mjs`; a assinatura e o símbolo, por
+  `node scripts/gerar-logos-r2.mjs`, que também grava no guia o rótulo e o link do
+  Instagram. O guia repete os outros valores à mão: conferir depois de cada mudança.
+- Regras completas: `docs/marca/regua-da-marca.md`.
+- Logos: `identidade-r2/logos/` (assinatura e símbolo). As versões que deixaram de
+  valer estão em `identidade-r2/logos/historico/`.
+- Pacote para enviar: `r2-identidade-2026-10-16.zip`, com `identidade-r2/` sem `qa/` e
+  sem `logos/historico/`. Depois de regerar qualquer peça, montar um pacote novo.
 
-| arquivo | uso |
-|---|---|
-| `../src/assets/logo-r2.svg` | a marca no site (retangular, 60×80) |
-| `r2-avatar-<cor>.svg` | versão **quadrada**, para avatar |
-| `r2-avatar-<cor>-1080.png` | Instagram, WhatsApp Business, Google |
-| `r2-avatar-<cor>-640.png` | usos médios |
-| `r2-avatar-<cor>-320.png` | mínimo aceitável do Instagram |
-
-## Cores
-
-- **taupe** `#66574A` sobre `#F5F4F1` — a cor do site. Unifica site e perfis.
-- **cinza** `#9A9A9A` sobre branco — como está hoje no Instagram.
-- **tinta** `#161616` sobre `#E4E1DB` — para fundo claro e impressos.
-
-## Por que a versão quadrada existe
-
-A marca é retangular (60×80), e o Instagram recorta o avatar em círculo. Se
-você subir o retângulo, as letras encostam na borda e o círculo corta — é o
-que acontece no perfil hoje. A versão quadrada põe as letras em 62% da
-largura, bem dentro do círculo inscrito.
-
-Suba sempre o arquivo de **1080 px**: o Instagram reduz sozinho, e reduzir a
-partir de um arquivo grande dá um resultado melhor do que subir o pequeno.
+O pacote de 03/10/2026 (`r2-identidade-2026-10-03.zip`) saiu desta pasta e está em
+`tmp/antes-coerencia-20261016/`. Os avatares soltos nesta pasta (`r2-avatar-*`) são
+acervo de 03/10/2026. Não usar em peça nova.

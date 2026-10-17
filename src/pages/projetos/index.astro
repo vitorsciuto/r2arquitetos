@@ -1,46 +1,27 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Base.astro';
-import Figura from '../../components/Figura.astro';
-import { foto } from '../../lib/fotos';
-import { href, meta, nomeIndice, quadros } from '../../lib/config';
+import CartaoObra from '../../components/CartaoObra.astro';
+import { nomeIndice, ordenarObras } from '../../lib/config';
 
-const projetos = (await getCollection('projetos')).sort((a, b) => a.data.numero.localeCompare(b.data.numero));
+const projetos = ordenarObras(await getCollection('projetos'));
+// descrição tirada da coleção: acompanha a entrada de novas obras
+const nomes = projetos.map((p) => nomeIndice(p.data));
+const descricao = `Projetos do r2 arquitetos: ${nomes.slice(0, -1).join(', ')} e ${nomes[nomes.length - 1]}.`;
 ---
 <Layout
   titulo="Projetos"
-  descricao="Seis projetos do r2 arquitetos: Casa de Praia, Edifício Louveira 1 e 2, Bar e Restaurante Guanabara, Praça Roosevelt e Edifício Lausanne."
+  descricao={descricao}
   ativo="projetos"
   trilha={[{ nome: 'Projetos', caminho: '/projetos' }]}
 >
   <h1 class="titulo" style="padding: 72px 0 56px">Projetos</h1>
 
   <ol class="grade3">
-    {projetos.map((p) => {
-      const q = quadros[p.data.numero];
-      return (
-        <li>
-          <a class="item" href={href(`projetos/${p.data.slug}/`)} style={`--cor:${p.data.cor}`}>
-            <Figura
-              img={foto(q.pasta, q.arquivo)}
-              legenda={q.legenda}
-              semLegenda
-              ratio="4:5"
-              posicao={q.posicao}
-              eager={Number(p.data.numero) <= 3}
-              sizes="(max-width: 719px) 100vw, (max-width: 1079px) 45vw, 370px"
-              larguras={[480, 800]}
-            />
-            <div class="cabec">
-              <div>
-                <span class="rotulo">{p.data.numero}&nbsp;· {p.data.anos}</span>
-                <span class="nome" style="display:block; margin-top: 4px">{nomeIndice(p.data)}</span>
-                <span class="meta" style="display:block">{meta([p.data.original, p.data.bairro === 'Praia da Mococa' ? p.data.local : p.data.bairro, p.data.tipo])}</span>
-              </div>
-            </div>
-          </a>
-        </li>
-      );
-    })}
+    {projetos.map((p, i) => (
+      <li>
+        <CartaoObra p={p} eager={i < 3} proporcao={4 / 5} sizes="(max-width: 719px) 100vw, (max-width: 1079px) 45vw, 372px" />
+      </li>
+    ))}
   </ol>
 </Layout>

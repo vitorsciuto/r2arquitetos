@@ -1,0 +1,34 @@
+{
+ "pasta": "07-cozinha-tremembe",
+ "capa": { "arquivo": "022_ea2a7d4e.jpg", "legenda": "A cozinha vista através da treliça de madeira", "orientacao": "paisagem" },
+ "hero": { "arquivo": "022_ea2a7d4e.jpg", "legenda": "A cozinha vista através da treliça de madeira", "orientacao": "paisagem" },
+ "destaques": [
+  { "arquivo": "006_ad101a9f.jpg", "legenda": "A cozinha vista do ambiente vizinho, sob o forro de madeira", "orientacao": "retrato" },
+  { "arquivo": "019_d14b0783.jpg", "legenda": "Ilha com cooktop no eixo da cozinha, portas de vidro ao fundo", "orientacao": "paisagem" },
+  { "arquivo": "008_a2531f39.jpg", "legenda": "Ilha com cooktop e cuba, marcenaria grafite à esquerda e faixa de janelas ao fundo", "orientacao": "paisagem" },
+  { "arquivo": "012_745c23bd.jpg", "legenda": "Anel de luz no forro sobre a ilha de pedra clara", "orientacao": "retrato" },
+  { "arquivo": "003_45c36012.jpg", "legenda": "A cozinha no eixo: ilha à frente, bancada sob as janelas à direita", "orientacao": "paisagem" },
+  { "arquivo": "007_2840ff47.jpg", "legenda": "Parede de marcenaria grafite com geladeira e fornos embutidos", "orientacao": "paisagem" },
+  { "arquivo": "016_92af0efd.jpg", "legenda": "Ilha de pedra clara com banquetas de acrílico", "orientacao": "retrato" },
+  { "arquivo": "015_ae7145bb.jpg", "legenda": "Cuba e cooktop na ilha, adega e nichos de madeira ao fundo", "orientacao": "paisagem" },
+  { "arquivo": "004_8adaa870.jpg", "legenda": "Geladeira, adega e coifa; bancada e janelas à direita", "orientacao": "paisagem" },
+  { "arquivo": "017_5ab159ba.jpg", "legenda": "Cooktop na ilha sob a coifa suspensa", "orientacao": "retrato" },
+  { "arquivo": "009_485c1495.jpg", "legenda": "Ilha e bancada sob as janelas, portas de vidro à direita", "orientacao": "paisagem" },
+  { "arquivo": "010_68a25bab.jpg", "legenda": "Cooktop e cuba na ilha, de frente para a faixa de janelas", "orientacao": "paisagem" },
+  { "arquivo": "013_9f697cc1.jpg", "legenda": "Cabeceira da ilha, com a pedra descendo até o piso", "orientacao": "retrato" }
+ ],
+ "documentos": [],
+ "capitulos": [],
+ "obra": [],
+ "descartadas": [
+  { "arquivo": "001_2b883acd.jpg", "motivo": "quase igual à 003" },
+  { "arquivo": "002_1d885bc3.jpg", "motivo": "quase igual à 003" },
+  { "arquivo": "005_ac98c9d8.jpg", "motivo": "mesmo ângulo da 006" },
+  { "arquivo": "011_9b990a45.jpg", "motivo": "objetos em primeiro plano (abacaxi, onça de louça)" },
+  { "arquivo": "014_f56ff434.jpg", "motivo": "objetos em primeiro plano" },
+  { "arquivo": "018_c726d2dc.jpg", "motivo": "quase igual à 017" },
+  { "arquivo": "020_1c3e7f70.jpg", "motivo": "quase igual à 022" },
+  { "arquivo": "021_40edd358.jpg", "motivo": "quase igual à 022" }
+ ],
+ "slides_titulo": []
+}

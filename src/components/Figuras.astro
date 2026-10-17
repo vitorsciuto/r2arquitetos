@@ -9,9 +9,9 @@ import Figura from './Figura.astro';
  *   retrato + retrato (+ retrato) → três colunas de 4:5
  *   sobra paisagem → 5:4 nas 7 colunas, legenda abaixo
  *   sobra retrato  → 4:5 nas 5 colunas, legenda abaixo
- * Documentos: proporção nativa, p&b em multiply, três colunas.
+ * Documentos: proporção nativa, cores originais, três colunas.
  */
-export interface Item { img: ImageMetadata; legenda: string; orientacao: 'paisagem' | 'retrato' | 'quadrado'; doc?: boolean; posicao?: string }
+export interface Item { img: ImageMetadata; legenda: string; credito?: string; orientacao: 'paisagem' | 'retrato' | 'quadrado'; doc?: boolean; posicao?: string }
 interface Props { itens: Item[]; docs?: boolean; rotulos?: boolean }
 const { itens, docs = false, rotulos = false } = Astro.props;
 
@@ -41,11 +41,11 @@ const sizesPor: Record<string, string> = {
   ll: '(max-width: 719px) 100vw, (max-width: 1079px) 45vw, 560px',
   lp: '(max-width: 719px) 100vw, (max-width: 1079px) 55vw, 660px',
   pl: '(max-width: 719px) 100vw, (max-width: 1079px) 45vw, 470px',
-  ppp: '(max-width: 719px) 100vw, (max-width: 1079px) 30vw, 370px',
-  pp: '(max-width: 719px) 100vw, (max-width: 1079px) 30vw, 370px',
-  l: '(max-width: 719px) 100vw, (max-width: 1079px) 55vw, 660px',
+  ppp: '(max-width: 719px) 100vw, (max-width: 1079px) 30vw, 372px',
+  pp: '(max-width: 719px) 100vw, (max-width: 1079px) 30vw, 372px',
+  l: '(max-width: 719px) 100vw, (max-width: 1079px) 90vw, 1180px',
   p: '(max-width: 719px) 100vw, (max-width: 1079px) 40vw, 470px',
-  docs: '(max-width: 719px) 100vw, (max-width: 1079px) 45vw, 370px',
+  docs: '(max-width: 719px) 100vw, (max-width: 1079px) 45vw, 372px',
 };
 // documentos e imagens pequenas (< 700 px) ficam em proporção nativa e nunca passam do tamanho original
 const ratioDe = (it: Item) => (it.doc || it.img.width < 700 ? 'nativa' : it.orientacao === 'retrato' ? '4:5' : '5:4');
@@ -59,6 +59,7 @@ const ratioDe = (it: Item) => (it.doc || it.img.width < 700 ? 'nativa' : it.orie
         <Figura
           img={it.img}
           legenda={it.legenda}
+          credito={it.credito}
           rotulo={rotulos ? String(n).padStart(2, '0') : undefined}
           ratio={ratioDe(it)}
           doc={it.doc}

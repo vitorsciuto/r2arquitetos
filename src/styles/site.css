@@ -8,20 +8,21 @@
   src: url('/fonts/WorkSans-Variable.ttf') format('truetype');
 }
 
-/* r2 arquitetos — patrimônio moderno paulistano
-   Identidade neutra: cinza da marca, branco, papel e tinta.
+/* r2 arquitetos
+   Régua: docs/marca/regua-da-marca.md
+   Cores e tracking do rótulo vêm de brand-tokens.css (gerado de tokens.json).
 
-   Work Sans, de Wei Huang: uma família para títulos, texto e legendas.
-   Peso regular, cinza suave e hierarquia por escala, como em um catálogo.
-   A serifa fica no desenho aprovado do monograma.
-   Escala: 32 / 30 / 23 / 19 / 16 / 14 / 13 / 12. */
+   Work Sans 400, uma família para títulos, texto e legendas; sem itálico, sem negrito.
+   Um cinza de texto (--tinta); o cinza da marca (--marca) é só gráfico: quadrado, fios, sublinhado.
+   Escala única (régua §4): 30 / 23 / 19 / 16 / 14 / 12 px. No celular o título desce a 26
+   e o subtítulo a 21. O nome de cada token é o valor; quem troca no celular é o papel
+   (--fs-titulo, --fs-subtitulo). */
 
 :root {
-  --serif: var(--sans);  /* compatibilidade: não há mais segunda família */
-
-  --t46: 32px; --t30: 30px; --t22: 23px; --t20: 19px; --t18: 16px; --t16: 14px; --t13: 13px; --t11: 12px;
-  --tr-titulo: 0;        /* título não leva tracking */
-  --tr-rotulo: .025em;   /* rótulos discretos, sem espaçamento excessivo */
+  --t32: 32px; --t30: 30px; --t26: 26px; --t23: 23px; --t21: 21px; --t19: 19px; --t16: 16px; --t14: 14px; --t13: 13px; --t12: 12px;
+  --fs-titulo: var(--t30);
+  --fs-subtitulo: var(--t23);
+  --tr-titulo: -0.02em;
 
   --mancha: 1180px;
   --margem: 96px;
@@ -29,21 +30,24 @@
   --secao: 120px;
 }
 @media (max-width: 1079px) { :root { --margem: 40px; --gap: 40px; --secao: 96px; } }
-@media (max-width: 719px)  { :root { --margem: 20px; --gap: 32px; --secao: 72px; --t46: 26px; --t30: 26px; --t22: 21px; } }
+@media (max-width: 719px)  { :root { --margem: 24px; --gap: 32px; --secao: 72px; --fs-titulo: var(--t26); --fs-subtitulo: var(--t21); } }
 
 html { background: var(--papel); }
 body {
   background: var(--papel);
   color: var(--tinta);
   font-family: var(--sans);
-  font-size: var(--t18);
-  line-height: 1.62;
+  font-size: var(--t16);
+  line-height: 1.6;
   font-weight: 400;
 }
-::selection { background: var(--tinta); color: var(--branco); }
+/* um peso só: títulos e termos de lista não herdam o negrito do navegador */
+h1, h2, h3, h4, h5, h6, dt, th, b, strong { font-weight: 400; }
+/* texto branco só sobre o cinza da marca (régua §3); a seleção usa esse fundo */
+::selection { background: var(--marca); color: var(--branco); }
 :focus-visible { outline: 2px solid var(--tinta); outline-offset: 3px; }
 
-.skip { position: absolute; left: -999px; top: 8px; z-index: 10; padding: 8px 12px; background: var(--tinta); color: var(--branco); font: 500 var(--t13)/1.4 var(--sans); }
+.skip { position: absolute; left: -999px; top: 8px; z-index: 10; padding: 8px 12px; background: var(--papel); color: var(--tinta); border-bottom: 1px solid var(--marca); font: 400 var(--t14)/1.4 var(--sans); }
 .skip:focus { left: 8px; }
 
 /* ---------- mancha e grid ---------- */
@@ -53,28 +57,34 @@ body {
 @media (max-width: 719px) { .g { grid-template-columns: 1fr; } }
 
 /* ---------- tipografia ---------- */
+/* rótulo: 12 px, caixa-alta, tracking da régua (0,06em) */
 .rotulo {
-  color: var(--cinza); font-weight: 400; font-size: var(--t11); line-height: 1.5;
-  letter-spacing: var(--tr-rotulo); text-transform: uppercase;
+  font-size: var(--t12); line-height: 1.5;
+  letter-spacing: var(--rotulo-tracking); text-transform: uppercase;
 }
-.ficha, .nav, .cab-wm {
-  color: var(--cinza); font-weight: 400; font-size: var(--t13); line-height: 1.5;
-}
-.titulo { color: var(--titulo); font-weight: 400; font-size: var(--t30); line-height: 1.2; letter-spacing: -.025em; }
-.nome   { color: var(--titulo); font-weight: 400; font-size: var(--t22); line-height: 1.25; letter-spacing: -.025em; }
-.lede   { color: var(--cinza-texto); font-size: var(--t46); font-weight: 400; line-height: 1.3; letter-spacing: -.02em; text-wrap: balance; max-width: 36ch; }
-.leitura { font-size: var(--t18); line-height: 1.6; max-width: 34em; }
+/* pequeno: ficha, navegação, legenda, linha 2 da assinatura */
+.ficha, .nav { font-size: var(--t14); line-height: 1.5; }
+.titulo { font-size: var(--fs-titulo); line-height: 1.2; letter-spacing: var(--tr-titulo); }
+.nome   { font-size: var(--fs-subtitulo); line-height: 1.25; letter-spacing: -0.01em; }
+.lede   { font-size: var(--fs-titulo); line-height: 1.3; letter-spacing: var(--tr-titulo); text-wrap: pretty; max-width: 38ch; }
+.leitura { font-size: var(--t16); line-height: 1.6; max-width: 34em; }
 .leitura p + p { margin-top: 1em; }
-.leitura-20 { font-size: var(--t20); line-height: 1.5; max-width: 32em; }
-.leitura-20 p + p { margin-top: .9em; }
-.t16 { font-size: var(--t16); line-height: 1.55; }
-.t13 { font-size: var(--t13); line-height: 1.45; }
-.cinza { color: var(--cinza); }
+.leitura-19 { font-size: var(--t19); line-height: 1.5; max-width: 32em; }
+.leitura-19 p + p { margin-top: .9em; }
+.t14 { font-size: var(--t14); line-height: 1.55; }
+.t19 { font-size: var(--t19); line-height: 1.4; }
 .mt10 { margin-top: 10px; }
-.ficha { line-height: 1.9; color: var(--cinza); }
+.ficha { line-height: 1.6; }
+/* Ficha (régua §6): só quebra depois de um separador, que fica no fim da linha; um item nunca
+   se parte. Cada item é um bloco em linha com o " ·" dentro (Ficha.astro). Um item mais largo que
+   a coluna inteira ocupa mais de uma linha e quebra primeiro depois da sua vírgula (.trecho);
+   entre palavras só se um trecho sozinho também não couber. */
+.ficha .item, .ficha .trecho { display: inline-block; max-width: 100%; }
+/* no computador, quando a ficha quebra, as linhas ficam parelhas: sem ano órfão */
+@media (min-width: 720px) { .ficha { text-wrap: balance; } }
 
 /* links de texto: sublinhado fino no cinza da marca */
-.leitura a, .leitura-20 a, .link { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .18em; text-decoration-color: var(--marca); }
+.leitura a, .leitura-19 a, .link { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .18em; text-decoration-color: var(--marca); }
 .link:hover { text-decoration-thickness: 2px; }
 
 /* ---------- seções ---------- */
@@ -87,81 +97,85 @@ body {
 .fio { border-top: 1px solid var(--marca); }
 .fio-fraco { border-top: 1px solid var(--fio-fraco); }
 
-/* ---------- figuras ---------- */
+/* ---------- figuras ----------
+   Fotos e documentos nas cores originais (régua §7): sem filtro, sem mistura com o papel. */
 figure { margin: 0; }
 .fig img { width: 100%; height: auto; display: block; }
 .fig.r54 img { aspect-ratio: 5 / 4; object-fit: cover; }
 .fig.r45 img { aspect-ratio: 4 / 5; object-fit: cover; }
 .fig.r11 img { aspect-ratio: 1 / 1; object-fit: cover; }
-.fig.doc img { filter: grayscale(1) brightness(1.06) contrast(1.12); mix-blend-mode: multiply; }
 .fig.nativa { max-width: var(--largura-nativa, none); }
-.fig.pb  img { filter: grayscale(1) contrast(1.04); }
-.fig figcaption { margin-top: 10px; font-size: var(--t13); line-height: 1.45; color: var(--cinza); max-width: 40em; }
-.fig figcaption .rotulo { color: var(--cinza); margin-right: .7em; }
+.fig figcaption { margin-top: 10px; font-size: var(--t14); line-height: 1.45; max-width: 40em; }
+.fig figcaption .rotulo { margin-right: .7em; }
 
-/* ---------- cabeçalho ---------- */
-.cab { display: flex; align-items: center; justify-content: space-between; gap: 24px 40px; flex-wrap: wrap; padding: 32px 0 18px; border-bottom: 1px solid var(--marca); }
+/* ---------- cabeçalho: assinatura (régua §2) ----------
+   Quadrado de 56 px; texto a 0,25 do lado (14 px), em duas linhas, centrado na altura do quadrado.
+   Respiro mínimo de metade do lado (28 px) em volta do quadrado: 32 px acima, 28 px até o fio,
+   e a margem da mancha (96 ou 40 px) à esquerda. No celular (até 719 px) a assinatura fica no
+   mínimo da régua (tokens.json → lockup.celular e lockup.minimoAssinaturaTelaPx): quadrado de
+   48 px, linhas a 14 px e 12 px (a mesma proporção de 16 e 14 px sobre 56), texto a 0,25 do lado (12 px) e
+   centrado na altura do quadrado; respiro de metade do lado (24 px): 24 px acima e a margem da
+   mancha, que no celular é de 24 px. */
+.cab { display: flex; align-items: center; justify-content: space-between; gap: 28px 40px; flex-wrap: wrap; padding-block: 28px; }
 .cab-marca { display: flex; align-items: center; gap: 14px; }
-.cab-marca svg { width: 56px; height: 56px; flex: none; color: var(--branco); background: var(--marca); }
-.cab-wm { line-height: 1.7; white-space: nowrap; }
+.cab-marca svg { width: 56px; height: 56px; flex: none; display: block; }
+.cab-wm { display: flex; flex-direction: column; white-space: nowrap; }
+.cab-wm .l1 { font-size: var(--t16); line-height: 1.35; }
+.cab-wm .l2 { font-size: var(--t14); line-height: 1.35; }
 .nav ul { display: flex; gap: 36px; flex-wrap: wrap; }
-.nav { font-size: 14px; }
 .nav a { display: inline-block; padding: 4px 0; border-bottom: 1px solid transparent; }
 .nav a:hover, .nav a[aria-current] { border-bottom-color: var(--marca); }
 @media (max-width: 719px) {
-  .cab { padding: 24px 0 16px; }
+  .cab { padding-block: 24px 16px; row-gap: 24px; }
+  .cab-marca { gap: 12px; }
+  .cab-marca svg { width: 48px; height: 48px; }
+  .cab-wm .l1 { font-size: var(--t14); }
+  .cab-wm .l2 { font-size: var(--t12); }
   .nav { width: 100%; }
   .nav ul { gap: 8px; justify-content: space-between; }
 }
 
-/* ---------- rodapé ---------- */
-.rod { margin-top: var(--secao); border-top: 2px solid var(--marca); padding-bottom: 56px; }
-.rod::before { content: ''; display: block; border-top: 1px solid var(--marca); margin-top: 3px; }
-.rod .g { padding-top: 28px; }
-.contato { font-size: var(--t16); line-height: 1.7; }
-.contato-endereco { max-width: 37ch; text-wrap: pretty; }
+/* ---------- rodapé ----------
+   Um fio de 2 px no topo, na largura da mancha (dentro do padding de .wrap). */
+.rod { margin-top: var(--secao); padding-bottom: 56px; }
+.rod > .g { border-top: 2px solid var(--marca); padding-top: 28px; }
+.contato { font-size: var(--t14); line-height: 1.7; }
 .contato-links { display: flex; flex-direction: column; align-items: flex-start; gap: .45em; margin-top: 1.2em; }
 .contato-links a { max-width: 100%; overflow-wrap: anywhere; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .22em; text-decoration-color: var(--marca); }
 .contato-links a:hover { text-decoration-thickness: 2px; }
-.rod-dir { display: flex; flex-direction: column; justify-content: space-between; gap: 24px; min-height: 100%; text-align: right; }
+.rod-dir { display: flex; flex-direction: column; justify-content: space-between; gap: 24px; min-height: 100%; text-align: right; font-size: var(--t14); line-height: 1.9; }
 .rod-dir ul { display: flex; flex-direction: column; gap: 6px; align-items: flex-end; }
-.rod-dir a:hover { text-decoration: underline; text-underline-offset: .3em; }
+.rod-dir a:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .3em; text-decoration-color: var(--marca); }
 @media (max-width: 719px) { .rod-dir { text-align: left; } .rod-dir ul { align-items: flex-start; } }
 
-/* ---------- índice de projetos ----------
-   Um cartão por obra, igual no computador e no celular: muda só o número de
-   colunas. Sem hover, sem painel que troca, sem JavaScript — o cartão inteiro
-   é o link, e um clique ou toque abre o projeto. */
-.idx-lista { display: grid; grid-template-columns: repeat(2, 1fr); gap: 56px var(--gap); }
-@media (max-width: 719px) { .idx-lista { grid-template-columns: 1fr; gap: 40px; } }
-
-.linha {
-  display: grid; grid-template-columns: 32px 1fr auto; column-gap: 12px;
-  border-top: 2px solid var(--marca); padding-top: 12px; color: var(--tinta);
-}
-.linha .foto { grid-column: 1 / -1; margin-bottom: 14px; overflow: hidden; background: var(--sur); }
-.linha .foto img {
-  display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover;
-  transition: transform .5s cubic-bezier(.2, .7, .3, 1);
-}
-.linha .num { padding-top: 2px; }
-.linha .nome { grid-column: 2; }
-.linha .anos { grid-column: 3; font-size: var(--t11); letter-spacing: var(--tr-rotulo); padding-top: 4px; white-space: nowrap; color: var(--cinza); }
-.linha .meta { grid-column: 2 / -1; font-size: var(--t16); line-height: 1.4; margin-top: 4px; }
-.linha .meta, .grade3 .item .meta { color: var(--cinza); }
-
-/* movimento discreto e igual nos dois: a foto avança de leve na intenção */
+/* ---------- ficha de obra nos índices (home e /projetos) ----------
+   Mesmo cartão nos dois índices: foto, fio de 2 px na cor da obra, rótulo, nome e a mesma
+   ficha da página do projeto (Ficha.astro).
+   A cor da obra (--cor, gravada no link de cada cartão) só aparece nesse fio (régua §3). */
+.obra { display: block; color: var(--tinta); }
+.obra .foto { display: block; overflow: hidden; background: var(--sur); }
+.obra .foto img { display: block; width: 100%; height: auto; object-fit: cover; }
+.obra-ficha { display: block; margin-top: 14px; border-top: 2px solid var(--cor, var(--marca)); padding-top: 12px; }
+.obra-ficha .nome { display: block; margin-top: 4px; }
+.obra-ficha .ficha { margin-top: 6px; }
+/* sinal de foco do cartão: só o sublinhado do nome; a foto não cresce (régua §7) */
 @media (hover: hover) {
-  .linha:hover .foto img { transform: scale(1.03); }
-  .linha:hover .nome { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .18em; text-decoration-color: var(--marca); }
+  .obra:hover .nome { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .18em; text-decoration-color: var(--marca); }
 }
-.linha:active .foto img { transform: scale(.985); }
-.linha:focus-visible { outline: 2px solid var(--tinta); outline-offset: 4px; }
+.obra:focus-visible { outline: 2px solid var(--tinta); outline-offset: 4px; }
 
-/* ---------- página de projeto ---------- */
-.proj-cab { border-top: 2px solid var(--marca); padding-top: 12px; }
+/* /projetos: três colunas, foto 4:5 */
+.grade3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 56px 32px; }
+.grade3 .foto img { aspect-ratio: 4 / 5; }
+@media (max-width: 1079px) { .grade3 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 719px)  { .grade3 { grid-template-columns: 1fr; gap: 48px; } }
+
+/* ---------- página de projeto ----------
+   O fio no topo da ficha é o da cor da obra (--cor vem do <html> da página; no destaque da
+   home, do próprio bloco). */
+.proj-cab { border-top: 2px solid var(--cor, var(--marca)); padding-top: 12px; }
 .proj-cab .titulo { margin-top: 14px; }
-.proj-cab .ficha { margin-top: 10px; max-width: 60em; }
+.proj-cab .ficha { margin-top: 10px; }
 .margem > * + * { margin-top: 40px; }
 
 /* grade de figuras */
@@ -197,16 +211,6 @@ figure { margin: 0; }
 .prox .dir { text-align: right; }
 @media (max-width: 719px) { .prox { grid-template-columns: 1fr; gap: 32px; } .prox .dir { text-align: left; } }
 
-/* ---------- projetos (grade 3 col) ---------- */
-.grade3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 56px 32px; }
-.grade3 .item { display: block; color: var(--tinta); }
-.grade3 .item .fig img { transition: opacity .2s; }
-.grade3 .item:hover .nome { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .18em; text-decoration-color: var(--marca); }
-.grade3 .item .cabec { margin-top: 16px; border-top: 1px solid var(--marca); padding-top: 12px; }
-.grade3 .item .meta { margin-top: 6px; font-size: var(--t16); line-height: 1.4; }
-@media (max-width: 1079px) { .grade3 { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 719px)  { .grade3 { grid-template-columns: 1fr; gap: 48px; } }
-
 /* ---------- hemeroteca ---------- */
 .hemeroteca .veiculo { margin-top: 64px; }
 .hemeroteca .veiculo:first-child { margin-top: 0; }
@@ -215,52 +219,100 @@ figure { margin: 0; }
 .hemeroteca .recorte { display: grid; grid-template-columns: 180px 1fr; gap: 24px; padding: 24px 0; border-bottom: 1px solid var(--fio-fraco); align-items: start; }
 @media (max-width: 1079px) { .hemeroteca ol { grid-template-columns: 1fr; } }
 .hemeroteca .recorte .fig a { display: block; }
-.hemeroteca .recorte .fig a:hover img { filter: grayscale(1) contrast(1.06); }
+.hemeroteca .recorte .fig a img { transition: opacity .2s; }
+.hemeroteca .recorte .fig a:hover img { opacity: .85; }
 .hemeroteca .recorte .texto { padding-top: 4px; }
-.hemeroteca .recorte .texto .t16 { margin-top: 6px; }
+.hemeroteca .recorte .texto .t19 { margin-top: 8px; }
 @media (max-width: 719px) { .hemeroteca .recorte { grid-template-columns: 96px 1fr; gap: 20px; } }
 
 /* ---------- contato ---------- */
-.contato-grande { font-size: var(--t20); line-height: 1.6; }
+.contato-grande { font-size: var(--t19); line-height: 1.6; }
 .contato-grande .contato-links { margin-top: 1.5em; gap: .6em; }
+.contato-endereco span { display: block; }
 
-/* ---------- abertura da home: faixa com a frase + foto sangrando ---------- */
-.abertura-frase { padding-block: 72px 56px; }
+/* linha de apoio do título do projeto (subtítulo do escritório): tamanho, sem itálico */
+.subtitulo { margin-top: 8px; font-size: var(--fs-subtitulo); line-height: 1.25; letter-spacing: -0.01em; }
 
-.hero { margin: 0; }
-.hero img {
-  width: 100%;
-  height: clamp(340px, 56vh, 620px);
-  object-fit: cover;
-  object-position: 50% 42%;
-}
-.hero figcaption {
-  padding-block: 12px 72px;   /* respiro até o índice de projetos */
-  font-size: var(--t13);
-  line-height: 1.45;
-  color: var(--cinza);
-}
-.hero figcaption .rotulo { margin-right: .7em; }
-
-/* a foto vem depois do <main>? não: ela está no slot de abertura, fora da
-   mancha, então já nasce na largura do viewport. A legenda usa .wrap para
-   voltar ao alinhamento do resto da página. */
-@media (max-width: 719px) {
-  .abertura-frase { padding-block: 48px 36px; }
-  .hero img { height: clamp(260px, 44vh, 380px); }
-}
-
-/* rodapé: navegação e assinatura em caixa baixa, como o resto do site */
-.rod-dir { font-size: var(--t13); line-height: 1.9; color: var(--cinza); text-align: right; }
-.rod-dir a:hover { border-bottom: 1px solid var(--marca); }
-
-/* linha de apoio do título do projeto: cor e tamanho, sem itálico — a família
-   não tem itálico carregado e o navegador inclinaria o romano na marra */
-.subtitulo { margin-top: 8px; font-size: var(--t22); font-weight: 400; color: var(--cinza-texto); letter-spacing: -.01em; }
-
+/* ---------- 404 ---------- */
+.nao-encontrada { padding: 72px 0 0; }
+.nao-encontrada .leitura-19 { margin-top: 28px; }
 
 /* toque: sem o atraso de 300 ms nem o flash azul */
 @media (hover: none) {
-  .linha, .prox a, .grade3 .item { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+  .obra, .prox a { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
 }
-@media (prefers-reduced-motion: reduce) { .linha .foto img { transition: none; } }
+
+/* ======================================================================
+   Desenho inspirado no estudiocedo.com (17/10/2026), dentro da régua:
+   frase curta centrada, foto de abertura sangrando, grade de três colunas
+   em retrato, página de projeto com foto grande, ficha ao lado do título e
+   texto em coluna à direita. Cores, fonte, assinatura e fichas são as da marca.
+   ====================================================================== */
+body { overflow-x: clip; }
+.t13 { font-size: var(--t13); line-height: 1.5; }
+
+/* cabeçalho: faixa de ponta a ponta, fio na largura da janela, fixa no topo no computador.
+   O fio fica a 28 px do quadrado (respiro da régua §2); nada encosta no símbolo. */
+.cab-faixa { border-bottom: 1px solid var(--marca); background: var(--papel); }
+@media (min-width: 720px) { .cab-faixa { position: sticky; top: 0; z-index: 20; } }
+.nav a { font-size: var(--t13); letter-spacing: .08em; text-transform: uppercase; }
+@media (max-width: 719px) { .cab { padding-block: 24px 16px; } }
+
+/* abertura da home: a frase do escritório, centrada */
+.frase-abertura {
+  font-size: var(--t32); line-height: 1.25; letter-spacing: var(--tr-titulo);
+  text-align: center; text-wrap: balance; max-width: 24em; margin-inline: auto;
+  padding-block: 96px 80px;
+}
+@media (max-width: 719px) { .frase-abertura { font-size: var(--t23); padding-block: 56px 48px; } }
+
+/* foto que sangra: ocupa a janela até a largura do arquivo original (régua §7: nunca acima de 100%) */
+.sangra { margin: 0; }
+.sangra img {
+  display: block; width: 100%; max-width: var(--largura-original, 100%); margin-inline: auto;
+  height: clamp(360px, 78vh, 900px); object-fit: cover;
+}
+@media (max-width: 1079px) { .sangra img { height: clamp(360px, 62vh, 900px); } }
+@media (max-width: 719px)  { .sangra img { height: clamp(280px, 52vh, 520px); } }
+.sangra figcaption { padding-top: 12px; }
+.abertura-foto figcaption { font-size: var(--t14); line-height: 1.6; }
+.abertura-foto .obra-ficha { margin-top: 0; max-width: 40em; }
+.abertura-foto .obra-ficha .rotulo { display: block; margin-bottom: 2px; }
+.abertura-foto .obra-ficha .ficha { display: inline; }
+.abertura-foto .credito { display: block; margin-top: 4px; font-size: var(--t13); }
+@media (hover: hover) { .abertura-foto a.obra-ficha:hover .rotulo { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .2em; text-decoration-color: var(--marca); } }
+
+/* índice: três colunas de retratos, como o Cedo; nome e ficha discretos abaixo */
+.indice { margin-top: 96px; }
+.grade3 { gap: 72px 32px; }
+.obra-ficha .nome { font-size: var(--t19); line-height: 1.3; margin-top: 0; }
+.obra .obra-ficha .ficha { font-size: var(--t13); }
+@media (max-width: 719px) { .indice { margin-top: 64px; } .grade3 { gap: 48px; } }
+
+/* escritório na home */
+.sobre-home .lede { font-size: var(--t23); line-height: 1.4; max-width: 30em; }
+
+/* página de projeto */
+.proj-hero figcaption { color: var(--tinta); }
+.proj-intro { display: grid; grid-template-columns: 7fr 5fr; gap: var(--gap); align-items: end; margin-top: 72px; }
+.titulo-grande { font-size: var(--t32); line-height: 1.15; letter-spacing: var(--tr-titulo); margin-top: 10px; text-wrap: balance; }
+.proj-intro .subtitulo { margin-top: 10px; }
+.proj-intro .proj-cab .ficha + .ficha { margin-top: 2px; }
+.proj-corpo { display: grid; grid-template-columns: 5fr 7fr; gap: var(--gap); align-items: start; margin-top: 72px; }
+.proj-corpo .leitura { font-size: var(--t16); }
+.galeria .figs:first-child { margin-top: 0; }
+@media (max-width: 719px) {
+  .proj-intro { grid-template-columns: 1fr; gap: 24px; margin-top: 40px; }
+  .titulo-grande { font-size: var(--t26); }
+  .proj-corpo { grid-template-columns: 1fr; margin-top: 40px; }
+  .proj-corpo .leitura { order: -1; }
+}
+
+/* galeria: mais ar entre as fotos; paisagem sozinha ocupa a largura toda */
+.figs { gap: 48px 32px; margin-top: 48px; }
+.figs.l { grid-template-columns: 1fr; }
+.fig figcaption { font-size: var(--t13); }
+@media (max-width: 719px) { .figs { gap: 32px; margin-top: 32px; } }
+/* celular: o menu em caixa-alta cabe numa linha, dentro da margem */
+@media (max-width: 719px) { .nav a { font-size: var(--t12); letter-spacing: .02em; } }
+@media (max-width: 389px) { .nav a { letter-spacing: 0; } }

@@ -5,17 +5,21 @@ import Layout from '../layouts/Base.astro';
 import IndiceProjetos from '../components/IndiceProjetos.astro';
 import Figura from '../components/Figura.astro';
 import Ficha from '../components/Ficha.astro';
-import { foto } from '../lib/fotos';
-import { arquitetos, foco, nome, posicao } from '../data/escritorio';
-import { href } from '../lib/config';
+import { curadoria, foto } from '../lib/fotos';
+import { nome, nomeCompleto, posicao, servicos, sobre } from '../data/escritorio';
+import { credito, href, inseparavel, larguras, ordenarObras, SEP } from '../lib/config';
 
-const projetos = (await getCollection('projetos')).sort((a, b) => a.data.numero.localeCompare(b.data.numero));
-const louveira = projetos.find((p) => p.data.slug === 'louveira-1')!;
-const d = louveira.data;
+const projetos = ordenarObras(await getCollection('projetos'));
 
-// Em destaque — frases do escritório (texto do Louveira 1), com cortes.
-const destaqueP1 = 'Projetado em 1946 por um dos mais renomados arquitetos brasileiros — João Batista Vilanova Artigas —, o Edifício Louveira é um dos marcos da moderna arquitetura de edifícios residenciais de São Paulo.';
-const destaqueP2 = 'Os principais elementos originais do apartamento, como pastilhas, tacos de peroba e jardim de inverno, haviam sido retirados em intervenções anteriores. A proposta do r2arquitetos foi restabelecer esses elementos de acordo com o novo programa.';
+// Abertura: a obra mais recente, na foto de abertura da página dela, sangrando até a largura do original
+// (régua §7: nunca acima de 100%). Hoje, a Cozinha Tremembé (022, a cozinha vista pela treliça, 2400 px).
+const recente = projetos[0].data;
+const heroAbertura = curadoria(recente.pasta).hero;
+const imgAbertura = foto(recente.pasta, heroAbertura.arquivo);
+const creditoAbertura = credito(recente.pasta, heroAbertura.arquivo);
+
+// Escritório: foto da fachada do Edifício Louveira (home/003, 2000 px)
+const fotoEscritorio = foto('home', '003_8e604096.jpg');
 ---
 <Layout
   titulo={nome}
@@ -23,75 +27,50 @@ const destaqueP2 = 'Os principais elementos originais do apartamento, como pasti
 >
   <div slot="abertura">
     <div class="wrap">
-      <h1 class="sr-only">r2 arquitetos — arquitetura · urbanismo</h1>
-      <p class="lede abertura-frase">{posicao}</p>
+      <h1 class="sr-only">{nomeCompleto}</h1>
+      {/* frase do escritório (servicos.diferencial, texto do Wix), curta como a abertura do Cedo */}
+      <p class="frase-abertura">{inseparavel(servicos.diferencial).replace(/-/g, '‑')}</p>
     </div>
-    <figure class="hero">
+    <figure class="sangra abertura-foto" style={`--largura-original:${imgAbertura.width}px`}>
       <Picture
-        src={foto('capas-projetos', '006_cff1282f.jpg')}
-        widths={[900, 1400, 1920, 2400]}
-        sizes="100vw"
+        src={imgAbertura}
+        widths={larguras(imgAbertura, [900, 1400, 2000])}
+        sizes="(max-width: 719px) 170vw, (max-width: 1079px) 130vw, 100vw"
         formats={['avif', 'webp']}
-        alt="Fachada do Edifício Lausanne, de Franz Heep: venezianas vinho, verdes e cinza"
+        alt={heroAbertura.legenda}
         loading="eager"
         fetchpriority="high"
         decoding="sync"
       />
-      <figcaption class="wrap"><span class="rotulo">Edifício Lausanne</span>Franz Heep, 1953–1958 · Higienópolis</figcaption>
+      <figcaption class="wrap">
+        <a class="obra-ficha" href={href(`projetos/${recente.slug}/`)} style={`--cor:${recente.cor}`}>
+          <span class="rotulo">{recente.titulo}</span>
+          <Ficha itens={[recente.original, recente.tombamento, recente.intervencao, recente.anos]} />
+          {creditoAbertura && <span class="credito">foto: {creditoAbertura}</span>}
+        </a>
+      </figcaption>
     </figure>
   </div>
 
   <IndiceProjetos projetos={projetos} />
 
-  <section class="secao" aria-labelledby="destaque-titulo" style={`--cor:${d.cor}`}>
+  <section class="secao sobre-home" aria-labelledby="escritorio-titulo">
     <div class="secao-cab rotulo">
-      <span>Em destaque</span>
-    </div>
-    <div class="g">
-      <div>
-        <p class="rotulo">{d.numero}&nbsp;· {d.local}</p>
-        <h2 id="destaque-titulo" class="titulo" style="margin-top: 14px"><a class="link" href={href(`projetos/${d.slug}/`)}>{d.titulo}</a></h2>
-        <Ficha itens={[d.original, d.tombamento, `${d.intervencao}, ${d.anos}`]} class="mt10" />
-        <div class="leitura-20" style="margin-top: 28px">
-          <p>{destaqueP1}</p>
-          <p>{destaqueP2}</p>
-        </div>
-        <div style="margin-top: 40px; max-width: 420px">
-          <Figura
-            img={foto('02-louveira-1', '001_bf69186d.png')}
-            legenda="Anúncio da Imobiliária Itaoca para o Condomínio Louveira, “2 apartamentos por andar” — sem data."
-            doc
-            sizes="(max-width: 719px) 100vw, 420px"
-            larguras={[480, 699]}
-          />
-        </div>
-      </div>
-      <Figura
-        img={foto('02-louveira-1', '005_81f5fe68.jpg')}
-        legenda="Sala com a caixilharia recuperada e os tacos de peroba, aberta para as copas das árvores"
-        rotulo="Edifício Louveira 1"
-        ratio="4:5"
-        posicao="50% 35%"
-        sizes="(max-width: 719px) 100vw, (max-width: 1079px) 40vw, 470px"
-        larguras={[480, 800, 1200]}
-      />
-    </div>
-  </section>
-
-  <section class="secao" aria-labelledby="escritorio-titulo">
-    <div class="secao-cab rotulo" style="--cor: var(--tinta)">
       <h2 id="escritorio-titulo" class="rotulo"><a href={href('escritorio/')}>Escritório</a></h2>
     </div>
     <div class="g">
-      <p class="leitura-20">{foco}</p>
-      <dl class="t16">
-        {arquitetos.map((a, i) => (
-          <div style={i > 0 ? 'margin-top: 18px' : undefined}>
-            <dt class="rotulo">{a.nome}</dt>
-            <dd>{a.formacao},&nbsp;{a.ano}.</dd>
-          </div>
-        ))}
-      </dl>
+      <div>
+        <p class="lede">{inseparavel(posicao)}</p>
+        <p class="leitura-19" style="margin-top: 32px">{inseparavel(sobre[0])}</p>
+        <p class="t14" style="margin-top: 32px"><a class="link" href={href('escritorio/')}>Escritório{SEP}Rita Lo Sciuto e Rubens Reis</a></p>
+      </div>
+      <Figura
+        img={fotoEscritorio}
+        legenda="Fachada do Edifício Louveira: venezianas amarelas e painéis vermelhos entre as árvores"
+        ratio="4:5"
+        sizes="(max-width: 719px) 100vw, (max-width: 1079px) 40vw, 470px"
+        larguras={[480, 800, 1200]}
+      />
     </div>
   </section>
 </Layout>

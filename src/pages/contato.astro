@@ -1,12 +1,16 @@
 ---
 import Layout from '../layouts/Base.astro';
 import Contato from '../components/Contato.astro';
-import { contato } from '../data/escritorio';
+import { contato, nome } from '../data/escritorio';
+import { SEP } from '../lib/config';
+// Compartilhamento com o símbolo, não com a foto padrão (fachada do Lausanne): ao lado do
+// endereço, uma foto de obra daria a entender que o escritório fica naquele edifício.
 ---
 <Layout
   titulo="Contato"
-  descricao={`r2 arquitetos — ${contato.enderecoFormal}. ${contato.email} · Instagram`}
+  descricao={[nome, contato.enderecoFormal, contato.email, `Instagram ${contato.instagramRotulo}`].join(SEP)}
   ativo="contato"
+  og={{ src: '/r2-simbolo.png', largura: 512, altura: 512, alt: 'Símbolo do r2 arquitetos: monograma r2 branco sobre quadrado cinza' }}
   trilha={[{ nome: 'Contato', caminho: '/contato' }]}
 >
   <h1 class="titulo" style="padding: 72px 0 48px">Contato</h1>

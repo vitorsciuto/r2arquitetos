@@ -1,0 +1,44 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import { foto } from '../lib/fotos';
+import Ficha from './Ficha.astro';
+import { fatorRecorte, href, larguras, nomeIndice, quadros, sizesRecorte } from '../lib/config';
+
+/**
+ * Cartão de uma obra nos índices (home e /projetos): foto 4:5, fio de 2 px na cor da obra,
+ * nome e a ficha completa (original · tombamento · intervenção · anos), no mesmo componente
+ * da página do projeto (Ficha.astro). Sem número: a grade vai da obra mais recente à mais antiga.
+ * O cartão inteiro é o link; um clique ou toque abre o projeto.
+ * `proporcao` é a da caixa da foto (largura/altura: 3/2 na home, 4/5 em /projetos); `sizes`
+ * é multiplicado pelo fator de recorte para o navegador nunca ampliar o arquivo (régua §7).
+ */
+interface Props {
+  p: CollectionEntry<'projetos'>;
+  sizes: string;
+  proporcao: number;
+  base?: number[];
+  eager?: boolean;
+}
+const { p, sizes, proporcao, base = [480, 800, 1200, 1600], eager = false } = Astro.props;
+const d = p.data;
+const q = quadros[d.numero];
+const img = foto(q.pasta, q.arquivo);
+const sizesFinal = sizesRecorte(sizes, fatorRecorte(img, proporcao));
+---
+<a class="obra" href={href(`projetos/${d.slug}/`)} style={`--cor:${d.cor}`}>
+  <span class="foto">
+    <Image
+      src={img}
+      widths={larguras(img, base)}
+      sizes={sizesFinal}
+      alt={q.legenda}
+      loading={eager ? 'eager' : 'lazy'}
+      style={`object-position:${q.posicao}`}
+    />
+  </span>
+  <div class="obra-ficha">
+    <span class="nome">{nomeIndice(d)}</span>
+    <Ficha itens={[d.original, d.tombamento, d.intervencao, d.anos]} />
+  </div>
+</a>

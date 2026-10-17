@@ -1,12 +1,12 @@
 ---
 import { contato } from '../data/escritorio';
 
-/** Endereço e canais de contato compartilhados pela página e pelo rodapé. */
+/** Endereço e canais de contato compartilhados pela página e pelo rodapé. Endereço em duas linhas (régua §9). */
 interface Props { grande?: boolean }
 const { grande = false } = Astro.props;
 ---
 <address class:list={[grande ? 'contato-grande' : 'contato']} style="font-style: normal">
-  <div class="contato-endereco">{contato.enderecoFormal}</div>
+  <div class="contato-endereco">{contato.enderecoLinhas.map((l) => <span>{l}</span>)}</div>
   <div class="contato-links">
     <a href={`mailto:${contato.email}`}>{contato.email}</a>
     <a href={contato.instagram} rel="me noopener" target="_blank" aria-label={`${contato.instagramRotulo} no Instagram`}>{contato.instagramRotulo}</a>

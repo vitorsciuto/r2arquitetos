@@ -5,7 +5,7 @@ import { z } from 'astro/zod';
 const projetos = defineCollection({
   loader: glob({ base: './src/content/projetos', pattern: '*.md' }),
   schema: z.object({
-    numero: z.string(), // "01".."06" — estrutural: URL, prev/próximo, número na página
+    numero: z.string(), // "01".."06", estrutural: URL, prev/próximo, número na página
     slug: z.string(),
     titulo: z.string(),
     tituloCurto: z.string(),
@@ -20,10 +20,12 @@ const projetos = defineCollection({
     tombamento: z.string().default(''),
     intervencao: z.string(),
     anos: z.string(), // "2013–2014"
-    cor: z.string(), // cor da obra (Opção B)
+    cor: z.string(), // cor da obra: só o fio no topo da ficha (régua §3)
     corNome: z.string(),
     pasta: z.string(), // src/assets/fotos/<pasta>
     resumo: z.string(),
+    // texto escrito na montagem, a partir das fotos, até o escritório mandar o seu; não é texto de Rita e Rubens
+    textoProvisorio: z.boolean().default(false),
   }),
 });
 

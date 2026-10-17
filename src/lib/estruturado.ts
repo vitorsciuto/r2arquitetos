@@ -1,14 +1,17 @@
 /**
- * Dados estruturados (JSON-LD) — schema.org.
+ * Dados estruturados (JSON-LD), schema.org.
  *
  * Servem para o Google entender que existe um escritório de arquitetura num
  * endereço, com dois sócios e um perfil no Instagram, em vez de só um site com
  * fotos. O `ArchitecturalFirm` alimenta o bloco de mapa nas buscas locais; a
  * trilha alimenta o caminho que aparece abaixo do título no resultado.
  *
- * Tudo aqui sai de `data/escritorio.ts` — nenhum dado é repetido à mão.
+ * Tudo aqui sai de `data/escritorio.ts`; nenhum dado é repetido à mão.
+ * `logo` e `image` são o símbolo em PNG (/r2-simbolo.png, gerado no build de lib/simbolo.ts).
+ * Nenhuma foto de obra entra aqui: ao lado do endereço, ela daria a entender que o
+ * escritório fica naquele edifício.
  */
-import { arquitetos, contato, endereco, foco, nome, nomeCompleto } from '../data/escritorio';
+import { arquitetos, contato, endereco, foco, nome, nomeCompleto, servicos } from '../data/escritorio';
 
 const SITE = 'https://r2arquitetos.com.br';
 
@@ -19,7 +22,7 @@ const absArquivo = (caminho: string) => new URL(caminho, SITE).href;
 const absPagina = (caminho: string) => new URL(caminho.endsWith('/') ? caminho : `${caminho}/`, SITE).href;
 
 /** O escritório. Vai em toda página: é a mesma entidade, identificada por @id. */
-export function escritorioJsonLd(logo?: string) {
+export function escritorioJsonLd() {
   return {
     '@context': 'https://schema.org',
     '@type': 'ArchitecturalFirm',
@@ -28,7 +31,8 @@ export function escritorioJsonLd(logo?: string) {
     alternateName: nomeCompleto,
     description: foco,
     url: SITE,
-    ...(logo ? { logo: absArquivo(logo), image: absArquivo(logo) } : {}),
+    logo: absArquivo('/r2-simbolo.png'),
+    image: absArquivo('/r2-simbolo.png'),
     email: contato.email,
     address: {
       '@type': 'PostalAddress',
@@ -38,23 +42,23 @@ export function escritorioJsonLd(logo?: string) {
       addressCountry: endereco.pais,
     },
     areaServed: { '@type': 'City', name: endereco.cidade },
+    // nas palavras do escritório: o foco e a lista de serviços
     knowsAbout: [
-      'Patrimônio arquitetônico moderno paulistano',
-      'Readequação de apartamentos em edifícios tombados',
-      'Restauro e requalificação de elementos originais',
-      'Arquitetura e urbanismo',
+      'estudo de edifícios de valor histórico/cultural da cidade de São Paulo',
+      'readequação espacial de apartamentos',
+      ...servicos.lista.map((s) => s.replace(/\.$/, '')),
     ],
     founder: arquitetos.map((a) => ({
       '@type': 'Person',
       name: a.nome,
-      jobTitle: 'Arquiteto',
+      jobTitle: a.cargo,
       alumniOf: { '@type': 'CollegeOrUniversity', name: a.formacao },
     })),
     sameAs: [contato.instagram, contato.facebook],
   };
 }
 
-/** Trilha de navegação — só nas páginas internas; a home não tem trilha. */
+/** Trilha de navegação: só nas páginas internas; a home não tem trilha. */
 export function trilhaJsonLd(itens: { nome: string; caminho: string }[]) {
   return {
     '@context': 'https://schema.org',

@@ -1,0 +1,14 @@
+---
+import Layout from '../layouts/Base.astro';
+import { href } from '../lib/config';
+---
+<Layout
+  titulo="Página não encontrada"
+  descricao="Não há página neste endereço do site do r2 arquitetos."
+  semIndice
+>
+  <div class="nao-encontrada">
+    <h1 class="titulo">Página não encontrada</h1>
+    <p class="leitura-19">Não há página neste endereço. Os projetos do escritório estão na página <a href={href('projetos/')}>Projetos</a>.</p>
+  </div>
+</Layout>

@@ -1,15 +1,32 @@
 ---
-/** Ficha técnica em uma linha: itens separados por " · "; quebra só nos separadores (no mobile cada item desce inteiro e só quebra por dentro se não couber na linha). */
+/**
+ * Ficha de obra (régua §6). Os itens vêm de src/content/projetos/<pasta>.md (original,
+ * tombamento, intervencao, anos), na ordem da régua; o que estiver vazio sai.
+ *
+ * Quebra (régua §6, tokens.json → ficha.quebra): a ficha só quebra depois de um separador,
+ * que fica no fim da linha; um item nunca se parte.
+ * - O separador " ·" (espaço inflexível antes do ponto) fica dentro do item, colado ao fim dele;
+ *   a única oportunidade de quebra entre itens é o espaço depois do ponto.
+ * - Cada item é um bloco em linha (inline-block): a linha nunca o parte.
+ * - Só quando um item sozinho é mais largo que a coluna (a intervenção do Lausanne tem 406 px
+ *   em 14 px; a coluna do celular, 350 px) ele ocupa mais de uma linha, e aí quebra primeiro
+ *   depois da sua vírgula; entre palavras, só se um trecho entre vírgulas também não couber.
+ * Usada na página do projeto, no "Em destaque" da home e nos cartões dos índices.
+ */
 interface Props { itens: (string | undefined | null)[]; class?: string }
 const { itens, class: cls } = Astro.props;
 const lista = itens.filter((t): t is string => !!t && t.trim() !== '');
+/** "reforma de apartamento, projeto e obra" → ["reforma de apartamento,", "projeto e obra"] */
+const trechos = (t: string) => t.split(/(?<=,) /);
 ---
 <p class:list={['ficha', cls]}>
-  {lista.map((t, i) => (
-    <>{i > 0 && <span class="sep">&nbsp;·</span>}{i > 0 && ' '}<span class="item">{t}</span></>
-  ))}
+  {lista.map((t, i) => {
+    const ts = trechos(t);
+    const ultimo = i === lista.length - 1;
+    return (
+      <><span class="item">{ts.map((s, j) => (
+        <><span class="trecho">{s}{j === ts.length - 1 && !ultimo && <span class="sep">&nbsp;·</span>}</span>{j < ts.length - 1 && ' '}</>
+      ))}</span>{!ultimo && ' '}</>
+    );
+  })}
 </p>
-<style>
-  .item { white-space: nowrap; }
-  @media (max-width: 719px) { .item { display: inline-block; white-space: normal; } }
-</style>

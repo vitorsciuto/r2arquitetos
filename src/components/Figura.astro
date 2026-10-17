@@ -1,19 +1,22 @@
 ---
 import { Picture } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
-import { larguras } from '../lib/config';
+import { fatorRecorte, larguras, SEP, sizesRecorte } from '../lib/config';
 
 /**
- * Foto tratada como figura: recorte 5:4 / 4:5 via CSS, documentos em proporção nativa,
- * p&b + multiply sobre o papel (doc) ou p&b simples (pb). Legenda com rótulo Jost opcional.
+ * Foto tratada como figura: recorte 5:4 / 4:5 via CSS, documentos em proporção nativa.
+ * Sempre nas cores originais (régua §7). Legenda com rótulo opcional (número da figura)
+ * e crédito quando houver ("foto: Nome", régua §6).
+ * No recorte, `sizes` é multiplicado pelo fator de recorte: uma foto mais larga que a caixa
+ * aparece mais larga que ela, e o arquivo carregado nunca pode ser ampliado (régua §7).
  */
 interface Props {
   img: ImageMetadata;
   legenda: string;
+  credito?: string;       // autor da foto
   rotulo?: string;
   ratio?: '5:4' | '4:5' | '1:1' | 'nativa';
-  doc?: boolean;
-  pb?: boolean;
+  doc?: boolean;          // documento de época: proporção nativa, sem recorte
   sizes?: string;
   eager?: boolean;
   posicao?: string;       // object-position
@@ -23,19 +26,21 @@ interface Props {
   larguras?: number[];
 }
 const {
-  img, legenda, rotulo, ratio = 'nativa', doc = false, pb = false,
+  img, legenda, credito, rotulo, ratio = 'nativa', doc = false,
   sizes = '(max-width: 719px) 100vw, (max-width: 1079px) 60vw, 660px',
   eager = false, posicao, semLegenda = false, class: cls, id, larguras: base,
 } = Astro.props;
 const r = ratio === '5:4' ? 'r54' : ratio === '4:5' ? 'r45' : ratio === '1:1' ? 'r11' : '';
+const caixa = ratio === '5:4' ? 5 / 4 : ratio === '4:5' ? 4 / 5 : ratio === '1:1' ? 1 : null;
+const sizesFinal = caixa ? sizesRecorte(sizes, fatorRecorte(img, caixa)) : sizes;
 const widths = larguras(img, base);
 ---
-<figure class:list={['fig', r, { doc, pb, nativa: ratio === 'nativa' }, cls]} id={id} style={ratio === 'nativa' ? `--largura-nativa:${img.width}px` : undefined}>
+<figure class:list={['fig', r, { doc, nativa: ratio === 'nativa' }, cls]} id={id} style={ratio === 'nativa' ? `--largura-nativa:${img.width}px` : undefined}>
   <Picture
     src={img}
     widths={widths}
     formats={['avif', 'webp']}
-    sizes={sizes}
+    sizes={sizesFinal}
     alt={legenda}
     loading={eager ? 'eager' : 'lazy'}
     fetchpriority={eager ? 'high' : undefined}
@@ -44,7 +49,7 @@ const widths = larguras(img, base);
   />
   {!semLegenda && (
     <figcaption>
-      {rotulo && <span class="rotulo">{rotulo}</span>}{legenda}
+      {rotulo && <span class="rotulo">{rotulo}</span>}{legenda}{credito && <span class="credito">{SEP}foto: {credito}</span>}
     </figcaption>
   )}
 </figure>

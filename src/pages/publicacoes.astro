@@ -21,7 +21,7 @@ const grupos = await Promise.all(
 ---
 <Layout
   titulo="Publicações"
-  descricao="Hemeroteca do r2 arquitetos: recortes da Revista Projeto Design, Arquitetura & Construção, Folha de S.Paulo e jornais sobre a Praça Roosevelt e o Edifício Louveira."
+  descricao="Recortes da Revista Projeto Design, da Revista Arquitetura & Construção, da Folha de S.Paulo e de jornais sobre a Praça Roosevelt e o Edifício Louveira, projetos do r2 arquitetos."
   ativo="publicacoes"
   trilha={[{ nome: 'Publicações', caminho: '/publicacoes' }]}
 >
@@ -37,14 +37,14 @@ const grupos = await Promise.all(
         <ol>
           {v.recortes.map((r) => (
             <li class="recorte">
-              <div class="fig doc">
+              <div class="fig">
                 <a href={r.grande} aria-label={`Abrir o recorte: ${r.titulo}`}>
-                  <Figura img={r.img} legenda={meta([v.veiculo, r.titulo, r.ano])} doc semLegenda sizes="(max-width: 719px) 96px, 160px" larguras={[320, 480]} />
+                  <Figura img={r.img} legenda={meta([v.veiculo, r.titulo, r.ano])} doc semLegenda sizes="(max-width: 719px) 96px, 180px" larguras={[320, 480]} />
                 </a>
               </div>
               <div class="texto">
                 <p class="rotulo">{meta([v.veiculo, r.ano])}</p>
-                <p class="t16" style="font-size: var(--t20); line-height: 1.4; margin-top: 8px">{r.titulo}</p>
+                <p class="t19">{r.titulo}</p>
               </div>
             </li>
           ))}

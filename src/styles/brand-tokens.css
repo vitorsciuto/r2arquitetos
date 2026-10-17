@@ -1,14 +1,15 @@
-/* Identidade r2: cinza medido na referência, neutros para todas as aplicações.
-   O cinza da marca é gráfico; texto usa tinta ou cinza de leitura. */
+/* Gerado por scripts/gerar-tokens-css.mjs a partir de marca/identidade-r2/tokens.json.
+   Não editar à mão. Um cinza de texto (--tinta); o cinza da marca é só gráfico. */
 :root {
   --marca: #858585;
   --papel: #F2F2F2;
   --sur: #FAFAFA;
   --branco: #FFFFFF;
   --tinta: #616161;
-  --titulo: #5F5F5F;
-  --cinza: #6A6A6A;
-  --cinza-texto: var(--cinza);
+  --titulo: var(--tinta);
+  --cinza: var(--tinta);
+  --cinza-texto: var(--tinta);
   --fio-fraco: #CCCCCC;
-  --sans: 'Work Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --rotulo-tracking: 0.06em;
+  --sans: 'Work Sans', Helvetica Neue, Helvetica, Arial, sans-serif;
 }

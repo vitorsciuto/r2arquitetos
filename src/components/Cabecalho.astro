@@ -1,16 +1,18 @@
 ---
-import Logo from '../assets/logo-r2.svg';
-import { menu, nome } from '../data/escritorio';
+import { menu, nome, descritor } from '../data/escritorio';
 import { href } from '../lib/config';
+import { simboloSvg } from '../lib/simbolo';
 
 interface Props { ativo?: string }
 const { ativo } = Astro.props;
+// assinatura (régua §2): símbolo + "r2 arquitetos" / "arquitetura e urbanismo"
+const simbolo = simboloSvg({ fundo: 'var(--marca)', glifo: 'var(--branco)', atributos: 'aria-hidden="true" focusable="false"' });
 ---
-<header class="wrap">
-  <div class="cab">
-    <a class="cab-marca" href={href()} aria-label={`${nome} — página inicial`}>
-      <Logo aria-hidden="true" role="presentation" />
-      <span class="cab-wm">r2 arquitetos<br />arquitetura&nbsp;· urbanismo</span>
+<header class="cab-faixa">
+  <div class="wrap cab">
+    <a class="cab-marca" href={href()} aria-label={`${nome}, página inicial`}>
+      <Fragment set:html={simbolo} />
+      <span class="cab-wm"><span class="l1">{nome}</span><span class="l2">{descritor}</span></span>
     </a>
     <nav class="nav" aria-label="Principal">
       <ul>

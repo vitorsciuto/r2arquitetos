@@ -1,4 +1,5 @@
 ---
+import { Picture } from 'astro:assets';
 import { getCollection, render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import Layout from '../../layouts/Base.astro';
@@ -8,10 +9,11 @@ import Figuras, { type Item } from '../../components/Figuras.astro';
 import DiarioObra from '../../components/DiarioObra.astro';
 import PrevProximo from '../../components/PrevProximo.astro';
 import { curadoria, foto, fotosDoCapitulo, type FotoCurada } from '../../lib/fotos';
-import { heroB, posicao, tituloCapitulo } from '../../lib/config';
+import { credito, creditosPasta, heroB, inseparavel, larguras, ordenarObras, posicao, quadros, SEP, tituloCapitulo } from '../../lib/config';
+import { recorteOg } from '../../lib/og';
 
 export async function getStaticPaths() {
-  const projetos = (await getCollection('projetos')).sort((a, b) => a.data.numero.localeCompare(b.data.numero));
+  const projetos = ordenarObras(await getCollection('projetos'));
   const n = projetos.length;
   return projetos.map((p, i) => ({
     params: { slug: p.data.slug },
@@ -24,13 +26,14 @@ const { Content } = await render(entry);
 const d = entry.data;
 const cur = curadoria(d.pasta);
 
-/** Aspas curvas nas legendas da curadoria; legendas corrigidas pela spec. */
+/** Aspas duplas curvas nas legendas da curadoria (retas e simples curvas viram “ ”); legendas corrigidas pela spec. */
 const legendasFixas: Record<string, string> = {
-  '02-louveira-1/001_bf69186d.png': 'Anúncio da Imobiliária Itaoca para o Condomínio Louveira, “2 apartamentos por andar” — sem data.',
+  '02-louveira-1/001_bf69186d.png': 'Anúncio da Imobiliária Itaoca para o Condomínio Louveira, “2 apartamentos por andar”, sem data',
 };
-const legenda = (f: FotoCurada) => legendasFixas[`${d.pasta}/${f.arquivo}`] ?? f.legenda.replace(/'([^']+)'/g, '“$1”');
+const legenda = (f: FotoCurada) =>
+  legendasFixas[`${d.pasta}/${f.arquivo}`] ?? f.legenda.replace(/'([^']+)'/g, '“$1”').replace(/‘([^’]+)’/g, '“$1”');
 const ehDoc = new Set(cur.documentos.map((x) => x.arquivo));
-const item = (f: FotoCurada): Item => ({ img: foto(d.pasta, f.arquivo), legenda: legenda(f), orientacao: f.orientacao, doc: ehDoc.has(f.arquivo), posicao: posicao(d.pasta, f.arquivo) });
+const item = (f: FotoCurada): Item => ({ img: foto(d.pasta, f.arquivo), legenda: legenda(f), credito: creditosPasta[d.pasta] ? undefined : credito(d.pasta, f.arquivo), orientacao: f.orientacao, doc: ehDoc.has(f.arquivo), posicao: posicao(d.pasta, f.arquivo) });
 
 // hero: o da curadoria, salvo decisão de edição da Opção B (heroB)
 const heroArq = heroB[d.pasta];
@@ -67,13 +70,21 @@ const capitulos = multi
 const tituloObra = tituloCapitulo(cur.capitulos.find((c) => /obras/i.test(c.titulo))?.titulo ?? 'Fase de obras');
 
 const heroLegenda = legenda(hero);
+const heroImg = foto(d.pasta, hero.arquivo);
+// obra fotografada por um só fotógrafo: crédito uma vez, na ficha; nas legendas ele não se repete
+const creditoObra = creditosPasta[d.pasta];
+const heroCredito = creditoObra ? undefined : credito(d.pasta, hero.arquivo);
 const heroPos = posicao(d.pasta, hero.arquivo);
-const capa = foto(d.pasta, cur.capa.arquivo);
+// foto de compartilhamento: o mesmo quadro que representa a obra nos índices, recortado na horizontal
+const q = quadros[d.numero];
+const quadro = foto(q.pasta, q.arquivo);
+const r = recorteOg(quadro.width, quadro.height, q.posicao);
+const og = { src: `/og/${d.slug}.jpg`, largura: r.saidaL, altura: r.saidaA, alt: q.legenda };
 ---
 <Layout
   titulo={d.titulo}
   descricao={d.resumo}
-  ogImagem={capa}
+  og={og}
   cor={d.cor}
   ativo="projetos"
   trilha={[
@@ -81,40 +92,53 @@ const capa = foto(d.pasta, cur.capa.arquivo);
     { nome: d.titulo, caminho: `/projetos/${Astro.params.slug}` },
   ]}
 >
+  {/* abertura: a foto sangra até a largura do original (régua §7), como no Cedo; retrato vai para a margem */}
+  {!heroRetrato && (
+    <figure slot="abertura" class="sangra proj-hero" style={`--largura-original:${heroImg.width}px`}>
+      <Picture
+        src={heroImg}
+        widths={larguras(heroImg, [900, 1400, 2000])}
+        sizes="(max-width: 719px) 170vw, (max-width: 1079px) 130vw, 100vw"
+        formats={['avif', 'webp']}
+        alt={heroLegenda}
+        loading="eager"
+        fetchpriority="high"
+        decoding="sync"
+        style={heroPos ? `object-position:${heroPos}` : undefined}
+      />
+      <figcaption class="wrap t13">{heroLegenda}{heroCredito && `${SEP}foto: ${heroCredito}`}</figcaption>
+    </figure>
+  )}
+
   <article>
-    <header class="proj-cab" style="margin-top: 72px">
-      <p class="rotulo">{d.numero}&nbsp;· {d.local}</p>
-      <h1 class="titulo">{d.titulo}</h1>
-      {d.subtitulo && <p class="subtitulo">{d.subtitulo}</p>}
-      <Ficha itens={[d.original, d.tombamento, d.intervencao, d.anos]} />
+    <header class="proj-intro">
+      <div>
+        <p class="rotulo">{inseparavel(d.local)}</p>
+        <h1 class="titulo-grande">{d.titulo}</h1>
+        {d.subtitulo && <p class="subtitulo">{d.subtitulo}</p>}
+      </div>
+      <div class="proj-cab">
+        <Ficha itens={[d.original, d.tombamento, d.intervencao, d.anos]} />
+        {creditoObra && <p class="ficha">foto: {creditoObra}</p>}
+      </div>
     </header>
 
-    {!heroRetrato && (
-      <div class="g" style="margin-top: 48px">
-        <Figura img={foto(d.pasta, hero.arquivo)} legenda={heroLegenda} ratio="5:4" posicao={heroPos} eager semLegenda sizes="(max-width: 719px) 100vw, (max-width: 1079px) 60vw, 660px" />
-        <p class="fim t13 cinza">{heroLegenda}</p>
-      </div>
-    )}
-
-    <div class="g" style="margin-top: 48px">
+    <div class="proj-corpo">
+      <aside class="margem" aria-label="Figuras">
+        {heroRetrato && (
+          <Figura img={heroImg} legenda={heroLegenda} credito={heroCredito} ratio="4:5" posicao={heroPos} eager sizes="(max-width: 719px) 100vw, (max-width: 1079px) 40vw, 470px" />
+        )}
+        {margem.map((m) => (
+          <Figura img={m.img} legenda={m.legenda} credito={m.credito} ratio={m.doc ? 'nativa' : m.orientacao === 'retrato' ? '4:5' : '5:4'} doc={m.doc} posicao={m.posicao} sizes="(max-width: 719px) 100vw, (max-width: 1079px) 40vw, 470px" larguras={[480, 800, 1200]} />
+        ))}
+      </aside>
       <div class="leitura">
         <Content />
       </div>
-      <aside class="margem" aria-label="Figuras">
-        {heroRetrato && (
-          <Figura img={foto(d.pasta, hero.arquivo)} legenda={heroLegenda} ratio="4:5" posicao={heroPos} eager sizes="(max-width: 719px) 100vw, (max-width: 1079px) 40vw, 470px" />
-        )}
-        {margem.map((m) => (
-          <Figura img={m.img} legenda={m.legenda} ratio={m.doc ? 'nativa' : m.orientacao === 'retrato' ? '4:5' : '5:4'} doc={m.doc} posicao={m.posicao} sizes="(max-width: 719px) 100vw, (max-width: 1079px) 40vw, 470px" larguras={[480, 800, 1200]} />
-        ))}
-      </aside>
     </div>
 
     {destaques.length > 0 && (
-      <section class="secao" aria-labelledby="fotos-titulo">
-        <div class="secao-cab rotulo">
-          <h2 id="fotos-titulo" class="rotulo">{d.tituloCurto}</h2>
-        </div>
+      <section class="secao galeria" aria-label={`Fotos: ${d.titulo}`}>
         <Figuras itens={destaques} />
       </section>
     )}
