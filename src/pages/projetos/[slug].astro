@@ -7,21 +7,16 @@ import Figura from '../../components/Figura.astro';
 import Ficha from '../../components/Ficha.astro';
 import Figuras, { type Item } from '../../components/Figuras.astro';
 import DiarioObra from '../../components/DiarioObra.astro';
-import PrevProximo from '../../components/PrevProximo.astro';
 import { curadoria, foto, fotosDoCapitulo, type FotoCurada } from '../../lib/fotos';
 import { credito, creditosPasta, heroB, inseparavel, larguras, ordenarObras, posicao, quadros, SEP, tituloCapitulo } from '../../lib/config';
 import { recorteOg } from '../../lib/og';
 
 export async function getStaticPaths() {
   const projetos = ordenarObras(await getCollection('projetos'));
-  const n = projetos.length;
-  return projetos.map((p, i) => ({
-    params: { slug: p.data.slug },
-    props: { entry: p, anterior: projetos[(i - 1 + n) % n], proximo: projetos[(i + 1) % n] },
-  }));
+  return projetos.map((p) => ({ params: { slug: p.data.slug }, props: { entry: p } }));
 }
-interface Props { entry: CollectionEntry<'projetos'>; anterior: CollectionEntry<'projetos'>; proximo: CollectionEntry<'projetos'> }
-const { entry, anterior, proximo } = Astro.props;
+interface Props { entry: CollectionEntry<'projetos'> }
+const { entry } = Astro.props;
 const { Content } = await render(entry);
 const d = entry.data;
 const cur = curadoria(d.pasta);
@@ -154,6 +149,5 @@ const og = { src: `/og/${d.slug}.jpg`, largura: r.saidaL, altura: r.saidaA, alt:
 
     <DiarioObra pasta={d.pasta} fotos={cur.obra} titulo={tituloObra} />
 
-    <PrevProximo anterior={anterior} proximo={proximo} />
   </article>
 </Layout>

@@ -203,14 +203,6 @@ figure { margin: 0; }
 @media (max-width: 1079px) { .diario { grid-template-columns: repeat(4, 1fr); } }
 @media (max-width: 719px)  { .diario { grid-template-columns: repeat(2, 1fr); gap: 24px 12px; } .diario > figure:nth-child(n+7) { display: none; } }
 
-/* anterior / próximo */
-.prox { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); margin-top: var(--secao); }
-.prox a { display: block; border-top: 2px solid var(--marca); padding-top: 10px; }
-.prox a .nome { margin-top: 10px; }
-.prox a:hover .nome { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .18em; text-decoration-color: var(--marca); }
-.prox .dir { text-align: right; }
-@media (max-width: 719px) { .prox { grid-template-columns: 1fr; gap: 32px; } .prox .dir { text-align: left; } }
-
 /* ---------- hemeroteca ---------- */
 .hemeroteca .veiculo { margin-top: 64px; }
 .hemeroteca .veiculo:first-child { margin-top: 0; }
@@ -239,7 +231,7 @@ figure { margin: 0; }
 
 /* toque: sem o atraso de 300 ms nem o flash azul */
 @media (hover: none) {
-  .obra, .prox a { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+  .obra { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
 }
 
 /* ======================================================================

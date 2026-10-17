@@ -28,6 +28,7 @@ export const quadros: Record<string, Quadro> = {
   '04': { pasta: 'capas-projetos', arquivo: '004_1039f688.jpg', posicao: '50% 50%', legenda: 'Porta de vidro do restaurante, balcão de mármore e piso xadrez verde e branco' },
   '05': { pasta: 'capas-projetos', arquivo: '005_4605555f.jpg', posicao: '45% 50%', legenda: 'Pergolado de madeira e aço sobre as floriculturas da nova praça' },
   '06': { pasta: 'capas-projetos', arquivo: '006_cff1282f.jpg', posicao: '50% 50%', legenda: LEGENDA_LAUSANNE },
+  '08': { pasta: '08-studio-bh', arquivo: '002_992e4501.jpg', posicao: '50% 50%', legenda: 'Estante de madeira com cabideiro, nichos iluminados e cozinha compacta' },
   '07': { pasta: '07-cozinha-tremembe', arquivo: '006_ad101a9f.jpg', posicao: '50% 50%', legenda: 'A cozinha vista do ambiente vizinho, sob o forro de madeira' },
 };
 

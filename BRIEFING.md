@@ -458,3 +458,11 @@ Pedido: site inspirado em estudiocedo.com. Aplicado dentro da régua (Work Sans 
   fotos; não é texto de Rita e Rubens e não deve servir de base para legendas como se fosse.
   Trocar quando a Rita mandar o texto.
 - Cópia do `src/` anterior em `tmp/antes-cedo-20261017/`.
+
+### Studio BH e fim do anterior/próximo (17/10/2026)
+
+- Saiu o bloco "Anterior / Próximo" do fim das páginas de projeto.
+- Entra a 08 Studio BH, só o studio 1 (o 2 ficaria repetitivo): seis imagens geradas no
+  ChatGPT a partir dos renders, conferidas contra eles. Não são fotos da obra: a ficha diz
+  "imagens do projeto". Texto provisório, como o da Cozinha Tremembé. Imagens dos dois
+  studios guardadas em `projetos/2025-studios-bh/studio-*/imagens-chatgpt/` (fora do git).

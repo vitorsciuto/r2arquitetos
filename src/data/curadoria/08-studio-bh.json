@@ -1,0 +1,13 @@
+{
+ "pasta": "08-studio-bh",
+ "capa": { "arquivo": "002_992e4501.jpg", "legenda": "Estante de madeira com cabideiro, nichos iluminados e cozinha compacta", "orientacao": "quadrado" },
+ "hero": { "arquivo": "002_992e4501.jpg", "legenda": "Estante de madeira com cabideiro, nichos iluminados e cozinha compacta", "orientacao": "quadrado" },
+ "destaques": [
+  { "arquivo": "004_0e2e31e1.jpg", "legenda": "Cozinha compacta com bancada escura, estar e cortinas ao fundo", "orientacao": "quadrado" },
+  { "arquivo": "001_6416b6dc.jpg", "legenda": "Cama sob a prateleira corrida e a composição de quadros", "orientacao": "quadrado" },
+  { "arquivo": "006_b66ac738.jpg", "legenda": "Poltrona junto à janela, diante do cabideiro iluminado", "orientacao": "quadrado" },
+  { "arquivo": "005_1c86f428.jpg", "legenda": "Mesa redonda e cadeiras junto às cortinas", "orientacao": "quadrado" },
+  { "arquivo": "003_1ec5cd82.jpg", "legenda": "Painel frisado da entrada, com espelho e ganchos de madeira", "orientacao": "quadrado" }
+ ],
+ "documentos": [], "capitulos": [], "obra": [], "descartadas": [], "slides_titulo": []
+}
