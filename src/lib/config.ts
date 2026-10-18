@@ -23,8 +23,8 @@ export const LEGENDA_LAUSANNE = 'Fachada do Edifício Lausanne, de Franz Heep: v
 export interface Quadro { pasta: string; arquivo: string; posicao: string; legenda: string }
 export const quadros: Record<string, Quadro> = {
   '01': { pasta: 'home', arquivo: '002_804b1d55.jpg', posicao: '50% 30%', legenda: 'Volume branco do pavimento superior sobre a base de tijolos aparentes e caixilhos de madeira' },
-  '02': { pasta: 'capas-projetos', arquivo: '003_0d0a1121.jpg', posicao: '50% 40%', legenda: 'Fachada do Edifício Louveira: venezianas amarelas e painéis vermelhos entre as árvores' },
-  '03': { pasta: '03-louveira-2', arquivo: '017_a1c17070.jpg', posicao: '50% 45%', legenda: 'Divisória de vidro com caixilhos pretos junto ao pilar revestido, vista para a rua' },
+  // o apartamento, não o prédio: a capa mostra o projeto do escritório
+  '02': { pasta: '02-louveira-1', arquivo: '005_81f5fe68.jpg', posicao: '50% 35%', legenda: 'Sala com caixilharia recuperada, tacos de peroba e vista para as copas das árvores' },
   '04': { pasta: 'capas-projetos', arquivo: '004_1039f688.jpg', posicao: '50% 50%', legenda: 'Porta de vidro do restaurante, balcão de mármore e piso xadrez verde e branco' },
   '05': { pasta: 'capas-projetos', arquivo: '005_4605555f.jpg', posicao: '45% 50%', legenda: 'Pergolado de madeira e aço sobre as floriculturas da nova praça' },
   '06': { pasta: 'capas-projetos', arquivo: '006_cff1282f.jpg', posicao: '50% 50%', legenda: LEGENDA_LAUSANNE },
@@ -34,14 +34,13 @@ export const quadros: Record<string, Quadro> = {
 
 /** Decisões de edição da Opção B sobre a curadoria: hero por projeto e enquadramento (object-position) de fotos específicas. */
 export const heroB: Record<string, string> = {
-  '03-louveira-2': '017_a1c17070.jpg', // a única imagem quase concluída e icônica do loft (a 014 tem entulho e escada no canto)
+  '02-louveira-1': '005_81f5fe68.jpg', // o apartamento abre a página; a fachada e o jardim do prédio descem para o fim
   // régua §7, arquitetura antes de decoração: a fachada de venezianas (002, 1500×1125, a capa da
   // curadoria) abre a página; o interior que abria (008: TV, poltronas, forro com dominante lilás)
   // desce para o corpo. A 019 (caixilho) foi descartada: luminária, vaso e poltrona em primeiro plano.
   '06-lausanne': '002_c68f4a53.jpg',
 };
 export const posicoes: Record<string, string> = {
-  '03-louveira-2/014_1eb3fc3a.jpg': '0% 50%',   // recorta o entulho da direita
   '05-praca-roosevelt/016_a11690c2.jpg': '40% 50%',
   '02-louveira-1/005_81f5fe68.jpg': '50% 35%',
   '01-casa-de-praia/001_952ee7ff.jpg': '50% 40%',
@@ -49,7 +48,7 @@ export const posicoes: Record<string, string> = {
 export const posicao = (pasta: string, arquivo: string) => posicoes[`${pasta}/${arquivo}`];
 
 /**
- * Crédito fotográfico (régua §6: "foto: Nome"), por pasta/arquivo. Louveira 1: digitalizações da
+ * Crédito fotográfico (régua §6: "foto: Nome"), por pasta/arquivo. Louveira: digitalizações da
  * reportagem "Patrimônio paulistano" da revista Arquitetura & Construção, cuja página de abertura
  * (publicacoes/007_244ca33d.jpg) traz "Fotos Victor Affaro".
  */

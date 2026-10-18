@@ -1,10 +1,10 @@
 {
  "pasta": "02-louveira-1",
  "capa": {
-  "arquivo": "003_860d06ac.jpg",
-  "legenda": "Fachada do Edifício Louveira com venezianas amarelas e painéis vermelhos",
-  "orientacao": "paisagem",
-  "nota": "Imagem icônica e nítida da fachada; 3264x2448, a maior resolução da pasta"
+  "arquivo": "005_81f5fe68.jpg",
+  "legenda": "Sala com caixilharia recuperada, tacos de peroba e vista para as copas das árvores",
+  "orientacao": "retrato",
+  "nota": "Digitalização de página de revista; há caixa de texto da publicação no canto inferior esquerdo"
  },
  "hero": {
   "arquivo": "004_a3bcdedc.jpg",
@@ -14,15 +14,10 @@
  },
  "destaques": [
   {
-   "arquivo": "003_860d06ac.jpg",
-   "legenda": "Fachada do Edifício Louveira com venezianas amarelas e painéis vermelhos",
-   "orientacao": "paisagem"
-  },
-  {
-   "arquivo": "005_81f5fe68.jpg",
-   "legenda": "Sala com caixilharia recuperada, tacos de peroba e vista para as copas das árvores",
-   "orientacao": "retrato",
-   "nota": "Digitalização de página de revista; há caixa de texto da publicação no canto inferior esquerdo"
+   "arquivo": "006_66a840ec.jpg",
+   "legenda": "Estar integrado à cozinha, com pilar revestido de pastilhas e estante branca",
+   "orientacao": "paisagem",
+   "nota": "Digitalização de revista; 924x537"
   },
   {
    "arquivo": "007_aa48a8f6.jpg",
@@ -31,21 +26,10 @@
    "nota": "Digitalização de revista; resolução 718x773"
   },
   {
-   "arquivo": "004_a3bcdedc.jpg",
-   "legenda": "Jardim interno do edifício, com a fachada colorida ao fundo",
-   "orientacao": "paisagem"
-  },
-  {
-   "arquivo": "006_66a840ec.jpg",
-   "legenda": "Estar integrado à cozinha, com pilar revestido de pastilhas e estante branca",
+   "arquivo": "008_e864d74a.jpg",
+   "legenda": "Cozinha e sala de jantar com armários brancos e piso de tacos",
    "orientacao": "paisagem",
-   "nota": "Digitalização de revista; 924x537"
-  },
-  {
-   "arquivo": "010_52de2295.jpg",
-   "legenda": "Sala de banho da suíte com banheira e venezianas amarelas",
-   "orientacao": "paisagem",
-   "nota": "Digitalização de revista; número de página visível no canto"
+   "nota": "Digitalização de revista; 935x540"
   },
   {
    "arquivo": "009_a884a917.jpg",
@@ -54,16 +38,32 @@
    "nota": "Digitalização de revista; 844x722"
   },
   {
-   "arquivo": "008_e864d74a.jpg",
-   "legenda": "Cozinha e sala de jantar com armários brancos e piso de tacos",
+   "arquivo": "010_52de2295.jpg",
+   "legenda": "Sala de banho da suíte com banheira e venezianas amarelas",
    "orientacao": "paisagem",
-   "nota": "Digitalização de revista; 935x540"
+   "nota": "Digitalização de revista; número de página visível no canto"
+  },
+  {
+   "arquivo": "003_860d06ac.jpg",
+   "legenda": "Fachada do Edifício Louveira com venezianas amarelas e painéis vermelhos",
+   "orientacao": "paisagem"
+  },
+  {
+   "arquivo": "004_a3bcdedc.jpg",
+   "legenda": "Jardim interno do edifício, com a fachada colorida ao fundo",
+   "orientacao": "paisagem"
   },
   {
    "arquivo": "002_be6b14ee.jpg",
    "legenda": "Letreiro 'Louveira' na marquise revestida de pastilhas",
    "orientacao": "paisagem",
    "nota": "Detalhe externo; 1125x925"
+  },
+  {
+   "arquivo": "005_81f5fe68.jpg",
+   "legenda": "Sala com caixilharia recuperada, tacos de peroba e vista para as copas das árvores",
+   "orientacao": "retrato",
+   "nota": "Digitalização de página de revista; há caixa de texto da publicação no canto inferior esquerdo"
   }
  ],
  "documentos": [

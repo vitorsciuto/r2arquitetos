@@ -1,8 +1,8 @@
 ---
 numero: "02"
 slug: louveira-1
-titulo: Edifício Louveira 1
-tituloCurto: Louveira 1
+titulo: Edifício Louveira
+tituloCurto: Louveira
 local: Higienópolis, São Paulo
 bairro: Higienópolis
 cidade: São Paulo
